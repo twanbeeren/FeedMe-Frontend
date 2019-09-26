@@ -7,10 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CustomMaterialModule } from './core/material.module';
 import { FormsModule } from '@angular/forms';
+import { DishcardComponent } from './dishcard/dishcard.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DishcardComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,6 @@
         "greeting": "Hallo {{name}}! Welkom bij {{projectName}}"
     },
     "tag": {
-        "vegan": "Vegetarisch"
+        "vegan": "Vegan"
     }
 }

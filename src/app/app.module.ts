@@ -12,7 +12,7 @@ import { DishcardComponent } from './dishcard/dishcard.component';
 
 @NgModule({
   declarations: [
-    DishcardComponent
+    DishcardComponent,
     AppComponent,
     I18nComponent
   ],

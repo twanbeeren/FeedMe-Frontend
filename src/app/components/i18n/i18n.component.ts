@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-i18n',
@@ -7,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class I18nComponent implements OnInit {
 
-  minutes: number = 2;
-  gender: any = "female";
+  projectName: string = "FeedMe";
+  tag: string = "vegan";
 
-  constructor() { }
+  constructor(private translate: TranslateService) { }
 
   ngOnInit() {
   }
 
+  changeLanguage(language: string) {
+    this.translate.use(language);
+  }
 }

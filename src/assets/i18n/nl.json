@@ -1,0 +1,10 @@
+{
+    "demo": {
+        "title": "Vertalingsdemo",
+        "text": "Dit is een demonstratie voor ngx-translate",
+        "greeting": "Hallo {{name}}! Welkom bij {{projectName}}"
+    },
+    "tag": {
+        "vegan": "Vegan"
+    }
+}

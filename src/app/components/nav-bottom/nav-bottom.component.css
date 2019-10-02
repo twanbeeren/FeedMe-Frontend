@@ -1,0 +1,13 @@
+i {
+  text-align: center;
+}
+
+.material-icons {
+  display: inherit;
+  padding-bottom: 0.2rem;
+}
+
+.menu-item {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}

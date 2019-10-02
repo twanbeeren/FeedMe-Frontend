@@ -1,10 +1,15 @@
 <p>regular-menu works!</p>
 
-
-<ul *ngIf="menu_items">
-    <li *ngFor="let item of menu_items">
-        {{item?.name}}
-    </li>
-</ul>
-
-<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+<mat-list *ngFor="let course of courses">
+    <h3>{{course.name}}</h3>
+    <mat-divider></mat-divider>
+    <mat-list-item *ngFor="let item of menu_items | filterByCourse: course.name">
+        <p>{{item.name}}</p>
+        <button (click)="addToOrder(item)">Add</button>
+        <button (click)="openDishInfoDialog(item)">Info</button>
+        <!-- <mat-chip-list>
+            <mat-chip *ngFor="let tag of item.tags">{{tag}}</mat-chip>
+        </mat-chip-list> -->
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>

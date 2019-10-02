@@ -16,12 +16,15 @@ import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.com
 import { RegularMenuComponent } from './pages/regular-menu/regular-menu.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 
+import { FilterByCoursePipe } from 'src/app/core/pipes/filter-by-course.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     I18nComponent,
     HomeComponent,
     RegularMenuComponent,
+    FilterByCoursePipe,
   ],
   imports: [
     BrowserModule,

@@ -8,20 +8,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CustomMaterialModule } from './core/material.module';
 import { FormsModule } from '@angular/forms';
-import { DishcardComponent } from './dishcard/dishcard.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.component';
+import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
 
 @NgModule({
   declarations: [
-    DishcardComponent,
     AppComponent,
-    I18nComponent
+    I18nComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CustomMaterialModule,
-    FormsModule
+    FormsModule,
+    SwipeMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

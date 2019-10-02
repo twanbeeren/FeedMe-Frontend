@@ -1,4 +1,4 @@
-import { MenuItem } from './menu-item';
+import { MenuItem } from '../classes/menu-item';
 
 export const MENU: MenuItem[] = [
   { id: 11, name: 'Spaghetti Bolognese', price: 10, tags: ['Pasta'] },

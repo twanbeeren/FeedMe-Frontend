@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dishcard.component.html',
   styleUrls: ['./dishcard.component.css']
 })
+
 export class DishcardComponent implements OnInit {
 
   constructor() { }

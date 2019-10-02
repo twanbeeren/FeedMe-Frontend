@@ -10,12 +10,16 @@ import { CustomMaterialModule } from './core/material.module';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
+import { NavTopComponent } from './components/nav-top/nav-top.component';
+import { NavBottomComponent } from './components/nav-bottom/nav-bottom.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     I18nComponent,
     HomeComponent,
+    NavTopComponent,
+    NavBottomComponent,
   ],
   imports: [
     BrowserModule,

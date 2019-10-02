@@ -1,0 +1,12 @@
+.columns {
+    margin-right: 0px;
+}
+
+.like-button, .dislike-button {
+    width: 7rem;
+    height: 7rem;
+}
+
+mat-icon {
+    font-size: 46px;
+}

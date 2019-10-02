@@ -11,3 +11,7 @@ i {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
+p, i {
+    color: #707070;
+}

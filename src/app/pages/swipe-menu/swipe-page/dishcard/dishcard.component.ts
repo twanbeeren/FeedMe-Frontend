@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MenuItem } from 'src/app/core/classes/menu-item';
 
 @Component({
   selector: 'app-dishcard',

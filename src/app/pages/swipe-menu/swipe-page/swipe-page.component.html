@@ -1,1 +1,22 @@
-<app-dishcard></app-dishcard>
+<div class="container">
+  <!-- Card -->
+  <div class="columns is-mobile is-centered">
+    <div class="column is-10">
+      <app-dishcard></app-dishcard>
+    </div>
+  </div>
+  <!-- Buttons -->
+  <div class="columns is-mobile is-centered">
+    <div class="column is-11 has-text-centered">
+      <button mat-fab aria-label="Return">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-fab aria-label="Dislike" class="dislike-button">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-fab aria-label="Like" class="like-button">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

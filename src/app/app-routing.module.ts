@@ -9,7 +9,6 @@ import { RegularMenuComponent } from './pages/regular-menu/regular-menu.componen
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'i18n', component: I18nComponent},
   { path: 'swipemenu', component: SwipePageComponent},
   { path: 'regularmenu', component: RegularMenuComponent},
 ];

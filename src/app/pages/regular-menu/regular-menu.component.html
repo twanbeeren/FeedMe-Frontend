@@ -1,7 +1,10 @@
 <p>regular-menu works!</p>
 
+
 <ul *ngIf="menu_items">
     <li *ngFor="let item of menu_items">
         {{item?.name}}
     </li>
 </ul>
+
+<mat-slider min="1" max="100" step="1" value="1"></mat-slider>

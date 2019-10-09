@@ -10,7 +10,7 @@ export class Order {
     constructor(table: number){
         this.tableNr = table;
         this.time = new Date();
-        this.id = Guid.create.toString();
+        this.id = Guid.raw();
     }
 
     addItem(item: MenuItem){

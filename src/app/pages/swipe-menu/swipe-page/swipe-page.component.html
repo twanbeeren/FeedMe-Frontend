@@ -2,19 +2,19 @@
   <!-- Card -->
   <div class="columns is-mobile is-centered">
     <div class="column is-10">
-      <app-dishcard></app-dishcard>
+      <app-dishcard [item]="item"></app-dishcard>
     </div>
   </div>
   <!-- Buttons -->
   <div class="columns is-mobile is-centered">
     <div class="column is-11 has-text-centered">
-      <button mat-fab aria-label="Return" class="return-button">
+      <button (click)="previousItem()" mat-fab aria-label="Return" class="return-button">
         <mat-icon class="undo-icon">undo</mat-icon>
       </button>
       <button mat-fab aria-label="Dislike" class="dislike-button">
         <mat-icon>close</mat-icon>
       </button>
-      <button mat-fab aria-label="Like" class="like-button">
+      <button (click)="nextItem()" mat-fab aria-label="Like" class="like-button">
         <mat-icon>favorite</mat-icon>
       </button>
     </div>

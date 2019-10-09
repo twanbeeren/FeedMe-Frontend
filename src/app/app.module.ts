@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { I18nComponent } from './components/i18n/i18n.component';
 import { HomeComponent } from './pages/home/home.component';
-import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.component';
 import { RegularMenuComponent } from './pages/regular-menu/regular-menu.component';
 import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
 import { NavTopComponent } from './components/nav-top/nav-top.component';

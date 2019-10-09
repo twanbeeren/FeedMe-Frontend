@@ -1,21 +1,18 @@
-<h1 i18n="frontpage|Page title@@frontpageTitle">Welcome to i18n!</h1>
+<!--EXAMPLE: translate with directive(key)-->
+<h2 [translate]="'demo.title'"></h2>
 
-<input i18n-placeholder placeholder="Example Input" />
+<!--EXAMPLE: translate part with pipes-->
+<p>{{ 'demo.text' | translate }}</p>
 
-<p i18n>
-    Updated {minutes, plural,
-    =0 {just now}
-    =1 {one minute ago}
-    other {{{minutes}} minutes ago}}
-</p>
+<!--EXAMPLE: translate with directive(key) with parameters directly and from component-->
+<p [translate]="'demo.greeting'" [translateParams]="{name:'Rik', projectName:projectName}"></p>
 
-<span i18n>
-    The author is {gender, select,
-    male {male}
-    female {female}
-    other {other}}
-</span>
+<!--EXAMPLE: translate using variable in key-->
+<p translate>tag.{{tag}}</p>
 
-<p i18n>Text in the default language</p>
+<!--change languages with funtion in component.ts-->
+<button (click)="changeLanguage('en')">EN</button>
+<button (click)="changeLanguage('nl')">NL</button>
+<button (click)="changeLanguage('fr')">FR</button>
 
-<!--When marked all text for translation, run `ng xi18n --output-path src/locale` to create messages.xlf-->
+<!--translations are stored in assets/i18n/{language}.json-->

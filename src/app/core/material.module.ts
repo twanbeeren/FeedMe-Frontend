@@ -4,7 +4,6 @@ import {
   MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,
   MatToolbarModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, MatRadioModule, MatFormFieldModule
 } from '@angular/material';
-import { OrderComponent } from './classes/order/order.component';
 @NgModule({
   imports: [
   CommonModule,
@@ -34,6 +33,5 @@ import { OrderComponent } from './classes/order/order.component';
    MatProgressSpinnerModule,
    MatFormFieldModule
    ],
-  declarations: [OrderComponent],
 })
 export class CustomMaterialModule { }

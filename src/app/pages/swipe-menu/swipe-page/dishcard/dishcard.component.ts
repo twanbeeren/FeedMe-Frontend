@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from 'src/app/core/classes/menu-item';
+import { SwipePageComponent } from '../swipe-page.component';
 
 @Component({
   selector: 'app-dishcard',
@@ -11,19 +12,17 @@ export class DishcardComponent implements OnInit {
   animationState: string;
   @Input() item: MenuItem;
 
-  constructor() { }
+  constructor(private swipepageComponent: SwipePageComponent) { }
 
   ngOnInit() {
   }
 
   dislike() {
-    const element = document.getElementById('card');
-    element.classList.add('animated', 'slideOutLeft');
+    this.swipepageComponent.dislikeItem();
   }
 
   like() {
-    const element = document.getElementById('card');
-    element.classList.add('animated', 'slideOutRight');
+    this.swipepageComponent.likeItem();
   }
 
 }

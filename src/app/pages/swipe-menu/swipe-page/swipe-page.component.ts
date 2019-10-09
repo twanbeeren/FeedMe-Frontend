@@ -25,10 +25,21 @@ export class SwipePageComponent implements OnInit {
     this.menuservice.getMenu().subscribe(menu => this.menu = menu);
   }
 
+  likeItem() {
+    console.log('ItemLiked');
+    const element = document.getElementById('card');
+    element.classList.add('animated', 'slideOutRight', 'fast');
+  }
+
+  dislikeItem() {
+    console.log('ItemDisliked');
+    const element = document.getElementById('card');
+    element.classList.add('animated', 'slideOutLeft', 'fast');
+    this.nextItem();
+  }
+
   nextItem() {
     if (!this.isLastItem()) {
-      const element = document.getElementById('card');
-      element.classList.add('animated', 'slideOutRight');
       this.index += 1;
       this.item = this.menu[this.index];
     } else {

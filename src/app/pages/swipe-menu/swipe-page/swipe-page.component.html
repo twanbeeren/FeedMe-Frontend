@@ -11,10 +11,10 @@
       <button (click)="previousItem()" mat-fab aria-label="Return" class="return-button">
         <mat-icon class="undo-icon">undo</mat-icon>
       </button>
-      <button mat-fab aria-label="Dislike" class="dislike-button">
+      <button (click)="dislikeItem()" mat-fab aria-label="Dislike" class="dislike-button">
         <mat-icon>close</mat-icon>
       </button>
-      <button (click)="nextItem()" mat-fab aria-label="Like" class="like-button">
+      <button (click)="likeItem()" mat-fab aria-label="Like" class="like-button">
         <mat-icon>favorite</mat-icon>
       </button>
     </div>

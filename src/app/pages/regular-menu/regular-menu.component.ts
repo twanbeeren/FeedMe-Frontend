@@ -4,7 +4,9 @@ import { MenuItem } from 'src/app/core/classes/menu-item';
 import { Course } from 'src/app/core/classes/course';
 import { COURSES, MENU } from 'src/app/core/services/mock-menu'; //temp
 import { MatDialog } from '@angular/material/dialog';
-import { DishcardComponent } from '../swipe-menu/swipe-page/dishcard/dishcard.component';
+import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-dialog/dish-info-dialog.component';
+import { MatSnackBar } from '@angular/material';
+import { TranslatorService } from 'src/app/core/services/translator.service';
 
 @Component({
   selector: 'app-regular-menu',
@@ -18,7 +20,8 @@ export class RegularMenuComponent implements OnInit {
 
   constructor(
     private menu_service: MenuService,
-    public dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private snackbar: MatSnackBar) { }
 
   ngOnInit() {
     this.menu_service.getMenu().subscribe(data => {
@@ -28,13 +31,29 @@ export class RegularMenuComponent implements OnInit {
   }
 
   addToOrder(item: MenuItem) {
-    //TODO: add item to order with orderService
-    console.log("Add to menu: " + item.name);
+    //TODO: orderService.addItem(item);
+    console.log("TODO: orderService.addItem(" + item.name + ");");
+    this.showAddedToOrderSnackbar(item);
+  }
+
+  showAddedToOrderSnackbar(item: MenuItem) {
+    let snackbarRef = this.snackbar.open("Added " + item.name, "Undo", {
+      duration: 3000,
+    });
+
+    snackbarRef.onAction().subscribe(() => {
+      //TODO: orderService.removeItem(item);
+      console.log("TODO: orderService.removeItem(" + item.name + ");");
+    })
   }
 
   openDishInfoDialog(item: MenuItem): void {
-    // https://material.angular.io/components/dialog/overview
-    //TODO: make dialog pop up with info about selected product
-    console.log("Show dialog: " + item.name);
+    let dialogRef = this.dialog.open(DishInfoDialogComponent, {data: {dish: item}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != null){
+        this.addToOrder(result);
+      }
+    });
   }
 }

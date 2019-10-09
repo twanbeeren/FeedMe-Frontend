@@ -17,6 +17,7 @@ import { RegularMenuComponent } from './pages/regular-menu/regular-menu.componen
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 
 import { FilterByCoursePipe } from 'src/app/core/pipes/filter-by-course.pipe';
+import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/dish-info-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { FilterByCoursePipe } from 'src/app/core/pipes/filter-by-course.pipe';
     HomeComponent,
     RegularMenuComponent,
     FilterByCoursePipe,
+    DishInfoDialogComponent,
   ],
+  entryComponents: [DishInfoDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

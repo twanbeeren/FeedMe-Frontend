@@ -7,8 +7,8 @@ import { stringify } from 'querystring';
 })
 export class FilterByCoursePipe implements PipeTransform {
 
-  transform(items: MenuItem[], courseSearch: string): MenuItem[] {
-    return items.filter(item => item.course.name === courseSearch);
+  transform(items: MenuItem[], courseSearch: number): MenuItem[] {
+    return items.filter(item => item.course.id === courseSearch);
   }
 
 }

@@ -16,4 +16,14 @@ export class DishcardComponent implements OnInit {
   ngOnInit() {
   }
 
+  dislike() {
+    const element = document.getElementById('card');
+    element.classList.add('animated', 'slideOutLeft');
+  }
+
+  like() {
+    const element = document.getElementById('card');
+    element.classList.add('animated', 'slideOutRight');
+  }
+
 }

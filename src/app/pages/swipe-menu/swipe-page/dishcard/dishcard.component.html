@@ -1,9 +1,8 @@
-<mat-card>
-
+<mat-card id="card">
   <!-- Image -->
   <div class="card-image">
     <figure class="image">
-      <img src="https://images0.persgroep.net/rcs/qgEF64UozF-_8AmkxIhyqZxKpTk/diocontent/141008357/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.9">
+      <img (swipeLeft)="dislike()" (swipeRight)="like()" src="https://images0.persgroep.net/rcs/qgEF64UozF-_8AmkxIhyqZxKpTk/diocontent/141008357/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.9">
     </figure>
   </div>
 

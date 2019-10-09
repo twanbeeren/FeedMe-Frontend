@@ -27,6 +27,8 @@ export class SwipePageComponent implements OnInit {
 
   nextItem() {
     if (!this.isLastItem()) {
+      const element = document.getElementById('card');
+      element.classList.add('animated', 'slideOutRight');
       this.index += 1;
       this.item = this.menu[this.index];
     } else {

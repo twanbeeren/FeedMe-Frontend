@@ -1,7 +1,22 @@
-<!-- <app-dishcard></app-dishcard> -->
-
-<p *ngIf="allSwiped; else elseBlock">Alle kaarten zijn er doorheen!</p>
-<ng-template #elseBlock>{{item.id}}</ng-template>
-
-<button (click)="previousItem()">Previous</button>
-<button (click)="nextItem()">Next</button>
+<div class="container">
+  <!-- Card -->
+  <div class="columns is-mobile is-centered">
+    <div class="column is-10">
+      <app-dishcard></app-dishcard>
+    </div>
+  </div>
+  <!-- Buttons -->
+  <div class="columns is-mobile is-centered">
+    <div class="column is-11 has-text-centered">
+      <button mat-fab aria-label="Return" class="return-button">
+        <mat-icon class="undo-icon">undo</mat-icon>
+      </button>
+      <button mat-fab aria-label="Dislike" class="dislike-button">
+        <mat-icon>close</mat-icon>
+      </button>
+      <button mat-fab aria-label="Like" class="like-button">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

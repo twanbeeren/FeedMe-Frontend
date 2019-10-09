@@ -12,8 +12,8 @@ export class SwipePageComponent implements OnInit {
   index = 0;
   allSwiped = false;
 
-  constructor(private menuservice: MenuService) { 
-    
+  constructor(private menuservice: MenuService) {
+
   }
 
   ngOnInit() {
@@ -21,12 +21,12 @@ export class SwipePageComponent implements OnInit {
     this.item = this.menu[this.index];
   }
 
-  getMenu(){
+  getMenu() {
     this.menuservice.getMenu().subscribe(menu => this.menu = menu);
   }
 
-  nextItem(){
-    if(!this.isLastItem()){
+  nextItem() {
+    if (!this.isLastItem()) {
       this.index += 1;
       this.item = this.menu[this.index];
     } else {
@@ -34,22 +34,21 @@ export class SwipePageComponent implements OnInit {
     }
   }
 
-  previousItem(){
-    if(!this.isFirstItem()){
+  previousItem() {
+    if (!this.isFirstItem()) {
       this.index -= 1;
       this.item = this.menu[this.index];
     } else {
-      //TODO Eventuele melding
+      // TODO Eventuele melding
     }
-    
   }
 
-  isLastItem(){
-    return this.index + 1 == this.menu.length;
+  isLastItem() {
+    return this.index + 1 === this.menu.length;
   }
 
-  isFirstItem(){
-    return this.index == 0;
+  isFirstItem() {
+    return this.index === 0;
   }
 
 }

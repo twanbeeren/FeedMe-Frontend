@@ -7,6 +7,7 @@ import { SwipePageComponent } from '../swipe-page.component';
   templateUrl: './dishcard.component.html',
   styleUrls: ['./dishcard.component.css'],
 })
+
 export class DishcardComponent implements OnInit {
 
   animationState: string;

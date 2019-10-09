@@ -27,6 +27,7 @@ import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.com
     SwipePageComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

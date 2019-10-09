@@ -17,6 +17,10 @@ export class OrderService {
     this.order.addItem(item);
   }
 
+  removeItem(item: MenuItem){
+    this.order.removeItem(item.id);
+  }
+
   sendOrder(){
     //TODO: implement
     throw Error("Not implemented!");

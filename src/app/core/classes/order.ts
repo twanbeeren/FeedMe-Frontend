@@ -1,10 +1,16 @@
 import { MenuItem } from './menu-item';
 
 export class Order {
-    id: number;
+    id: string;
     tableNr: number;
     time: Date;
     items: MenuItem[];
+
+    constructor(table: number){
+        this.tableNr = table;
+        this.time = new Date();
+        this.id = this.tableNr.toString() + this.time.toString();
+    }
 
     addItem(item: MenuItem){
         this.items.push(item);

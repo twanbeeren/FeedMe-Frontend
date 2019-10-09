@@ -12,6 +12,9 @@ import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
 import { AppComponent } from './app.component';
 import { I18nComponent } from './components/i18n/i18n.component';
 import { HomeComponent } from './pages/home/home.component';
+import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
+import { NavTopComponent } from './components/nav-top/nav-top.component';
+import { NavBottomComponent } from './components/nav-bottom/nav-bottom.component';
 import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 
@@ -19,7 +22,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader'
   declarations: [
     AppComponent,
     I18nComponent,
-    HomeComponent
+    HomeComponent,
+    NavTopComponent,
+    NavBottomComponent,
   ],
   imports: [
     BrowserModule,

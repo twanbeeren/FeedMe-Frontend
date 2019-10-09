@@ -1,7 +1,14 @@
-.example-card{
-      max-width: 400px;
+mat-card {
+    padding: 0px;
 }
 
-.examle-header-image{
-    background-size: cover;
+.title, p {
+    color: #707070;
+    display: inline;
+    font-weight: normal;
+}
+
+.media-content {
+    padding: 1rem;
+    padding-left: 2rem;
 }

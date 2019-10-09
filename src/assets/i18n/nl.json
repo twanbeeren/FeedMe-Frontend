@@ -4,6 +4,7 @@
         "text": "Dit is een demonstratie voor ngx-translate",
         "greeting": "Hallo {{name}}! Welkom bij {{projectName}}"
     },
+    "add": "Toevoegen",
     "course": {
         "starter": "Voorgerechten",
         "main": "Hoofdgerechten",
@@ -14,5 +15,19 @@
         "pasta": "Pasta",
         "vegan": "Vegan",
         "vegetarian": "Vegetarisch"
+    },
+    "snackbar": {
+        "added": "{{name}} toegevoegd",
+        "failed": "{{name}} toevoegen gefaald",
+        "removed": "{{name}} verwijderd",
+        "undo": "Ongedaan maken"
+    },
+    "nav-bottom": {
+        "preferences": "Voorkeuren",
+        "traditional_menu": "Traditioneel Menu",
+        "drinks": "Drinken",
+        "swipe_menu": "Swipe Menu",
+        "order": "Bestelling",
+        "pay": "Betalen"
     }
 }

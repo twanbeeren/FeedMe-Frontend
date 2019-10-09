@@ -9,26 +9,32 @@ export class OrderService {
 
   order: Order;
 
-  newOrder(tableNr : number){
+  newOrder(tableNr : number) {
     this.order = new Order(tableNr);
   }
 
-  addItem(item: MenuItem){
-    //TODO: check if order is not null
-    this.order.addItem(item);
+  addItem(item: MenuItem): boolean {
+    if (this.order) {
+      this.order.addItem(item);
+      return true;
+    }
+    return false;
   }
 
-  removeItem(item: MenuItem){
-    //TODO: check if order is not null
-    this.order.removeItem(item.id);
+  removeItem(item: MenuItem): boolean {    
+    if (this.order) {
+      this.order.removeItem(item.id);
+      return true;
+    }
+    return false;
   }
 
-  getOrder(order: Order){
+  getOrder(order: Order) {
     //TODO: check if order is not null
     return this.order;
   }
 
-  sendOrder(){
+  sendOrder() {
     //TODO: implement
     throw Error("Not implemented!");
   }

@@ -11,7 +11,13 @@
 <p translate>tag.{{tag}}</p>
 
 <!--change languages with funtion in component.ts-->
-<button (click)="changeLanguage('en')">EN</button>
-<button (click)="changeLanguage('nl')">NL</button>
+<mat-button-toggle-group value="{{language}}" vertical>
+    <mat-button-toggle value="en" (click)="changeLanguage('en')">
+        <p>English</p>
+    </mat-button-toggle>
+    <mat-button-toggle value="nl" (click)="changeLanguage('nl')">
+        <p>Nederlands</p>
+    </mat-button-toggle>
+</mat-button-toggle-group>
 
 <!--translations are stored in assets/i18n/{language}.json-->

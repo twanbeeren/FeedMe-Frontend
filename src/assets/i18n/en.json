@@ -4,6 +4,7 @@
         "text": "This is a demonstration for ngx-translate",
         "greeting": "Hello {{name}}! Welcome to {{projectName}}"
     },
+    "add": "Add",
     "course": {
         "starter": "Starter",
         "main": "Main",
@@ -14,5 +15,19 @@
         "pasta": "Pasta",
         "vegan": "Vegan",
         "vegetarian": "Vegetarian"
+    },
+    "snackbar": {
+        "added": "Added {{name}}",
+        "failed": "Failed to add {{name}}",
+        "removed": "Removed {{name}}",
+        "undo": "Undo"
+    },
+    "nav-bottom": {
+        "preferences": "Preferences",
+        "traditional_menu": "Traditional Menu",
+        "drinks": "Drinks",
+        "swipe_menu": "Swipe Menu",
+        "order": "Order",
+        "pay": "Pay"
     }
 }

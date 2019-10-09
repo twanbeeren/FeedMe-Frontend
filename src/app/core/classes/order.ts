@@ -8,21 +8,22 @@ export class Order {
     items: MenuItem[];
 
     constructor(table: number){
+        this.id = Guid.raw();
         this.tableNr = table;
         this.time = new Date();
-        this.id = Guid.raw();
+        this.items = [];
     }
 
     addItem(item: MenuItem){
         this.items.push(item);
     }
     
-    removeItem(id: number){
+    removeItem(id: number, removeAll: boolean = false){
         this.items.forEach(item => {
             if(item.id === id){
                 let index = this.items.indexOf(item);
                 this.items.splice(index);
-                return;
+                if (!removeAll) return;
             }
         });
     }

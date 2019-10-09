@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./dishcard.component.css'],
 
 })
+
 export class DishcardComponent implements OnInit {
 
   constructor() { }

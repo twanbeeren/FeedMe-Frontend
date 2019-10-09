@@ -15,16 +15,15 @@ export class MenuService {
   constructor(private http: HttpClient){}
 
   getMenu(): Observable<MenuItem[]> {
-    return of(MENU);
     return this.http.get<MenuItem[]>(this.menuUrl).pipe(
       tap(_ => console.log('fetched menu')),
-      catchError(this.handleError<MenuItem[]>('getHeroes', []))
+      catchError(this.handleError<MenuItem[]>('getMenu', MENU))
     );
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error);
+      console.error(operation + "failed");
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

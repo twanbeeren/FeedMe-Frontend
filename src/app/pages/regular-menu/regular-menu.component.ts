@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
+import { OrderService } from 'src/app/core/services/order.service';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 import { Course } from 'src/app/core/classes/course';
 import { COURSES, MENU } from 'src/app/core/services/mock-menu'; //temp
-import { MatDialog } from '@angular/material/dialog';
 import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-dialog/dish-info-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material';
-import { TranslatorService } from 'src/app/core/services/translator.service';
 
 @Component({
   selector: 'app-regular-menu',
@@ -15,24 +15,26 @@ import { TranslatorService } from 'src/app/core/services/translator.service';
 })
 export class RegularMenuComponent implements OnInit {
 
-  menu_items : MenuItem[] = MENU;
-  courses: Course[] = COURSES;
+  courses: Course[] = [];
+  menuItems : MenuItem[] = [];
 
   constructor(
-    private menu_service: MenuService,
+    private orderService: OrderService,
+    private menuService: MenuService,
     private dialog: MatDialog,
     private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-    this.menu_service.getMenu().subscribe(data => {
-      this.menu_items = data;
-      console.log(this.menu_items)
+    this.menuService.getCourses().subscribe(data => {
+      this.courses = data;
+    });
+    this.menuService.getMenu().subscribe(data => {
+      this.menuItems = data;
     });
   }
 
   addToOrder(item: MenuItem) {
-    //TODO: orderService.addItem(item);
-    console.log("TODO: orderService.addItem(" + item.name + ");");
+    this.orderService.addItem(item);
     this.showAddedToOrderSnackbar(item);
   }
 
@@ -42,8 +44,10 @@ export class RegularMenuComponent implements OnInit {
     });
 
     snackbarRef.onAction().subscribe(() => {
-      //TODO: orderService.removeItem(item);
-      console.log("TODO: orderService.removeItem(" + item.name + ");");
+      this.orderService.removeItem(item);
+      this.snackbar.open("Removed " + item.name, "", {
+        duration: 1000,
+      });
     })
   }
 

@@ -6,4 +6,5 @@ export class MenuItem {
     price: number;
     course: Course;
     tags: string[];
+    course: Course;
 }

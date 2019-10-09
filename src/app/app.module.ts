@@ -7,14 +7,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
 import { CustomMaterialModule } from './core/material.module';
 import { FormsModule } from '@angular/forms';
-import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
 
 import { AppComponent } from './app.component';
 import { I18nComponent } from './components/i18n/i18n.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.component';
 import { RegularMenuComponent } from './pages/regular-menu/regular-menu.component';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader'
+import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
+import { NavTopComponent } from './components/nav-top/nav-top.component';
+import { NavBottomComponent } from './components/nav-bottom/nav-bottom.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { FilterByCoursePipe } from 'src/app/core/pipes/filter-by-course.pipe';
 import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/dish-info-dialog.component';
@@ -27,9 +29,12 @@ import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/d
     RegularMenuComponent,
     FilterByCoursePipe,
     DishInfoDialogComponent,
+    NavTopComponent,
+    NavBottomComponent,
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

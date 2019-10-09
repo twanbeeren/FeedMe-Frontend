@@ -1,0 +1,12 @@
+<p>BUTTONS DON'T WORK YET!</p>
+
+<mat-list *ngFor="let course of courses">
+    <h3 translate>course.{{course.name | lowercase}}</h3>
+    <mat-divider></mat-divider>
+    <mat-list-item *ngFor="let item of menuItems | filterByCourse: course.name">
+        <p>{{item.name}}</p>
+        <button mat-raised-button color="primary" (click)="addToOrder(item)">Add</button>
+        <button mat-raised-button color="accent" (click)="openDishInfoDialog(item)">Info</button>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>

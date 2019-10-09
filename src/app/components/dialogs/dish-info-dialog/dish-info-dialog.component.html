@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{data.dish.name}}</h1>
+<div mat-dialog-content>
+  <img src="./assets/images/banaan.jpg" alt="Photo of a Shiba Inu">
+  <p>€{{data.dish.price}}</p>
+  <mat-chip-list>
+    <mat-chip *ngFor="let tag of data.dish.tags" translate>tag.{{tag | lowercase}}</mat-chip>
+  </mat-chip-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onCloseClick()">Close</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data.dish">Add</button>
+</div>

@@ -4,7 +4,15 @@
         "text": "Dit is een demonstratie voor ngx-translate",
         "greeting": "Hallo {{name}}! Welkom bij {{projectName}}"
     },
+    "course": {
+        "starter": "Voorgerechten",
+        "main": "Hoofdgerechten",
+        "dessert": "Nagerechten"
+    },
     "tag": {
-        "vegan": "Vegetarisch"
+        "meat": "Vlees",
+        "pasta": "Pasta",
+        "vegan": "Vegan",
+        "vegetarian": "Vegetarisch"
     }
 }

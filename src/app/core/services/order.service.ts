@@ -14,14 +14,17 @@ export class OrderService {
   }
 
   addItem(item: MenuItem){
+    //TODO: check if order is not null
     this.order.addItem(item);
   }
 
   removeItem(item: MenuItem){
+    //TODO: check if order is not null
     this.order.removeItem(item.id);
   }
 
   getOrder(order: Order){
+    //TODO: check if order is not null
     return this.order;
   }
 

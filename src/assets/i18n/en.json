@@ -4,7 +4,15 @@
         "text": "This is a demonstration for ngx-translate",
         "greeting": "Hello {{name}}! Welcome to {{projectName}}"
     },
+    "course": {
+        "starter": "Starter",
+        "main": "Main",
+        "dessert": "Dessert"
+    },
     "tag": {
-        "vegan": "Vegan"
+        "meat": "Meat",
+        "pasta": "Pasta",
+        "vegan": "Vegan",
+        "vegetarian": "Vegetarian"
     }
 }

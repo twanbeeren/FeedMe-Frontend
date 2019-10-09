@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { I18nComponent } from './components/i18n/i18n.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule }    from '@angular/common/http';
 import { CustomMaterialModule } from './core/material.module';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
@@ -19,6 +19,7 @@ import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
     HomeComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

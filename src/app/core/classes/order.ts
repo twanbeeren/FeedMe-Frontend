@@ -1,4 +1,5 @@
 import { MenuItem } from './menu-item';
+import { Guid } from "guid-typescript";
 
 export class Order {
     id: string;
@@ -9,7 +10,7 @@ export class Order {
     constructor(table: number){
         this.tableNr = table;
         this.time = new Date();
-        this.id = this.tableNr.toString() + this.time.toString();
+        this.id = Guid.create.toString();
     }
 
     addItem(item: MenuItem){

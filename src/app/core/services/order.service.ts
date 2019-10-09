@@ -7,7 +7,11 @@ import { Order } from '../classes/order';
 })
 export class OrderService {
 
-  order: Order = new Order();
+  order: Order;
+
+  newOrder(tableNr : number){
+    this.order = new Order(tableNr);
+  }
 
   addItem(item: MenuItem){
     this.order.addItem(item);

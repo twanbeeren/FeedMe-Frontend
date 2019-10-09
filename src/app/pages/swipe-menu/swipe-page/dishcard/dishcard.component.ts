@@ -23,15 +23,4 @@ export class DishcardComponent implements OnInit {
   ngOnInit() {
   }
 
-  startAnimation(state) {
-    console.log(state);
-    if (!this.animationState) {
-      this.animationState = state;
-    }
-  }
-
-  resetAnimationState() {
-    this.animationState = '';
-  }
-
 }

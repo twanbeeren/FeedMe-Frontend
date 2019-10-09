@@ -1,1 +1,7 @@
-<app-dishcard></app-dishcard>
+<!-- <app-dishcard></app-dishcard> -->
+
+<p *ngIf="allSwiped; else elseBlock">Alle kaarten zijn er doorheen!</p>
+<ng-template #elseBlock>{{item.id}}</ng-template>
+
+<button (click)="previousItem()">Previous</button>
+<button (click)="nextItem()">Next</button>

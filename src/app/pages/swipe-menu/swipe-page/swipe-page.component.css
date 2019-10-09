@@ -1,12 +1,50 @@
 .columns {
-    margin-right: 0px;
+  margin-right: 0rem;
 }
 
-.like-button, .dislike-button {
-    width: 7rem;
-    height: 7rem;
+.like-button,
+.dislike-button {
+  width: 7rem;
+  height: 7rem;
+  background-color: white;
 }
 
-mat-icon {
-    font-size: 46px;
+.mat-accent {
+  background-color: white;
 }
+
+.return-button {
+  color: #FFBB00;
+}
+
+.return-button.set-icon-fab {
+  font-size: 9rem;
+}
+
+.like-button {
+  color: #00FF33;
+}
+
+.dislike-button {
+  color: #FF0000;
+}
+
+::ng-deep .mat-icon {
+  height: 54px !important;
+  width: 54px !important;
+  font-size: 54px !important;
+}
+
+::ng-deep .undo-icon {
+  height: 28px !important;
+  width: 28px !important;
+  font-size: 28px !important;
+}
+
+button {
+    margin-left: 0.8rem;
+}
+
+/* mat-icon {
+  font-size: 46px;
+} */

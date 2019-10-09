@@ -15,6 +15,7 @@ import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
 import { NavTopComponent } from './components/nav-top/nav-top.component';
 import { NavBottomComponent } from './components/nav-bottom/nav-bottom.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     HomeComponent,
     NavTopComponent,
     NavBottomComponent,
+    SwipePageComponent
   ],
   imports: [
     BrowserModule,

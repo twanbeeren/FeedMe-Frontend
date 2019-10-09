@@ -10,6 +10,7 @@ import { CustomMaterialModule } from './core/material.module';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.component';
+
 import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
     AppComponent,
     I18nComponent,
     HomeComponent,
+    SwipePageComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ export class MenuService {
 
   private menuUrl = 'toBeDetermined';
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {}
 
   getMenu(): Observable<MenuItem[]> {
     return this.http.get<MenuItem[]>(this.menuUrl).pipe(
@@ -29,9 +29,9 @@ export class MenuService {
     );
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(operation + "failed");
+      console.error(operation + 'failed');
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

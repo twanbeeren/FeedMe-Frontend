@@ -16,10 +16,11 @@ export class MenuService {
   constructor(private http: HttpClient) {}
 
   getMenu(): Observable<MenuItem[]> {
-    return this.http.get<MenuItem[]>(this.menuUrl).pipe(
-      tap(_ => console.log('fetched menu')),
-      catchError(this.handleError<MenuItem[]>('getMenu', MENU))
-    );
+    return of(MENU);
+    // return this.http.get<MenuItem[]>(this.menuUrl).pipe(
+    //   tap(_ => console.log('fetched menu')),
+    //   catchError(this.handleError<MenuItem[]>('getMenu', MENU))
+    // );
   }
 
   getCourses(): Observable<Course[]> {

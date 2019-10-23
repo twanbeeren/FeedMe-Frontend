@@ -8,7 +8,7 @@ import { TranslatorService } from './core/services/translator.service';
 })
 export class AppComponent {
   title = 'FeedMe';
-  
+
   constructor(private translator: TranslatorService) {
   }
 }

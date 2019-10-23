@@ -1,8 +1,8 @@
 <div class="container">
   <!-- Card -->
-  <div class="columns is-mobile is-centered">
-    <div class="column is-10">
-      <app-dishcard [item]="item"></app-dishcard>
+  <div class="columns is-mobile is-centered"  style="height: 41.5rem;">
+    <div id="dishcard-box" class="column is-10">
+      <app-dishcard class="dishcard" *ngFor="let item of menu; let i = index" [cardId]="i" [item]='item'></app-dishcard>
     </div>
   </div>
   <!-- Buttons -->

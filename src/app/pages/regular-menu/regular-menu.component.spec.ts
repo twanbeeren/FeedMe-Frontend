@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegularMenuComponent } from './regular-menu.component';
+import { CustomMaterialModule } from 'src/app/core/material.module';
 
 describe('RegularMenuComponent', () => {
   let component: RegularMenuComponent;
@@ -8,7 +9,9 @@ describe('RegularMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegularMenuComponent ]
+      declarations: [ RegularMenuComponent ],
+      imports: [ CustomMaterialModule ],
+      providers: []
     })
     .compileComponents();
   }));

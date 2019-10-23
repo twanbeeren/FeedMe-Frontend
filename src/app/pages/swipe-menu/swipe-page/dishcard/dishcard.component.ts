@@ -9,7 +9,7 @@ import { SwipePageComponent } from '../swipe-page.component';
 })
 
 export class DishcardComponent implements OnInit {
-
+  @Input('cardId') cardId: number;
   animationState: string;
   @Input() item: MenuItem;
 

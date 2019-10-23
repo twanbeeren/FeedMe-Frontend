@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
+import { log } from 'util';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-swipe-page',
@@ -8,8 +10,8 @@ import { MenuService } from 'src/app/core/services/menu.service';
 })
 export class SwipePageComponent implements OnInit {
   menu = [];
-  item = null;
-  index = 0;
+  menuitem = null;
+  currentIndex;
   allSwiped = false;
 
   constructor(private menuservice: MenuService) {
@@ -18,7 +20,8 @@ export class SwipePageComponent implements OnInit {
 
   ngOnInit() {
     this.getMenu();
-    this.item = this.menu[this.index];
+    this.currentIndex = this.menu.length - 1; //set index to last added menuItem, last menuItem is 0 so we do '-1'
+    // this.menuitem = this.menu[this.counter];
   }
 
   getMenu() {
@@ -27,21 +30,23 @@ export class SwipePageComponent implements OnInit {
 
   likeItem() {
     console.log('ItemLiked');
-    const element = document.getElementById('card');
+    const element = this.getElementWithId();
     element.classList.add('animated', 'slideOutRight', 'fast');
+    const div = document.getElementById("dishcard-box");
+    // div.innerHTML = "";
+    setTimeout(function() {div.innerHTML = ""; }, 500);
   }
 
   dislikeItem() {
     console.log('ItemDisliked');
-    const element = document.getElementById('card');
+    const element = this.getElementWithId();
     element.classList.add('animated', 'slideOutLeft', 'fast');
     this.nextItem();
   }
 
   nextItem() {
     if (!this.isLastItem()) {
-      this.index += 1;
-      this.item = this.menu[this.index];
+      this.currentIndex -= 1;
     } else {
       this.allSwiped = true;
     }
@@ -49,19 +54,30 @@ export class SwipePageComponent implements OnInit {
 
   previousItem() {
     if (!this.isFirstItem()) {
-      this.index -= 1;
-      this.item = this.menu[this.index];
+      this.currentIndex += 1;
+      const element = this.getElementWithId();
+      element.classList.remove('animated', 'slideOutLeft', 'fast');
+      element.classList.add('animated', 'bounceIn', 'fast');
+      setTimeout(function() {element.classList.add('animated', 'bounceIn', 'fast');}, 1000)
+      // this.item = this.menu[this.index];
     } else {
       // TODO Eventuele melding
     }
   }
 
   isLastItem() {
-    return this.index + 1 === this.menu.length;
+    return this.currentIndex === 0;
+    // return this.currentIndex + 1 === this.menu.length;
   }
 
   isFirstItem() {
-    return this.index === 0;
+    return this.currentIndex + 1 === this.menu.length;
+    // return this.currentIndex === 0;
+  }
+
+  getElementWithId(){
+    var id = ""+ this.currentIndex;
+    return document.getElementById(id);;
   }
 
 }

@@ -10,6 +10,7 @@
         "main": "Hoofdgerechten",
         "dessert": "Nagerechten"
     },
+    "info": "Informatie",
     "tag": {
         "meat": "Vlees",
         "pasta": "Pasta",

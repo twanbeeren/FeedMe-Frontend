@@ -29,6 +29,10 @@ export class OrderService {
     return false;
   }
 
+  getItemCount() {
+    return this.order.items.length;
+  }
+
   getOrder(order: Order) {
     //TODO: check if order is not null
     return this.order;

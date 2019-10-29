@@ -42,9 +42,12 @@
   <!-- Order -->
   <div class="level-item">
     <button mat-button class="menu-item">
-      <i class="material-icons">
+      <i *ngIf="itemsInOrder() > 0; else noItems" matBadge="{{itemsInOrder()}}" matBadgeColor="primary" class="material-icons">
         send
       </i>
+      <ng-template #noItems class="material-icons">
+        <i class="material-icons">send</i>
+      </ng-template>
       <p translate>nav-bottom.order</p>
     </button>
   </div>

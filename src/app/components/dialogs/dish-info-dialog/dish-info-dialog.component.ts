@@ -21,4 +21,7 @@ export class DishInfoDialogComponent {
     this.dialogRef.close();
   }
 
+  isVegetarian(item: MenuItem): boolean {
+    return item.tags.indexOf("Vegetarian") !== -1;
+  }
 }

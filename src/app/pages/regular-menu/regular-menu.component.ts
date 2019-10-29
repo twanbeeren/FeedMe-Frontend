@@ -58,7 +58,7 @@ export class RegularMenuComponent implements OnInit {
     })
   }
 
-  openDishInfoDialog(item: MenuItem): void {
+  showInfo(item: MenuItem): void {
     let dialogRef = this.dialog.open(DishInfoDialogComponent, {data: {dish: item}});
 
     dialogRef.afterClosed().subscribe(result => {
@@ -66,5 +66,9 @@ export class RegularMenuComponent implements OnInit {
         this.addToOrder(result);
       }
     });
+  }
+
+  isVegetarian(item: MenuItem): boolean {
+    return item.tags.indexOf("Vegetarian") !== -1;
   }
 }

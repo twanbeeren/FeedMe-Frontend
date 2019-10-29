@@ -8,8 +8,8 @@ import { Course } from '../classes/course';
 })
 export class FilterByCoursePipe implements PipeTransform {
 
-  transform(items: MenuItem[], courseId: string): MenuItem[] {
-    return items.filter(item => item.course.name === courseId);
+  transform(items: MenuItem[], courseName: string): MenuItem[] {
+    return items.filter(item => item.course.name === courseName);
   }
 
 }

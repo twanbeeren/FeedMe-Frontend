@@ -21,6 +21,10 @@ import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.com
 import { FilterByCoursePipe } from 'src/app/core/pipes/filter-by-course.pipe';
 import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/dish-info-dialog.component';
 
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +41,9 @@ import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/d
   imports: [
     HttpClientModule,
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({

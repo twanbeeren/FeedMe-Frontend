@@ -16,7 +16,8 @@ export class Order {
     addItem(item: MenuItem) {
         this.items.push(item);
     }
-    removeItem(id: number) {
+
+    removeItem(id: string) {
         this.items.forEach(item => {
             if (item.id === id) {
                 const index = this.items.indexOf(item);

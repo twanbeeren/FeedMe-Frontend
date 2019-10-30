@@ -30,7 +30,7 @@ export class MenuService {
     return this.db.collection<MenuItem>('MenuItems').valueChanges().pipe(
       map(items => {
         items.forEach(item => {
-          item.course
+          item.course = this.courses.find(c => c.id === item.courseRef.id);
         });
 
         return items;

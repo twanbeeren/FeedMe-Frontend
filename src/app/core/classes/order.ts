@@ -7,20 +7,20 @@ export class Order {
     time: Date;
     items: MenuItem[];
 
-    constructor(table: number){
+    constructor(table: number) {
         this.tableNr = table;
         this.time = new Date();
         this.id = Guid.raw();
     }
 
-    addItem(item: MenuItem){
+    addItem(item: MenuItem) {
         this.items.push(item);
     }
-    
-    removeItem(id: number){
+
+    removeItem(id: string) {
         this.items.forEach(item => {
-            if(item.id === id){
-                let index = this.items.indexOf(item);
+            if (item.id === id) {
+                const index = this.items.indexOf(item);
                 this.items.splice(index);
                 return;
             }

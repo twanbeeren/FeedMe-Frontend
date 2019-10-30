@@ -3,7 +3,7 @@
 <mat-list *ngFor="let course of courses$ |async">
   <h3 translate>{{course.name}}</h3>
   <mat-divider></mat-divider>
-    <mat-list-item *ngFor="let item of menuItems$ | async  ">
+    <mat-list-item *ngFor="let item of menuItems$ | async ">
       <p>{{item?.name}}</p>
       <button mat-raised-button color="primary" (click)="addToOrder(item)">Add</button>
       <button mat-raised-button color="accent" (click)="openDishInfoDialog(item)">Info</button>

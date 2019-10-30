@@ -2,9 +2,9 @@ import { MenuItem } from '../classes/menu-item';
 import { Course } from '../classes/course';
 
 export const COURSES: Course[] = [
-  { id: 0, name: "Starter", priority: 0 },
-  { id: 1, name: "Main", priority: 0 },
-  { id: 2, name: "Dessert", priority: 0 }
+  { id: '0', name: "Starter", priority: 0 },
+  { id: '1', name: "Main", priority: 0 },
+  { id: '2', name: "Dessert", priority: 0 }
 ];
 
 export const MENU: MenuItem[] = [

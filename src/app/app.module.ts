@@ -24,6 +24,7 @@ import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/d
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     DishInfoDialogComponent,
     NavTopComponent,
     NavBottomComponent,
-    SwipePageComponent
+    SwipePageComponent,
+    OrderComponent
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

@@ -19,11 +19,11 @@ export class DishcardComponent implements OnInit {
   }
 
   dislike() {
-    this.swipepageComponent.dislikeItem();
+    this.swipepageComponent.dislikeItem(this.cardId);
   }
 
   like() {
-    this.swipepageComponent.likeItem();
+    this.swipepageComponent.likeItem(this.cardId);
   }
 
 }

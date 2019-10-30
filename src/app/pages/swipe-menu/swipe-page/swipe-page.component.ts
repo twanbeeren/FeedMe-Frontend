@@ -11,6 +11,7 @@ export class SwipePageComponent implements OnInit {
   menuitem = null;
   currentIndex;
   allSwiped = false;
+  cardIdString: string;
 
   constructor(private menuservice: MenuService) {
 
@@ -26,18 +27,21 @@ export class SwipePageComponent implements OnInit {
     this.menuservice.getMenu().subscribe(menu => this.menu = menu);
   }
 
-  likeItem() {
+  likeItem(cardId: number) {
     console.log('ItemLiked');
-    const card = this.getElementWithId();
+    this.cardIdString = '' + cardId;
+    const card = document.getElementById(this.cardIdString);
     card.classList.add('animated', 'slideOutRight', 'fast');
     const div = document.getElementById('dishcard-box');
     // tslint:disable-next-line: only-arrow-functions
     setTimeout(function() {div.innerHTML = ''; }, 500);
   }
 
-  dislikeItem() {
+  dislikeItem(cardId: number) {
     console.log('ItemDisliked');
-    const card = this.getElementWithId();
+    this.cardIdString = '' + cardId;
+    const card = document.getElementById(this.cardIdString);
+    this.currentIndex = cardId;
     card.classList.add('animated', 'slideOutLeft', 'fast');
     this.nextItem();
   }
@@ -53,7 +57,8 @@ export class SwipePageComponent implements OnInit {
   previousItem() {
     if (!this.isFirstItem()) {
       this.currentIndex += 1;
-      const card = this.getElementWithId();
+      this.cardIdString = '' + this.currentIndex;
+      const card = document.getElementById(this.cardIdString);
       card.classList.remove('animated', 'slideOutLeft', 'fast');
       card.classList.add('animated', 'bounceIn', 'fast');
       // tslint:disable-next-line: only-arrow-functions
@@ -72,11 +77,6 @@ export class SwipePageComponent implements OnInit {
   isFirstItem() {
     return this.currentIndex + 1 === this.menu.length;
     // return this.currentIndex === 0;
-  }
-
-  getElementWithId() {
-    const id = '' + this.currentIndex;
-    return document.getElementById(id);
   }
 
 }

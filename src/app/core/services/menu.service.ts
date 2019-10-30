@@ -13,6 +13,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class MenuService {
 
   private courses: Course[] = [];
+  filterTags: string[] = []; // Temp locations
 
   constructor(private db: AngularFirestore) {
     this.setCourses();
@@ -28,7 +29,8 @@ export class MenuService {
     return this.db.collection<MenuItem>('MenuItems').valueChanges().pipe(
       map(items => {
         items.forEach(item => {
-          item.course = this.courses.find(c => c.id === item.courseRef.id);
+          if (item.courseRef)
+            item.course = this.courses.find(c => c.id === item.courseRef.id);
         });
         return items;
       })
@@ -38,5 +40,4 @@ export class MenuService {
   getCourses(): Observable<Course[]> {
     return this.db.collection<Course>('Courses').valueChanges();
   }
-
 }

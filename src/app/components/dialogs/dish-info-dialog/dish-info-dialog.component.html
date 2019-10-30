@@ -1,9 +1,9 @@
-<h3 mat-dialog-title>{{data.dish.name}} <mat-icon *ngIf="isVegetarian(data.dish)" color="primary">eco</mat-icon></h3>
+<h3 mat-dialog-title>{{data.dish.name}} <i class="material-icons" *ngIf="isVegetarian(data.dish)" style="color: green">eco</i></h3>
 <div mat-dialog-content>
   <img src="./assets/images/banaan.jpg" alt="Photo of a Shiba Inu">
   <p>{{data.dish.price | currency:'€'}}</p>
   <mat-chip-list>
-    <mat-chip *ngFor="let tag of data.dish.tags" color="primary" disableRipple="true" [selectable]="false" translate>tag.{{tag | lowercase}}</mat-chip>
+    <mat-chip *ngFor="let tag of data.dish.tags" disableRipple="true" [selectable]="false" translate>tag.{{tag | lowercase}}</mat-chip>
   </mat-chip-list>
 </div>
 <div mat-dialog-actions align="center">

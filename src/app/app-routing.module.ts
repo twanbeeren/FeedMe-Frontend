@@ -4,6 +4,7 @@ import { I18nComponent } from './components/i18n/i18n.component';
 import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RegularMenuComponent } from './pages/regular-menu/regular-menu.component';
+import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'swipemenu', component: SwipePageComponent},
   { path: 'regularmenu', component: RegularMenuComponent},
+  {path: 'drinksmenu', component:DrinksMenuComponent}
 ];
 
 @NgModule({

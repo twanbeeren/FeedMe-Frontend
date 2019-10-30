@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
 export class TranslatorService {
 
   constructor(private translateService: TranslateService) {
-    this.translateService.addLangs(["en", "nl"]);
+    this.translateService.addLangs(['en', 'nl']);
 
-    let language = localStorage.getItem("language");
+    const language = localStorage.getItem('language');
     if (language) {
       this.translateService.setDefaultLang(language);
       this.translateService.use(language);
     } else if (!this.setLanguage(navigator.language)) {
-      this.setLanguage("en");
+      this.setLanguage('en');
     }
   }
 
@@ -23,9 +23,9 @@ export class TranslatorService {
     if (this.translateService.getLangs().includes(language)) {
       this.translateService.setDefaultLang(language);
       this.translateService.use(language);
-      localStorage.setItem("language", language);
+      localStorage.setItem('language', language);
       return true;
-    } 
+    }
     return false;
   }
 

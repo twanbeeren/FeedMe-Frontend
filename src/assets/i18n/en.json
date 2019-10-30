@@ -13,6 +13,7 @@
     "info": "Information",
     "tag": {
         "meat": "Meat",
+        "milk": "Milk",
         "pasta": "Pasta",
         "vegan": "Vegan",
         "vegetarian": "Vegetarian"

@@ -34,6 +34,9 @@ export class RegularMenuComponent implements OnInit {
   }
 
   addToOrder(item: MenuItem) {
+    if (this.orderService.order == null)
+      this.orderService.newOrder(-1);
+
     if (this.orderService.addItem(item)) {
       this.showAddedToOrderSnackbar(item);
     } else this.snackbar.open(this.translator.translate("snackbar.failed", { name: item.name }));
@@ -65,6 +68,7 @@ export class RegularMenuComponent implements OnInit {
   }
 
   isVegetarian(item: MenuItem): boolean {
-    return item.tags.indexOf("Vegetarian") !== -1;
+    return item.tags.indexOf("Vegetarian") !== -1
+      || item.tags.indexOf("Vegan") !== -1;
   }
 }

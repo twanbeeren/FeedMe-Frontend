@@ -45,7 +45,6 @@ export class MenuService {
     );
   }
 
-<<<<<<< HEAD
   getDrinks() : Observable<MenuItem[]> {
     return this.db.collection<MenuItem>('MenuItems').valueChanges().pipe(
       map(items => {

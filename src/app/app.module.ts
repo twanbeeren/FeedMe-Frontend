@@ -25,6 +25,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
+import { PreferencesComponent } from './pages/preferences/preferences.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
     DishInfoDialogComponent,
     NavTopComponent,
     NavBottomComponent,
+    PreferencesComponent,
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

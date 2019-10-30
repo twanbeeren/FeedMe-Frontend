@@ -9,14 +9,14 @@
     
     <mat-list>
         <mat-list-item *ngFor="let item of menuItems$ | async | filterByCourse: course.name">
-            <h4 matLine>{{item.name}} <mat-icon *ngIf="isVegetarian(item)" color="primary">eco</mat-icon></h4>        
+            <h4 matLine>{{item.name}} <i class="material-icons" *ngIf="isVegetarian(item)" style="color: green">eco</i></h4>        
             <p matLine>{{item.price | currency:'€'}}</p>
             
             <button mat-icon-button color="primary" (click)="addToOrder(item)">
-                <mat-icon>add</mat-icon>
+                <i class="material-icons">add</i>
             </button>
             <button mat-icon-button color="accent" (click)="showInfo(item)">
-                <mat-icon>info</mat-icon>
+                <i class="material-icons">info</i>
             </button>
             <mat-divider></mat-divider>
         </mat-list-item>

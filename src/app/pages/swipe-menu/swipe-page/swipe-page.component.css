@@ -45,6 +45,11 @@ button {
     margin-left: 0.8rem;
 }
 
+.dishcard{
+  position: absolute;
+  height: 12rem;
+}
+
 /* mat-icon {
   font-size: 46px;
 } */

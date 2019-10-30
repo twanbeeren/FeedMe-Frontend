@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
-import { log } from 'util';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-swipe-page',
@@ -20,7 +18,7 @@ export class SwipePageComponent implements OnInit {
 
   ngOnInit() {
     this.getMenu();
-    this.currentIndex = this.menu.length - 1; //set index to last added menuItem, last menuItem is 0 so we do '-1'
+    this.currentIndex = this.menu.length - 1; // set index to last added menuItem, last menuItem is 0 so we do '-1'
     // this.menuitem = this.menu[this.counter];
   }
 
@@ -30,17 +28,17 @@ export class SwipePageComponent implements OnInit {
 
   likeItem() {
     console.log('ItemLiked');
-    const element = this.getElementWithId();
-    element.classList.add('animated', 'slideOutRight', 'fast');
-    const div = document.getElementById("dishcard-box");
-    // div.innerHTML = "";
-    setTimeout(function() {div.innerHTML = ""; }, 500);
+    const card = this.getElementWithId();
+    card.classList.add('animated', 'slideOutRight', 'fast');
+    const div = document.getElementById('dishcard-box');
+    // tslint:disable-next-line: only-arrow-functions
+    setTimeout(function() {div.innerHTML = ''; }, 500);
   }
 
   dislikeItem() {
     console.log('ItemDisliked');
-    const element = this.getElementWithId();
-    element.classList.add('animated', 'slideOutLeft', 'fast');
+    const card = this.getElementWithId();
+    card.classList.add('animated', 'slideOutLeft', 'fast');
     this.nextItem();
   }
 
@@ -55,10 +53,11 @@ export class SwipePageComponent implements OnInit {
   previousItem() {
     if (!this.isFirstItem()) {
       this.currentIndex += 1;
-      const element = this.getElementWithId();
-      element.classList.remove('animated', 'slideOutLeft', 'fast');
-      element.classList.add('animated', 'bounceIn', 'fast');
-      setTimeout(function() {element.classList.add('animated', 'bounceIn', 'fast');}, 1000)
+      const card = this.getElementWithId();
+      card.classList.remove('animated', 'slideOutLeft', 'fast');
+      card.classList.add('animated', 'bounceIn', 'fast');
+      // tslint:disable-next-line: only-arrow-functions
+      setTimeout(function() {card.classList.add('animated', 'bounceIn', 'fast'); }, 1000);
       // this.item = this.menu[this.index];
     } else {
       // TODO Eventuele melding
@@ -75,9 +74,9 @@ export class SwipePageComponent implements OnInit {
     // return this.currentIndex === 0;
   }
 
-  getElementWithId(){
-    var id = ""+ this.currentIndex;
-    return document.getElementById(id);;
+  getElementWithId() {
+    const id = '' + this.currentIndex;
+    return document.getElementById(id);
   }
 
 }

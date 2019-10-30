@@ -14,7 +14,9 @@ export class SwipePageComponent implements OnInit {
   menuitem = null;
   currentIndex;
   allSwiped = false;
-  cardIdString: string;
+
+  latestLikedItem: MenuItem;
+  isModalActive = false;
 
   constructor(
     private menuservice: MenuService,
@@ -23,27 +25,39 @@ export class SwipePageComponent implements OnInit {
 
   ngOnInit() {
     this.getMenu();
-    this.currentIndex = this.menu.length - 1; // set index to last added menuItem, last menuItem is 0 so we do '-1'
-    // this.menuitem = this.menu[this.counter];
   }
 
   getMenu() {
-    this.menuservice.getMenu().subscribe(menu => this.menu = menu);
+    this.menuservice.getMenu().subscribe(menu => {
+      this.menu = menu;
+      this.currentIndex = this.menu.length - 1; // set index to last added menuItem, last menuItem is 0 so we do '-1'
+      console.log(this.menu);
+    });
   }
 
-  likeItem(item: MenuItem) {
-    this.showMatch(item);
+  likeItem() {
+    this.latestLikedItem = this.menu[this.currentIndex];
+    this.isModalActive = true;
+
+    // Animation
+    const card = document.getElementById(this.currentIndex.toString());
+    card.classList.add('animated', 'slideOutRight', 'fast');
+    const div = document.getElementById('dishcard-box');
+    // tslint:disable-next-line: only-arrow-functions
+    setTimeout(function() { div.innerHTML = ''; }, 500);
   }
 
-  private showMatch(item: MenuItem): void {
-    const dialogRef = this.dialog.open(MatchDialogComponent, { data: { dish: item } });
+  closeModal() {
+    this.isModalActive = false;
   }
 
-  dislikeItem(cardId: number) {
+  unmatch() {
+    this.isModalActive = false;
+  }
+
+  dislikeItem() {
     console.log('ItemDisliked');
-    this.cardIdString = '' + cardId;
-    const card = document.getElementById(this.cardIdString);
-    this.currentIndex = cardId;
+    const card = document.getElementById(this.currentIndex.toString());
     card.classList.add('animated', 'slideOutLeft', 'fast');
     this.nextItem();
   }
@@ -58,13 +72,13 @@ export class SwipePageComponent implements OnInit {
 
   previousItem() {
     if (!this.isFirstItem()) {
+      console.log('ItemPrevious');
       this.currentIndex += 1;
-      this.cardIdString = '' + this.currentIndex;
-      const card = document.getElementById(this.cardIdString);
+      const card = document.getElementById(this.currentIndex.toString());
       card.classList.remove('animated', 'slideOutLeft', 'fast');
       card.classList.add('animated', 'bounceIn', 'fast');
       // tslint:disable-next-line: only-arrow-functions
-      setTimeout(function() {card.classList.add('animated', 'bounceIn', 'fast'); }, 1000);
+      setTimeout(function() { card.classList.add('animated', 'bounceIn', 'fast'); }, 1000);
       // this.item = this.menu[this.index];
     } else {
       // TODO Eventuele melding

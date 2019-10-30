@@ -24,6 +24,7 @@ import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/d
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
 
 @NgModule({
   declarations: [
@@ -32,10 +33,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     HomeComponent,
     RegularMenuComponent,
     FilterByCoursePipe,
+    SortCoursesPipe,
     DishInfoDialogComponent,
     NavTopComponent,
     NavBottomComponent,
-    SwipePageComponent
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

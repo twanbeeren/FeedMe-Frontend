@@ -6,9 +6,9 @@ import { MenuItem } from '../classes/menu-item';
 })
 export class FilterByCoursePipe implements PipeTransform {
 
-  transform(items: MenuItem[], courseId: string): MenuItem[] {
-    if (!items || !courseId) { return; }
-    return items.filter(item => item.course.name === courseId);
+  transform(items: MenuItem[], courseName: string): MenuItem[] {
+    if (!items || !courseName) { return; }
+    return items.filter(item => item.course.name === courseName);
   }
 
 }

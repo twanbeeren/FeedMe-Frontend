@@ -54,6 +54,7 @@ export class SwipePageComponent implements OnInit {
 
   previousItem() {
     if (!this.isFirstItem()) {
+      console.log('ItemPrevious');
       this.currentIndex += 1;
       const card = document.getElementById(this.currentIndex.toString());
       card.classList.remove('animated', 'slideOutLeft', 'fast');

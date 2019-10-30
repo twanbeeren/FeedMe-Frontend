@@ -1,5 +1,5 @@
 import { MenuItem } from './menu-item';
-import { Guid } from "guid-typescript";
+import { Guid } from 'guid-typescript';
 
 export class Order {
     id: string;

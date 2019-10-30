@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SwipePageComponent } from './swipe-page.component';
+import { CustomMaterialModule } from 'src/app/core/material.module';
+import { DishcardComponent } from './dishcard/dishcard.component';
 
 describe('SwipePageComponent', () => {
   let component: SwipePageComponent;
@@ -8,7 +10,8 @@ describe('SwipePageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SwipePageComponent ]
+      declarations: [ DishcardComponent, SwipePageComponent ],
+      imports: [CustomMaterialModule]
     })
     .compileComponents();
   }));

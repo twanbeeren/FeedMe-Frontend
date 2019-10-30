@@ -25,6 +25,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
+import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
     DishInfoDialogComponent,
     NavTopComponent,
     NavBottomComponent,
+    DrinksMenuComponent,
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

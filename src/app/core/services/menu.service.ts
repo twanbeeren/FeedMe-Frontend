@@ -48,13 +48,13 @@ export class MenuService {
   getDrinks() : Observable<MenuItem[]> {
     return this.db.collection<MenuItem>('MenuItems').valueChanges().pipe(
       map(items => {
-        const filteredItems = [];
+        const filteredDrinks = [];
         items.forEach(item => {
           if(item.tags.includes("Drink")){
-            filteredItems.push(item);
+            filteredDrinks.push(item);
           }
         });
-        return filteredItems;
+        return filteredDrinks;
       })
     )
   }

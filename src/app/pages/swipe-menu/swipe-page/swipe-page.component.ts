@@ -34,7 +34,7 @@ export class SwipePageComponent implements OnInit {
     card.classList.add('animated', 'slideOutRight', 'fast');
     const div = document.getElementById('dishcard-box');
     // tslint:disable-next-line: only-arrow-functions
-    setTimeout(function () { div.innerHTML = ''; }, 500);
+    setTimeout(function() { div.innerHTML = ''; }, 500);
   }
 
   dislikeItem() {
@@ -59,7 +59,7 @@ export class SwipePageComponent implements OnInit {
       card.classList.remove('animated', 'slideOutLeft', 'fast');
       card.classList.add('animated', 'bounceIn', 'fast');
       // tslint:disable-next-line: only-arrow-functions
-      setTimeout(function () { card.classList.add('animated', 'bounceIn', 'fast'); }, 1000);
+      setTimeout(function() { card.classList.add('animated', 'bounceIn', 'fast'); }, 1000);
       // this.item = this.menu[this.index];
     } else {
       // TODO Eventuele melding

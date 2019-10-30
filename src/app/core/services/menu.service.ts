@@ -61,6 +61,9 @@ export class MenuService {
   }
 
   getCourses(): Observable<Course[]> {    
+=======
+  getCourses(): Observable<Course[]> {
+>>>>>>> develop
     return this.db.collection<Course>('Courses').valueChanges();
   }
 

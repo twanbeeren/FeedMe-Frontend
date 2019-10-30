@@ -8,9 +8,9 @@ export const COURSES: Course[] = [
 ];
 
 export const MENU: MenuItem[] = [
-  { id: 11, name: 'Spaghetti Bolognese', price: 10, course: COURSES[0] , tags: ['Pasta'] },
-  { id: 12, name: 'Hamburger', price: 12, course: COURSES[1], tags: ['Meat'] },
-  { id: 13, name: 'Couscous', price: 13, course: COURSES[2], tags: ['Vegetarian'] },
+  // { id: 11, name: 'Spaghetti Bolognese', price: 10, course: COURSES[0] , tags: ['Pasta'] },
+  // { id: 12, name: 'Hamburger', price: 12, course: COURSES[1], tags: ['Meat'] },
+  // { id: 13, name: 'Couscous', price: 13, course: COURSES[2], tags: ['Vegetarian'] },
 ];
 
 // MENU.push({id: 11, name: 'Spaghetti Bolognese', price: 10, tags: ['Pasta'], course: new Course(0,'Main',1)});

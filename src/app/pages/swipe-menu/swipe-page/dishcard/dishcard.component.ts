@@ -23,7 +23,7 @@ export class DishcardComponent implements OnInit {
   }
 
   like() {
-    this.swipepageComponent.likeItem(this.cardId);
+    this.swipepageComponent.likeItem(this.item);
   }
 
 }

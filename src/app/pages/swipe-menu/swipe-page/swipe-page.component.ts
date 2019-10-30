@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
+import { MenuItem } from 'src/app/core/classes/menu-item';
+import { MatDialog } from '@angular/material';
+import { MatchDialogComponent } from 'src/app/components/dialogs/match-dialog/match-dialog.component';
 
 @Component({
   selector: 'app-swipe-page',
@@ -13,8 +16,9 @@ export class SwipePageComponent implements OnInit {
   allSwiped = false;
   cardIdString: string;
 
-  constructor(private menuservice: MenuService) {
-
+  constructor(
+    private menuservice: MenuService,
+    private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -27,14 +31,12 @@ export class SwipePageComponent implements OnInit {
     this.menuservice.getMenu().subscribe(menu => this.menu = menu);
   }
 
-  likeItem(cardId: number) {
-    console.log('ItemLiked');
-    this.cardIdString = '' + cardId;
-    const card = document.getElementById(this.cardIdString);
-    card.classList.add('animated', 'slideOutRight', 'fast');
-    const div = document.getElementById('dishcard-box');
-    // tslint:disable-next-line: only-arrow-functions
-    setTimeout(function() {div.innerHTML = ''; }, 500);
+  likeItem(item: MenuItem) {
+    this.showMatch(item);
+  }
+
+  private showMatch(item: MenuItem): void {
+    const dialogRef = this.dialog.open(MatchDialogComponent, { data: { dish: item } });
   }
 
   dislikeItem(cardId: number) {

@@ -42,10 +42,10 @@
 }
 
 button {
-    margin-left: 0.8rem;
+  margin-left: 0.8rem;
 }
 
-.dishcard{
+.dishcard {
   position: absolute;
   height: 12rem;
 }
@@ -53,3 +53,34 @@ button {
 /* mat-icon {
   font-size: 46px;
 } */
+
+
+/* Modal */
+.match-container {
+  width: 80%;
+  height: 70%;
+  background-color: red;
+  color: white;
+}
+
+.title .subtitle {
+  color: white !important;
+}
+
+.round-image {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.modal-button {
+  width: 15rem;
+  height: 3rem;
+}
+
+.modal-button-container {
+  margin: 35px;
+}
+
+.modal-content {
+  bottom: 10%;
+}

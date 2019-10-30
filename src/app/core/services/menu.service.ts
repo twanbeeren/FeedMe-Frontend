@@ -14,6 +14,7 @@ import { filter } from 'minimatch';
 export class MenuService {
 
   private courses: Course[] = [];
+  filterTags: string[] = []; // Temp locations
 
   constructor(private db: AngularFirestore) {
     this.setCourses();
@@ -62,5 +63,4 @@ export class MenuService {
   getCourses(): Observable<Course[]> {    
     return this.db.collection<Course>('Courses').valueChanges();
   }
-
 }

@@ -18,7 +18,7 @@ export class Order {
         this.items.push(item);
     }
     
-    removeItem(id: number, removeAll: boolean = false){
+    removeItem(id: string, removeAll: boolean = false){
         this.items.forEach(item => {
             if (item.id === id) {
                 const index = this.items.indexOf(item);

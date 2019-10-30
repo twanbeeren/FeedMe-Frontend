@@ -16,9 +16,7 @@ import { Observable } from 'rxjs';
 })
 export class RegularMenuComponent implements OnInit {
 
-  courses: Course[] = [];
   courses$: Observable<Course[]>;
-  menuItems: MenuItem[] = [];
   menuItems$: Observable<MenuItem[]>;
 
   constructor(

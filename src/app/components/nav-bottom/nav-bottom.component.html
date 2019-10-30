@@ -1,10 +1,13 @@
 <nav class="level navbar is-fixed-bottom card is-mobile">
   <!-- Preferences -->
   <div class="level-item">
-    <button routerLink="/i18n" mat-button class="menu-item">
-      <i class="material-icons">
-        build
+    <button routerLink="/preferences" mat-button class="menu-item">
+      <i *ngIf="filterTags() > 0; else noTags" matBadge="{{filterTags()}}" matBadgeColor="accent" class="material-icons">
+          build
       </i>
+      <ng-template #noTags class="material-icons">
+        <i class="material-icons">build</i>
+      </ng-template>
       <p translate>nav-bottom.preferences</p>
     </button>
   </div>

@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Course } from '../classes/course';
 import * as _ from 'lodash';
+import { OrderService } from '../services/order.service';
 
 @Pipe({
   name: 'sortCourses'

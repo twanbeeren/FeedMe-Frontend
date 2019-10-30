@@ -3,11 +3,11 @@ import { MenuService } from 'src/app/core/services/menu.service';
 import { OrderService } from 'src/app/core/services/order.service';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 import { Course } from 'src/app/core/classes/course';
-import { COURSES, MENU } from 'src/app/core/services/mock-menu'; //temp
 import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-dialog/dish-info-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material';
 import { TranslatorService } from 'src/app/core/services/translator.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-regular-menu',
@@ -17,7 +17,9 @@ import { TranslatorService } from 'src/app/core/services/translator.service';
 export class RegularMenuComponent implements OnInit {
 
   courses: Course[] = [];
-  menuItems : MenuItem[] = [];
+  courses$: Observable<Course[]>;
+  menuItems: MenuItem[] = [];
+  menuItems$: Observable<MenuItem[]>;
 
   constructor(
     private translator: TranslatorService,
@@ -27,14 +29,8 @@ export class RegularMenuComponent implements OnInit {
     private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-    this.orderService.newOrder(-1);
-    
-    this.menuService.getCourses().subscribe(data => {
-      this.courses = data;
-    });
-    this.menuService.getMenu().subscribe(data => {
-      this.menuItems = data;
-    });
+    this.courses$ = this.menuService.getCourses();
+    this.menuItems$ = this.menuService.getMenu();
   }
 
   addToOrder(item: MenuItem) {
@@ -62,7 +58,7 @@ export class RegularMenuComponent implements OnInit {
     let dialogRef = this.dialog.open(DishInfoDialogComponent, {data: {dish: item}});
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result != null){
+      if (result != null) {
         this.addToOrder(result);
       }
     });

@@ -1,4 +1,4 @@
-<mat-expansion-panel *ngFor="let course of courses" [expanded]="true">    
+<mat-expansion-panel *ngFor="let course of courses$ | async | sortCourses" [expanded]="true">    
     <mat-expansion-panel-header>
         <mat-panel-title translate>
             course.{{course.name | lowercase}}
@@ -8,7 +8,7 @@
     <mat-divider></mat-divider>
     
     <mat-list>
-        <mat-list-item *ngFor="let item of menuItems | filterByCourse: course.name">
+        <mat-list-item *ngFor="let item of menuItems$ | async | filterByCourse: course.name">
             <h4 matLine>{{item.name}} <mat-icon *ngIf="isVegetarian(item)" color="primary">eco</mat-icon></h4>        
             <p matLine>{{item.price | currency:'€'}}</p>
             

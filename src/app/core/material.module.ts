@@ -46,5 +46,6 @@ import {
    MatExpansionModule,
    MatSnackBarModule,
    ],
+  declarations: [],
 })
 export class CustomMaterialModule { }

@@ -12,7 +12,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class MenuService {
 
-  private menuUrl = 'toBeDetermined';
   private courses: Course[] = [];
 
   constructor(private db: AngularFirestore) {
@@ -22,7 +21,6 @@ export class MenuService {
   private async setCourses() {
     await this.db.collection<Course>('Courses').valueChanges().subscribe(courses => {
       this.courses = courses;
-      console.log(this.courses);
     });
   }
 
@@ -32,7 +30,6 @@ export class MenuService {
         items.forEach(item => {
           item.course = this.courses.find(c => c.id === item.courseRef.id);
         });
-
         return items;
       })
     );
@@ -42,11 +39,4 @@ export class MenuService {
     return this.db.collection<Course>('Courses').valueChanges();
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    // return (error: any): Observable<T> => {
-    //   console.error(operation + "failed");
-    //   // Let the app keep running by returning an empty result.
-    //   return of(result as T);
-    // };
-  }
 }

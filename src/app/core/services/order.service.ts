@@ -29,8 +29,10 @@ export class OrderService {
     return false;
   }
 
-  getItemCount() {
-    return this.order.items.length;
+  getItemCount(): number {
+    if (this.order != null)
+      return this.order.items.length;
+    else return 0;
   }
 
   getOrder(order: Order) {

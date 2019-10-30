@@ -25,6 +25,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
+import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
 import { PreferencesComponent } from './pages/preferences/preferences.component';
 import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
 
@@ -40,6 +41,7 @@ import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
     DishInfoDialogComponent,
     NavTopComponent,
     NavBottomComponent,
+    DrinksMenuComponent,
     PreferencesComponent,
   ],
   entryComponents: [DishInfoDialogComponent],

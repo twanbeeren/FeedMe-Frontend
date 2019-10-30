@@ -7,22 +7,23 @@ export class Order {
     time: Date;
     items: MenuItem[];
 
-    constructor(table: number) {
+    constructor(table: number){
+        this.id = Guid.raw();
         this.tableNr = table;
         this.time = new Date();
-        this.id = Guid.raw();
+        this.items = [];
     }
 
     addItem(item: MenuItem) {
         this.items.push(item);
     }
-
-    removeItem(id: string) {
+    
+    removeItem(id: string, removeAll: boolean = false){
         this.items.forEach(item => {
             if (item.id === id) {
                 const index = this.items.indexOf(item);
                 this.items.splice(index);
-                return;
+                if (!removeAll) return;
             }
         });
     }

@@ -1,30 +1,39 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslatorService {
 
-  constructor(private translate: TranslateService) {
-    this.translate.addLangs(["en", "nl"]);
+  constructor(private translateService: TranslateService) {
+    this.translateService.addLangs(["en", "nl"]);
 
     let language = localStorage.getItem("language");
     if (language) {
-      this.translate.setDefaultLang(language);
-      this.translate.use(language);
+      this.translateService.setDefaultLang(language);
+      this.translateService.use(language);
     } else if (!this.setLanguage(navigator.language)) {
       this.setLanguage("en");
     }
   }
 
   public setLanguage(language: string): boolean {
-    if (this.translate.getLangs().includes(language)) {
-      this.translate.setDefaultLang(language);
-      this.translate.use(language);
+    if (this.translateService.getLangs().includes(language)) {
+      this.translateService.setDefaultLang(language);
+      this.translateService.use(language);
       localStorage.setItem("language", language);
       return true;
     } 
     return false;
+  }
+
+  public getLanguage(): string {
+    return this.translateService.getDefaultLang();
+  }
+
+  public translate(key: string, params?: Object): string {
+    return this.translateService.instant(key, params);
   }
 }

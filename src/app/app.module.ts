@@ -24,7 +24,6 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
-import { MatchDialogComponent } from './components/dialogs/match-dialog/match-dialog.component';
 import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
 import { PreferencesComponent } from './pages/preferences/preferences.component';
 import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
@@ -44,10 +43,9 @@ import { OrderComponent } from './pages/order/order.component';
     NavBottomComponent,
     DrinksMenuComponent,
     PreferencesComponent,
-    MatchDialogComponent,
     OrderComponent
   ],
-  entryComponents: [DishInfoDialogComponent, MatchDialogComponent],
+  entryComponents: [DishInfoDialogComponent],
   imports: [
     HttpClientModule,
     BrowserModule,

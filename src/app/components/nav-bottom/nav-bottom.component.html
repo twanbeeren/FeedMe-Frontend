@@ -3,12 +3,12 @@
   <div class="level-item">
     <button routerLink="/preferences" mat-button class="menu-item">
       <i *ngIf="filterTags() > 0; else noTags" matBadge="{{filterTags()}}" matBadgeColor="accent" class="material-icons">
-          build
+          filter_list
       </i>
       <ng-template #noTags class="material-icons">
-        <i class="material-icons">build</i>
+        <i class="material-icons">filter_list</i>
       </ng-template>
-      <p translate>nav-bottom.preferences</p>
+      <p translate>nav-bottom.filters</p>
     </button>
   </div>
 

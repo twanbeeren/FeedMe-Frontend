@@ -9,7 +9,7 @@ export class OrderService {
 
   order: Order;
 
-  newOrder(tableNr : number) {
+  newOrder(tableNr: number) {
     this.order = new Order(tableNr);
   }
 
@@ -21,7 +21,7 @@ export class OrderService {
     return false;
   }
 
-  removeItem(item: MenuItem): boolean {    
+  removeItem(item: MenuItem): boolean {
     if (this.order) {
       this.order.removeItem(item.id);
       return true;
@@ -44,6 +44,6 @@ export class OrderService {
     //TODO: implement
     throw Error("Not implemented!");
   }
-  
+
   constructor() { }
 }

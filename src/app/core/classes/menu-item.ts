@@ -8,4 +8,5 @@ export class MenuItem {
     course: Course;
     courseRef: firestore.DocumentReference;
     tags: string[];
+    imgUrl: string;
 }

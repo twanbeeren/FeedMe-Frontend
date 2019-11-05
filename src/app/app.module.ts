@@ -16,7 +16,6 @@ import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
 import { NavTopComponent } from './components/nav-top/nav-top.component';
 import { NavBottomComponent } from './components/nav-bottom/nav-bottom.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.component';
 
 import { FilterByCoursePipe } from 'src/app/core/pipes/filter-by-course.pipe';
 import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/dish-info-dialog.component';
@@ -25,6 +24,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
+import { MatchDialogComponent } from './components/dialogs/match-dialog/match-dialog.component';
 import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
 import { PreferencesComponent } from './pages/preferences/preferences.component';
 import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
@@ -43,8 +43,9 @@ import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
     NavBottomComponent,
     DrinksMenuComponent,
     PreferencesComponent,
+    MatchDialogComponent,
   ],
-  entryComponents: [DishInfoDialogComponent],
+  entryComponents: [DishInfoDialogComponent, MatchDialogComponent],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -66,7 +67,7 @@ import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
     SwipeMenuModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
 

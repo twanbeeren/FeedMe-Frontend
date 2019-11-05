@@ -11,6 +11,10 @@ export class OrderService {
 
   order: Order;
 
+  constructor() {
+    this.newOrder(12);
+  }
+
   newOrder(tableNr: number) {
     this.order = new Order(tableNr);
   }
@@ -46,6 +50,4 @@ export class OrderService {
     // TODO: implement
     throw Error('Not implemented!');
   }
-
-  constructor() { }
 }

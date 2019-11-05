@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class OrderComponent implements OnInit {
   order: Order;
 
-  constructor(private orderService: OrderService) { }
+  constructor(public orderService: OrderService) { }
 
   ngOnInit() {
   }

@@ -29,7 +29,6 @@ import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
 import { PreferencesComponent } from './pages/preferences/preferences.component';
 import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
 import { OrderComponent } from './pages/order/order.component';
-import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.component';
 
 @NgModule({
   declarations: [

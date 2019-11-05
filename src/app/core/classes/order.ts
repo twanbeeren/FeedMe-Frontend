@@ -20,7 +20,7 @@ export class Order {
         orderItem.amount--;
         if (orderItem.amount === 0) {
           const index = this.orderItems.indexOf(orderItem);
-          this.orderItems.splice(index);
+          this.orderItems.splice(index, 1);
         }
         return;
       }

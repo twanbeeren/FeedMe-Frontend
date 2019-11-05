@@ -6,6 +6,7 @@ export class Order {
     tableNr: number;
     time: Date;
     items: MenuItem[];
+    status: string;
 
     constructor(table: number) {
         this.tableNr = table;

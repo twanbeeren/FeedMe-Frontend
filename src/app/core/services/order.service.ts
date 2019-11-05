@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MenuItem } from '../classes/menu-item';
 import { Order } from '../classes/order';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class OrderService {
 
   order: Order;
 
-  constructor() {
+  constructor(private db: AngularFirestore) {
     this.newOrder(12);
   }
 
@@ -47,7 +47,16 @@ export class OrderService {
   }
 
   sendOrder() {
-    // TODO: implement
-    throw Error('Not implemented!');
+
+    this.order.status = 'Sent';
+    this.order.orderItems.forEach(orderItem => {
+      orderItem.item = orderItem.item.id;
+    });
+
+    const json = JSON.stringify(this.order);
+    const data = JSON.parse(json);
+
+    this.db.doc('Orders/' + this.order.id).set(data);
   }
+
 }

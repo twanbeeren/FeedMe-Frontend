@@ -24,7 +24,7 @@
 
           <!-- Remove button -->
           <p class="level-item">
-            <button mat-mini-fab color="primary">
+            <button (click)="orderService.removeItem(orderItem.item)" mat-mini-fab color="primary">
               <i class="material-icons">
                 remove
               </i>
@@ -38,7 +38,7 @@
 
           <!-- Add button -->
           <p class="level-item">
-            <button mat-mini-fab color="primary">
+            <button (click)="orderService.addItem(orderItem.item)" mat-mini-fab color="primary">
               <i class="material-icons">
                 add
               </i>

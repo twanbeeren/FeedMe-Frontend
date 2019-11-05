@@ -9,8 +9,6 @@ import { MenuService } from 'src/app/core/services/menu.service';
 })
 export class NavBottomComponent implements OnInit {
 
-  
-
   constructor(
     private orderService: OrderService,
     private menuService: MenuService) { }
@@ -18,8 +16,8 @@ export class NavBottomComponent implements OnInit {
   ngOnInit() {
   }
 
-  itemsInOrder(): string {
-    return this.orderService.getItemCount().toString();
+  itemsInOrder(): number {
+    return this.orderService.getItemCount();
   }
 
   filterTags(): string {

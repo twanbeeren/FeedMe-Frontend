@@ -5,7 +5,7 @@ export class Order {
     id: string;
     tableNr: number;
     time: Date;
-    items: MenuItem[];
+    orderItems: { item: MenuItem, amount: number }[];
     status: string;
 
     constructor(table: number) {
@@ -14,15 +14,15 @@ export class Order {
         this.id = Guid.raw();
     }
 
-    addItem(item: MenuItem) {
-        this.items.push(item);
+    addItem(itemToAdd: MenuItem) {
+        this.orderItems.push({ item: itemToAdd, amount: 1 });
     }
 
     removeItem(id: string) {
-        this.items.forEach(item => {
-            if (item.id === id) {
-                const index = this.items.indexOf(item);
-                this.items.splice(index);
+        this.orderItems.forEach(orderItem => {
+            if (orderItem.item.id === id) {
+                const index = this.orderItems.indexOf(orderItem);
+                this.orderItems.splice(index);
                 return;
             }
         });

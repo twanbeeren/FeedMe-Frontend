@@ -16,7 +16,7 @@ export class OrderService {
   }
 
   private async setOrder() {
-     this.order = this.db.collection<Order>('Orders').valueChanges();  
+     this.order = this.db.collection<Order>('Orders').valueChanges();
   }
 
   newOrder(tableNr : number){

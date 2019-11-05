@@ -11,6 +11,12 @@
         "dessert": "Dessert"
     },
     "info": "Information",
+    "match": {
+        "matched": "It's a match!",
+        "added": "{{name}} has been added to your order",
+        "continue": "Continue swiping",
+        "unmatch": "Unmatch"
+    },
     "preferences": {
         "language": "Language",
         "filter_by": "Filter by"

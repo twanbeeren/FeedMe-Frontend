@@ -35,17 +35,6 @@ export class OrderService {
     return false;
   }
 
-  getItemCount(): number {
-    if (this.order != null) {
-      return this.order.orderItems.length;
-    } else { return 0; }
-  }
-
-  getOrder(order: Order) {
-    // TODO: check if order is not null
-    return this.order;
-  }
-
   sendOrder() {
 
     this.order.status = 'Sent';

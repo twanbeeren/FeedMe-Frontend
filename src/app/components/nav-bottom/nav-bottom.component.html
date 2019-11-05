@@ -2,7 +2,7 @@
   <!-- Preferences -->
   <div class="level-item">
     <button routerLink="/preferences" mat-button class="menu-item">
-      <i *ngIf="filterTags() > 0; else noTags" matBadge="{{filterTags()}}" matBadgeColor="accent" class="material-icons">
+      <i *ngIf="menuService.filterTags.length > 0; else noTags" matBadge="{{menuService.filterTags.length}}" matBadgeColor="accent" class="material-icons">
           filter_list
       </i>
       <ng-template #noTags class="material-icons">
@@ -45,7 +45,7 @@
   <!-- Order -->
   <div class="level-item">
     <button routerLink="/order" mat-button class="menu-item">
-      <i *ngIf="itemsInOrder() > 0; else noItems" matBadge="{{itemsInOrder()}}" matBadgeColor="primary" class="material-icons">
+      <i *ngIf="orderService.order.orderItems.length > 0; else noItems" matBadge="{{orderService.order.orderItems.length}}" matBadgeColor="primary" class="material-icons">
         send
       </i>
       <ng-template #noItems class="material-icons">

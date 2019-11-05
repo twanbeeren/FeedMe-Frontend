@@ -10,17 +10,9 @@ import { MenuService } from 'src/app/core/services/menu.service';
 export class NavBottomComponent implements OnInit {
 
   constructor(
-    private orderService: OrderService,
-    private menuService: MenuService) { }
+    public orderService: OrderService,
+    public menuService: MenuService) { }
 
   ngOnInit() {
-  }
-
-  itemsInOrder(): number {
-    return this.orderService.getItemCount();
-  }
-
-  filterTags(): string {
-    return this.menuService.filterTags.length.toString();
   }
 }

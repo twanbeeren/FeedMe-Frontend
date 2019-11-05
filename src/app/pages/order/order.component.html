@@ -1,1 +1,63 @@
-<p>order works!</p>
+<div class="main-container">
+  <!-- Ng for order items -->
+  <div class="order-container">
+    <nav class="level is-mobile">
+      <!-- Left side -->
+      <div class="level-left">
+
+        <!-- Image -->
+        <div class="level-item">
+          <figure class="image is-64x64">
+            <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+          </figure>
+        </div>
+
+        <!-- Title -->
+        <div class="level-item">
+          <p class="subtitle is-5"> Pizza</p>
+        </div>
+      </div>
+
+      <!-- Right side -->
+      <div class="level-right">
+
+        <!-- Remove button -->
+        <p class="level-item">
+          <button mat-mini-fab color="primary">
+            <i class="material-icons">
+              remove
+            </i>
+          </button>
+        </p>
+
+        <!-- Amount -->
+        <p class="level-item">
+          5
+        </p>
+
+        <!-- Add button -->
+        <p class="level-item">
+          <button mat-mini-fab color="primary">
+            <i class="material-icons">
+              add
+            </i>
+          </button>
+        </p>
+      </div>
+    </nav>
+    <hr>
+  </div>
+
+  <!-- Order button -->
+  <nav class="level is-mobile">
+    <div class="level-left">
+    </div>
+
+    <div class="level-right">
+      <!-- Order -->
+      <p class="level-item">
+        <button class="order-button" mat-raised-button color="accent">Order</button>
+      </p>
+    </div>
+  </nav>
+</div>

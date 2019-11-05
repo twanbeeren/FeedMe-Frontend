@@ -9,14 +9,14 @@ import { Observable, of } from 'rxjs';
 })
 export class OrderService {
 
-  order: Observable<Order[]>;
+  order$: Observable<Order>;
 
   constructor(private db: AngularFirestore) {
     this.setOrder();
   }
 
   private async setOrder() {
-     this.order = this.db.collection<Order>('Orders').valueChanges();  
+    //  this.order = this.db.collection('Orders').doc<Order>('id').valueChanges();
   }
 
   newOrder(tableNr : number){
@@ -30,17 +30,13 @@ export class OrderService {
 
   removeItem(item: MenuItem){
     // TODO: check if order is not null
-    this.order.removeItem(item.id);
+    // this.order.removeItem(item.id);
   }
 
   // getOrder(){
     // TODO: check if order is not null
     // return this.order;
   // }
-
-  getOrder(): Observable<Order> {
-    return this.db.collection<Order>('Orders').valueChanges();
-  }
 
   sendOrder(){
     //TODO: implement

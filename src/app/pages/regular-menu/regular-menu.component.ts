@@ -32,31 +32,32 @@ export class RegularMenuComponent implements OnInit {
   }
 
   addToOrder(item: MenuItem) {
-    if (this.orderService.order == null)
+    if (this.orderService.order == null) {
       this.orderService.newOrder(-1);
+    }
 
     if (this.orderService.addItem(item)) {
       this.showAddedToOrderSnackbar(item);
-    } else this.snackbar.open(this.translator.translate("snackbar.failed", { name: item.name }));
+    } else { this.snackbar.open(this.translator.translate('snackbar.failed', { name: item.name })); }
   }
 
   showAddedToOrderSnackbar(item: MenuItem) {
-    let snackbarRef = this.snackbar.open(
-      this.translator.translate("snackbar.added", { name: item.name }),
-      this.translator.translate("snackbar.undo"), {
+    const snackbarRef = this.snackbar.open(
+      this.translator.translate('snackbar.added', { name: item.name }),
+      this.translator.translate('snackbar.undo'), {
       duration: 3000,
     });
 
     snackbarRef.onAction().subscribe(() => {
       this.orderService.removeItem(item);
-      this.snackbar.open(this.translator.translate("snackbar.removed", { name: item.name }), "", {
+      this.snackbar.open(this.translator.translate('snackbar.removed', { name: item.name }), '', {
         duration: 1000,
       });
-    })
+    });
   }
 
   showInfo(item: MenuItem): void {
-    let dialogRef = this.dialog.open(DishInfoDialogComponent, {data: {dish: item}});
+    const dialogRef = this.dialog.open(DishInfoDialogComponent, { data: { dish: item } });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != null) {
@@ -66,7 +67,7 @@ export class RegularMenuComponent implements OnInit {
   }
 
   isVegetarian(item: MenuItem): boolean {
-    return item.tags.indexOf("Vegetarian") !== -1
-      || item.tags.indexOf("Vegan") !== -1;
+    return item.tags.indexOf('Vegetarian') !== -1
+      || item.tags.indexOf('Vegan') !== -1;
   }
 }

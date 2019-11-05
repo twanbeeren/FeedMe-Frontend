@@ -2,13 +2,13 @@
   <!-- Preferences -->
   <div class="level-item">
     <button routerLink="/preferences" mat-button class="menu-item">
-      <i *ngIf="filterTags() > 0; else noTags" matBadge="{{filterTags()}}" matBadgeColor="accent" class="material-icons">
-          build
+      <i *ngIf="menuService.filterTags.length > 0; else noTags" matBadge="{{menuService.filterTags.length}}" matBadgeColor="accent" class="material-icons">
+          filter_list
       </i>
       <ng-template #noTags class="material-icons">
-        <i class="material-icons">build</i>
+        <i class="material-icons">filter_list</i>
       </ng-template>
-      <p translate>nav-bottom.preferences</p>
+      <p translate>nav-bottom.filters</p>
     </button>
   </div>
 
@@ -44,8 +44,8 @@
 
   <!-- Order -->
   <div class="level-item">
-    <button mat-button class="menu-item">
-      <i *ngIf="itemsInOrder() > 0; else noItems" matBadge="{{itemsInOrder()}}" matBadgeColor="primary" class="material-icons">
+    <button routerLink="/order" mat-button class="menu-item">
+      <i *ngIf="orderService.order.orderItems.length > 0; else noItems" matBadge="{{orderService.order.orderItems.length}}" matBadgeColor="primary" class="material-icons">
         send
       </i>
       <ng-template #noItems class="material-icons">

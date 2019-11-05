@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { MenuItem } from 'src/app/core/classes/menu-item';
-import { MatDialog } from '@angular/material';
-import { MatchDialogComponent } from 'src/app/components/dialogs/match-dialog/match-dialog.component';
 import { OrderService } from 'src/app/core/services/order.service';
 
 @Component({
@@ -24,8 +22,7 @@ export class SwipePageComponent implements OnInit {
 
   constructor(
     private menuService: MenuService,
-    private orderService: OrderService,
-    private dialog: MatDialog) {
+    private orderService: OrderService) {
   }
 
   ngOnInit() {

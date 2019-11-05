@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MenuItem } from '../classes/menu-item';
 import { Order } from '../classes/order';
+import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,10 @@ import { Order } from '../classes/order';
 export class OrderService {
 
   order: Order;
+
+  constructor(private db: AngularFirestore) {
+    this.newOrder(12);
+  }
 
   newOrder(tableNr: number) {
     this.order = new Order(tableNr);
@@ -29,21 +35,17 @@ export class OrderService {
     return false;
   }
 
-  getItemCount(): number {
-    if (this.order != null)
-      return this.order.items.length;
-    else return 0;
-  }
-
-  getOrder(order: Order) {
-    //TODO: check if order is not null
-    return this.order;
-  }
-
   sendOrder() {
-    //TODO: implement
-    throw Error("Not implemented!");
+
+    this.order.status = 'Sent';
+    this.order.orderItems.forEach(orderItem => {
+      orderItem.item = orderItem.item.id;
+    });
+
+    const json = JSON.stringify(this.order);
+    const data = JSON.parse(json);
+
+    this.db.doc('Orders/' + this.order.id).set(data);
   }
 
-  constructor() { }
 }

@@ -11,7 +11,18 @@
         "dessert": "Dessert"
     },
     "info": "Information",
+    "match": {
+        "matched": "It's a match!",
+        "added": "{{name}} has been added to your order",
+        "continue": "Continue swiping",
+        "unmatch": "Unmatch"
+    },
+    "preferences": {
+        "language": "Language",
+        "filter_by": "Filter by"
+    },
     "tag": {
+        "drink": "Drink",
         "meat": "Meat",
         "milk": "Milk",
         "pasta": "Pasta",
@@ -26,6 +37,7 @@
     },
     "nav-bottom": {
         "preferences": "Preferences",
+        "filters": "Filters",
         "traditional_menu": "Traditional Menu",
         "drinks": "Drinks",
         "swipe_menu": "Swipe Menu",

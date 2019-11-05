@@ -3,6 +3,7 @@ import { MenuService } from 'src/app/core/services/menu.service';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 import { MatDialog } from '@angular/material';
 import { MatchDialogComponent } from 'src/app/components/dialogs/match-dialog/match-dialog.component';
+import { OrderService } from 'src/app/core/services/order.service';
 
 @Component({
   selector: 'app-swipe-page',
@@ -13,13 +14,17 @@ export class SwipePageComponent implements OnInit {
   menu = [];
   menuitem = null;
   currentIndex;
+  swipedIndex;
   allSwiped = false;
 
   latestLikedItem: MenuItem;
   isModalActive = false;
 
+  public show = true;
+
   constructor(
-    private menuservice: MenuService,
+    private menuService: MenuService,
+    private orderService: OrderService,
     private dialog: MatDialog) {
   }
 
@@ -28,7 +33,7 @@ export class SwipePageComponent implements OnInit {
   }
 
   getMenu() {
-    this.menuservice.getMenu().subscribe(menu => {
+    this.menuService.getMenu().subscribe(menu => {
       this.menu = menu;
       this.currentIndex = this.menu.length - 1; // set index to last added menuItem, last menuItem is 0 so we do '-1'
       console.log(this.menu);
@@ -37,9 +42,9 @@ export class SwipePageComponent implements OnInit {
 
   likeItem() {
     this.latestLikedItem = this.menu[this.currentIndex];
+    this.orderService.addItem(this.latestLikedItem);
     this.isModalActive = true;
-
-    // Animation
+    this.swipedIndex = this.currentIndex;
     const card = document.getElementById(this.currentIndex.toString());
     card.classList.add('animated', 'slideOutRight', 'fast');
     const div = document.getElementById('dishcard-box');
@@ -49,15 +54,45 @@ export class SwipePageComponent implements OnInit {
 
   closeModal() {
     this.isModalActive = false;
+    this.getMenu();
+    this.reload();
   }
 
   unmatch() {
-    this.isModalActive = false;
+    this.orderService.removeItem(this.latestLikedItem);
+    this.getMenuForUnmatch();
+  }  
+
+  getMenuForUnmatch() {
+    this.menuService.getMenu().subscribe(menu => {
+      this.menu = menu;
+      this.menu.splice((this.currentIndex + 1), (this.menu.length - 1 - this.currentIndex));
+      this.currentIndex = this.menu.length - 1;
+      this.reload();
+      var div = document.getElementById("dishcard-box");
+      // if(div.innerHTML != ""){
+      //   this.addAnimationForPreviousItems();
+      // }
+      this.isModalActive = false;
+    });
+  }
+
+  addAnimationForPreviousItems(){
+    console.log(this.menu);
+    
+    for(var i = this.menu.length-1; i >= this.swipedIndex; i--){
+      console.log("dink " + i.toString());
+      const card = document.getElementById(i.toString());
+      console.log(card);
+      card.classList.add('animated', 'slideOutLeft', 'fast');
+    }
   }
 
   dislikeItem() {
     console.log('ItemDisliked');
+    console.log(this.currentIndex);
     const card = document.getElementById(this.currentIndex.toString());
+    console.log(card);
     card.classList.add('animated', 'slideOutLeft', 'fast');
     this.nextItem();
   }
@@ -75,11 +110,9 @@ export class SwipePageComponent implements OnInit {
       console.log('ItemPrevious');
       this.currentIndex += 1;
       const card = document.getElementById(this.currentIndex.toString());
+
       card.classList.remove('animated', 'slideOutLeft', 'fast');
       card.classList.add('animated', 'bounceIn', 'fast');
-      // tslint:disable-next-line: only-arrow-functions
-      setTimeout(function() { card.classList.add('animated', 'bounceIn', 'fast'); }, 1000);
-      // this.item = this.menu[this.index];
     } else {
       // TODO Eventuele melding
     }
@@ -87,12 +120,15 @@ export class SwipePageComponent implements OnInit {
 
   isLastItem() {
     return this.currentIndex === 0;
-    // return this.currentIndex + 1 === this.menu.length;
   }
 
   isFirstItem() {
     return this.currentIndex + 1 === this.menu.length;
-    // return this.currentIndex === 0;
+  }
+
+  reload() {
+    this.show = false;
+    setTimeout(() => this.show = true);
   }
 
 }

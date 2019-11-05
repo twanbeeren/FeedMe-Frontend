@@ -1,6 +1,6 @@
 <!--change languages with funtion in component.ts-->
 <mat-list>
-    <h3 mat-header>Language</h3>
+    <h3 mat-header translate>preferences.language</h3>
     <mat-list-item>
         <mat-button-toggle-group value="{{language}}">
             <mat-button-toggle value="en" (click)="changeLanguage('en')">
@@ -14,7 +14,7 @@
 
     <mat-divider></mat-divider>
 
-    <h3 mat-header>Include Tags</h3>
+    <h3 mat-header translate>preferences.filter_by</h3>
     <mat-selection-list #tags [(ngModel)]="selectedOptions" (ngModelChange)="updateFilters()">
         <mat-list-option *ngFor="let tag of filterTags" [value]="tag" [selected]="isFilteredTag(tag)">
             <p translate>tag.{{tag | lowercase}}</p>

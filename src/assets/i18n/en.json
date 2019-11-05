@@ -11,6 +11,10 @@
         "dessert": "Dessert"
     },
     "info": "Information",
+    "preferences": {
+        "language": "Language",
+        "filter_by": "Filter by"
+    },
     "tag": {
         "meat": "Meat",
         "milk": "Milk",
@@ -26,6 +30,7 @@
     },
     "nav-bottom": {
         "preferences": "Preferences",
+        "filters": "Filters",
         "traditional_menu": "Traditional Menu",
         "drinks": "Drinks",
         "swipe_menu": "Swipe Menu",

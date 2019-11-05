@@ -27,6 +27,7 @@ import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
 import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
 import { PreferencesComponent } from './pages/preferences/preferences.component';
 import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
+import { OrderComponent } from './pages/order/order.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
     NavBottomComponent,
     DrinksMenuComponent,
     PreferencesComponent,
+    OrderComponent
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from 'src/app/core/services/menu.service';
-import { OrderService } from 'src/app/core/services/order.service';
-import { MenuItem } from 'src/app/core/classes/menu-item';
 import { Course } from 'src/app/core/classes/course';
-import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-dialog/dish-info-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material';
-import { TranslatorService } from 'src/app/core/services/translator.service';
 import { Observable } from 'rxjs';
+import { MenuItem } from 'src/app/core/classes/menu-item';
+import { TranslatorService } from 'src/app/core/services/translator.service';
+import { OrderService } from 'src/app/core/services/order.service';
+import { MenuService } from 'src/app/core/services/menu.service';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-dialog/dish-info-dialog.component';
 
 @Component({
-  selector: 'app-regular-menu',
-  templateUrl: './regular-menu.component.html',
-  styleUrls: ['./regular-menu.component.css']
+  selector: 'app-drinks-menu',
+  templateUrl: './drinks-menu.component.html',
+  styleUrls: ['./drinks-menu.component.css']
 })
-export class RegularMenuComponent implements OnInit {
+export class DrinksMenuComponent implements OnInit {
 
-  courses$: Observable<Course[]>;
-  menuItems$: Observable<MenuItem[]>;
+  drinks: Observable<MenuItem[]>;
 
   constructor(
     private translator: TranslatorService,
@@ -27,8 +25,7 @@ export class RegularMenuComponent implements OnInit {
     private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-    this.courses$ = this.menuService.getCourses();
-    this.menuItems$ = this.menuService.getMenu();
+    this.drinks = this.menuService.getDrinks();
   }
 
   addToOrder(item: MenuItem) {
@@ -56,17 +53,12 @@ export class RegularMenuComponent implements OnInit {
   }
 
   showInfo(item: MenuItem): void {
-    const dialogRef = this.dialog.open(DishInfoDialogComponent, { data: { dish: item } });
+    let dialogRef = this.dialog.open(DishInfoDialogComponent, {data: {dish: item}});
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != null) {
         this.addToOrder(result);
       }
     });
-  }
-
-  isVegetarian(item: MenuItem): boolean {
-    return item.tags.indexOf("Vegetarian") !== -1
-      || item.tags.indexOf("Vegan") !== -1;
   }
 }

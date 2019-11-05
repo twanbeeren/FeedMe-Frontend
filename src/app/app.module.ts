@@ -25,6 +25,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
 import { MatchDialogComponent } from './components/dialogs/match-dialog/match-dialog.component';
+import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
+import { PreferencesComponent } from './pages/preferences/preferences.component';
+import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
 
 @NgModule({
   declarations: [
@@ -33,10 +36,13 @@ import { MatchDialogComponent } from './components/dialogs/match-dialog/match-di
     HomeComponent,
     RegularMenuComponent,
     FilterByCoursePipe,
+    FilterByTagsPipe,
     SortCoursesPipe,
     DishInfoDialogComponent,
     NavTopComponent,
     NavBottomComponent,
+    DrinksMenuComponent,
+    PreferencesComponent,
     MatchDialogComponent,
   ],
   entryComponents: [DishInfoDialogComponent, MatchDialogComponent],

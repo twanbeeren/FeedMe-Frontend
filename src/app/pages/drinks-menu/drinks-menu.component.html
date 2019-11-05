@@ -1,0 +1,14 @@
+<mat-list>
+    <mat-list-item *ngFor="let item of drinks | async ">
+        <h4 matLine>{{item.name}}</h4>        
+        <p matLine>{{item.price | currency:'€'}}</p>
+        
+        <button mat-icon-button color="primary" (click)="addToOrder(item)">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="showInfo(item)">
+            <mat-icon>info</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+    </mat-list-item>
+</mat-list>

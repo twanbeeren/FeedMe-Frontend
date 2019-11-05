@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'swipemenu', component: SwipePageComponent},
   { path: 'regularmenu', component: RegularMenuComponent},
-  {path: 'drinksmenu', component:DrinksMenuComponent}
+  { path: 'drinksmenu', component: DrinksMenuComponent}
 ];
 
 @NgModule({

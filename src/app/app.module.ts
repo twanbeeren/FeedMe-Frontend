@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CustomMaterialModule } from './core/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { I18nComponent } from './components/i18n/i18n.component';
@@ -27,6 +27,7 @@ import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
 import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
 import { PreferencesComponent } from './pages/preferences/preferences.component';
 import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
+import { TableNumberComponent } from './pages/table-number/table-number.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
     NavBottomComponent,
     DrinksMenuComponent,
     PreferencesComponent,
+    TableNumberComponent,
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [
@@ -62,6 +64,7 @@ import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
     BrowserAnimationsModule,
     CustomMaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     SwipeMenuModule,
   ],
   providers: [],

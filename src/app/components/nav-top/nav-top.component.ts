@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslatorService } from 'src/app/core/services/translator.service';
 
 @Component({
   selector: 'app-nav-top',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavTopComponent implements OnInit {
 
-  constructor() { }
+  language: string;
+
+  constructor(private translator: TranslatorService) { }
 
   ngOnInit() {
+    this.language = this.translator.getLanguage();
   }
 
+  changeLanguage(language: string): void  {
+    this.translator.setLanguage(language);
+  }
 }

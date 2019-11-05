@@ -56,7 +56,7 @@ export class RegularMenuComponent implements OnInit {
   }
 
   showInfo(item: MenuItem): void {
-    let dialogRef = this.dialog.open(DishInfoDialogComponent, {data: {dish: item}});
+    const dialogRef = this.dialog.open(DishInfoDialogComponent, { data: { dish: item } });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != null) {

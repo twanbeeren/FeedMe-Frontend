@@ -13,3 +13,10 @@ mat-card {
     padding: 1rem;
     padding-left: 2rem;
 }
+
+img {
+    min-width: 670px;
+    min-height: 520px;
+    max-width: 670px;
+    max-height: 520px;
+}

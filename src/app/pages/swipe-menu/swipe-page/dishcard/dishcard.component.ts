@@ -9,6 +9,7 @@ import { SwipePageComponent } from '../swipe-page.component';
 })
 
 export class DishcardComponent implements OnInit {
+  // tslint:disable-next-line: no-input-rename
   @Input('cardId') cardId: number;
   animationState: string;
   @Input() item: MenuItem;

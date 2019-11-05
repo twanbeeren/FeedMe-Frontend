@@ -9,38 +9,43 @@ import { Observable, of } from 'rxjs';
 })
 export class OrderService {
 
-  order$: Observable<Order>;
+  order: Order;
 
-  constructor(private db: AngularFirestore) {
-    this.setOrder();
+  newOrder(tableNr: number) {
+    this.order = new Order(tableNr);
   }
 
-  private async setOrder() {
-    //  this.order = this.db.collection('Orders').doc<Order>('id').valueChanges();
+  addItem(item: MenuItem): boolean {
+    if (this.order) {
+      this.order.addItem(item);
+      return true;
+    }
+    return false;
   }
 
-  newOrder(tableNr : number){
-    //this.order = new Order(tableNr);
+  removeItem(item: MenuItem): boolean {
+    if (this.order) {
+      this.order.removeItem(item.id);
+      return true;
+    }
+    return false;
   }
 
-  addItem(item: MenuItem){
+  getItemCount(): number {
+    if (this.order != null) {
+      return this.order.orderItems.length;
+    } else { return 0; }
+  }
+
+  getOrder(order: Order) {
     // TODO: check if order is not null
-    //this.order.addItem(item);
+    return this.order;
   }
 
-  removeItem(item: MenuItem){
-    // TODO: check if order is not null
-    // this.order.removeItem(item.id);
+  sendOrder() {
+    // TODO: implement
+    throw Error('Not implemented!');
   }
 
-  // getOrder(){
-    // TODO: check if order is not null
-    // return this.order;
-  // }
-
-  sendOrder(){
-    //TODO: implement
-    throw Error("Not implemented!");
-  }
-
+  constructor() { }
 }

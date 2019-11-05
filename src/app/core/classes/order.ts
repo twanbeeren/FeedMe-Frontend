@@ -5,13 +5,13 @@ export class Order {
     id: string;
     tableNr: number;
     time: Date;
-    orderItems: { item: MenuItem, amount: number }[];
+    orderItems: { item: MenuItem, amount: number }[] = [];
     status: string;
 
-    constructor(table: number) {
+    constructor(table: number){
+        this.id = Guid.raw();
         this.tableNr = table;
         this.time = new Date();
-        this.id = Guid.raw();
     }
 
     addItem(itemToAdd: MenuItem) {

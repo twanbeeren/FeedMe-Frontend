@@ -9,15 +9,16 @@ import { TranslatorService } from 'src/app/core/services/translator.service';
 export class I18nComponent implements OnInit {
 
   projectName: string = "FeedMe";
-  tag: string = "vegan";
+  tag: string = "meat";
+  language: string;
 
   constructor(private translator: TranslatorService) {}
 
   ngOnInit() {
+    this.language = this.translator.getLanguage();
   }
 
   changeLanguage(language: string) {
     this.translator.setLanguage(language);
-  }
-  
+  }  
 }

@@ -1,11 +1,14 @@
 <nav class="level navbar is-fixed-bottom card is-mobile">
   <!-- Preferences -->
   <div class="level-item">
-    <button routerLink="/i18n" mat-button class="menu-item">
-      <i class="material-icons">
-        build
+    <button routerLink="/preferences" mat-button class="menu-item">
+      <i *ngIf="filterTags() > 0; else noTags" matBadge="{{filterTags()}}" matBadgeColor="accent" class="material-icons">
+          build
       </i>
-      <p>Preferences</p>
+      <ng-template #noTags class="material-icons">
+        <i class="material-icons">build</i>
+      </ng-template>
+      <p translate>nav-bottom.preferences</p>
     </button>
   </div>
 
@@ -15,17 +18,17 @@
       <i class="material-icons">
         local_library
       </i>
-      <p>Traditional Menu</p>
+      <p translate>nav-bottom.traditional_menu</p>
     </button>
   </div>
 
   <!-- Drinks -->
   <div class="level-item">
-    <button mat-button class="menu-item">
+    <button routerLink="/drinksmenu" mat-button class="menu-item">
       <i class="material-icons">
         local_bar
       </i>
-      <p>Drinks</p>
+      <p translate>nav-bottom.drinks</p>
     </button>
   </div>
 
@@ -35,17 +38,20 @@
       <i class="material-icons">
         favorite
       </i>
-      <p>Swipe Menu</p>
+      <p translate>nav-bottom.swipe_menu</p>
     </button>
   </div>
 
   <!-- Order -->
   <div class="level-item">
-    <button routerLink="/order" mat-button class="menu-item">
-      <i class="material-icons">
+    <button mat-button class="menu-item">
+      <i *ngIf="itemsInOrder() > 0; else noItems" matBadge="{{itemsInOrder()}}" matBadgeColor="primary" class="material-icons">
         send
       </i>
-      <p>Order</p>
+      <ng-template #noItems class="material-icons">
+        <i class="material-icons">send</i>
+      </ng-template>
+      <p translate>nav-bottom.order</p>
     </button>
   </div>
 
@@ -55,7 +61,7 @@
       <i class="material-icons">
         attach_money
       </i>
-      <p>Pay</p>
+      <p translate>nav-bottom.pay</p>
     </button>
   </div>
 </nav>

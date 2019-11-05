@@ -9,12 +9,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  order$: Observable<Order>;
+  order: Order;
 
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
-    this.order$ = this.orderService.order$;
   }
 
 }

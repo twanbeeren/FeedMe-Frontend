@@ -1,6 +1,6 @@
 <div class="container">
   <!-- Card -->
-  <div class="columns is-mobile is-centered"  style="height: 41.5rem;">
+  <div class="columns is-mobile is-centered" style="height: 41.5rem;">
     <div id="dishcard-box" class="column is-10">
       <app-dishcard class="dishcard" *ngFor="let item of menu; let i = index" [cardId]="i" [item]='item'></app-dishcard>
     </div>
@@ -17,6 +17,24 @@
       <button (click)="likeItem()" mat-fab aria-label="Like" class="like-button">
         <mat-icon>favorite</mat-icon>
       </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div *ngIf="latestLikedItem" class="modal" [ngClass]="{'is-active': isModalActive}">
+  <div class="modal-background"></div>
+  <div class="modal-content has-text-centered">
+    <p class="title is-1" style="color: white;">It's a match!</p>
+    <p class="subtitle" style="color: white;">{{latestLikedItem.name}} has been added to your order.</p>
+    <div class="circular-landscape">
+      <img src="{{latestLikedItem.imgUrl}}" />
+    </div>
+    <div class="modal-button-container">
+      <button class="modal-button" mat-raised-button color="primary" (click)="closeModal()">Continue swiping</button>
+    </div>
+    <div class="modal-button-container">
+      <button class="modal-button" mat-raised-button color="warn" (click)="unmatch()">Unmatch</button>
     </div>
   </div>
 </div>

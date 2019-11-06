@@ -15,19 +15,21 @@ import { RegularMenuComponent } from './pages/regular-menu/regular-menu.componen
 import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
 import { NavTopComponent } from './components/nav-top/nav-top.component';
 import { NavBottomComponent } from './components/nav-bottom/nav-bottom.component';
+import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
+import { PreferencesComponent } from './pages/preferences/preferences.component';
+import { TableNumberComponent } from './pages/table-number/table-number.component';
+import { OrderComponent } from './pages/order/order.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { FilterByCoursePipe } from 'src/app/core/pipes/filter-by-course.pipe';
+import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
+import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
 import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/dish-info-dialog.component';
 
-import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
-import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
-import { PreferencesComponent } from './pages/preferences/preferences.component';
-import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
-import { TableNumberComponent } from './pages/table-number/table-number.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { TableNumberComponent } from './pages/table-number/table-number.componen
     DrinksMenuComponent,
     PreferencesComponent,
     TableNumberComponent,
+    OrderComponent
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [
@@ -66,6 +69,7 @@ import { TableNumberComponent } from './pages/table-number/table-number.componen
     FormsModule,
     ReactiveFormsModule,
     SwipeMenuModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],

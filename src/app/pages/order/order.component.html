@@ -17,6 +17,11 @@
           <div class="level-item">
             <p class="subtitle is-5">{{orderItem.item.name}}</p>
           </div>
+
+          <!-- Price -->
+          <div class="level-item">
+            <p>{{getPrice(orderItem) | currency:'€'}}</p>
+          </div>
         </div>
 
         <!-- Right side -->

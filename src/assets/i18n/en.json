@@ -33,7 +33,8 @@
         "added": "Added {{name}}",
         "failed": "Failed to add {{name}}",
         "removed": "Removed {{name}}",
-        "undo": "Undo"
+        "undo": "Undo",
+        "login_failed": "Wrong credentials"
     },
     "nav-bottom": {
         "preferences": "Preferences",

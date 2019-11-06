@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/core/services/order.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { TranslatorService } from 'src/app/core/services/translator.service';
 
 @Component({
   selector: 'app-table-number',
@@ -14,7 +16,9 @@ export class TableNumberComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
-    private router: Router) {}
+    private router: Router,
+    private translator: TranslatorService,
+    private snackbar: MatSnackBar) {}
 
   ngOnInit() {
     this.initForm();
@@ -27,13 +31,19 @@ export class TableNumberComponent implements OnInit {
     if (!isNaN(tableFormValue.tableNumber) && tableFormValue.password === 'admin') { // TEMP PASSWORD
       this.orderService.newOrder(tableNr);
       console.log("new order has been made");
-      this.router.navigateByUrl("/swipemenu");      
-    }
+      this.router.navigateByUrl("/swipemenu");
+    } else this.showIncorrectSnackbar();
+  }
+
+  showIncorrectSnackbar() {    
+    this.snackbar.open(this.translator.translate("snackbar.login_failed"), "", {
+      duration: 1000,
+    });
   }
 
   initForm() {
     this.tableForm = new FormGroup({
-      tableNumber: new FormControl('', [Validators.required, Validators.pattern('[1-9]*')]),
+      tableNumber: new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
       password: new FormControl('', Validators.required),
     });
   }

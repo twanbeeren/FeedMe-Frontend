@@ -5,15 +5,6 @@
         <mat-error *ngIf="hasError('tableNumber', 'pattern')">Not a number</mat-error>
         <mat-error *ngIf="hasError('tableNumber', 'required')">This field is required</mat-error>
     </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="Enter password" [type]="show ? 'text' : 'password'" class="left-align" formControlName="password" required>
-        <button mat-icon-button matSuffix (click)="show = !show" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="show">
-            <i class="material-icons">{{show ? 'visibility' : 'visibility_off'}}</i>
-        </button>
-        <mat-error *ngIf="hasError('password', 'required')">This field is required</mat-error>
-    </mat-form-field>
-
     <button mat-raised-button [disabled]="!tableForm.valid">Confirm</button>
 </form>
       

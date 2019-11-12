@@ -28,6 +28,7 @@ import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/d
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -54,7 +55,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-
+    AngularFireAuthModule,
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({

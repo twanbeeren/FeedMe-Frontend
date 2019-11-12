@@ -31,6 +31,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { environment } from '../environments/environment';
     DrinksMenuComponent,
     PreferencesComponent,
     TableNumberComponent,
-    OrderComponent
+    OrderComponent,
+    LoginComponent
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

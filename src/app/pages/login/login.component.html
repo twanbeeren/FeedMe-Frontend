@@ -12,6 +12,7 @@
       <mat-form-field>
         <input type="password" matInput placeholder="Password" formControlName="password">
       </mat-form-field>
+      <p *ngIf="hasError" class="error">Incorrect email or password</p>
       <button mat-raised-button color="primary">Login</button>
     </form>
   </div>

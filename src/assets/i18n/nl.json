@@ -33,7 +33,8 @@
         "added": "{{name}} toegevoegd",
         "failed": "{{name}} toevoegen gefaald",
         "removed": "{{name}} verwijderd",
-        "undo": "Ongedaan maken"
+        "undo": "Ongedaan maken",
+        "login_failed": "Incorrecte inloggegevens"
     },
     "nav-bottom": {
         "preferences": "Voorkeuren",

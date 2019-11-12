@@ -16,4 +16,8 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
   }
 
+  getPrice(orderItem: { item: any, amount: number }) {
+    return orderItem.item.price * orderItem.amount;
+  }
+
 }

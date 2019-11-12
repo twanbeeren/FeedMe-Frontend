@@ -1,6 +1,20 @@
-<nav class="level">
-  <p class="level-item logo has-text-centered card">
+<nav class="level card">
+  <p class="level-item logo has-text-centered">
       <!-- Restaurant logo here -->
     <img src="./assets/images/logo.png" alt="" style="height: 100px;">
   </p>
+
+  <div class="level-right">
+    <div class="level-item">
+      <button mat-icon-button (click)="changeLanguage('en')">
+        <span class="flag-icon flag-icon-gb flag-icon-squared"></span>
+      </button>
+
+      <div class="level-item">
+        <button mat-icon-button (click)="changeLanguage('nl')">
+          <span class="flag-icon flag-icon-nl flag-icon-squared"></span>
+        </button>
+      </div>
+    </div>
+  </div>
 </nav>

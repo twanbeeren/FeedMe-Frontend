@@ -25,7 +25,7 @@ export class TableNumberComponent implements OnInit {
   }
 
   setTableNumber(tableFormValue) {
-    const tableNr: number = parseInt(tableFormValue.tableNumber);
+    const tableNr: number = tableFormValue.tableNumber;
     if (!isNaN(tableFormValue.tableNumber)) { // Is the tableNumber actually a number?
       this.orderService.setTableNumber(tableNr); // Set tableNumber for new orders
       this.router.navigateByUrl('/swipemenu'); // Go to swipe menu if validated

@@ -1,10 +1,13 @@
-<form [formGroup]="tableForm" (ngSubmit)="setTableNumber(tableForm.value)" class="container card">
-    <mat-form-field>
+<div class="columns is-mobile is-centered">
+  <div class="column is-6 has-text-centered">
+    <form [formGroup]="tableForm" (ngSubmit)="setTableNumber(tableForm.value)" class="container">
+      <mat-form-field>
         <input matInput placeholder="Table Number" class="left-align" formControlName="tableNumber" required>
         <span matPrefix>#&nbsp;</span>
         <mat-error *ngIf="hasError('tableNumber', 'pattern')">Not a number</mat-error>
         <mat-error *ngIf="hasError('tableNumber', 'required')">This field is required</mat-error>
-    </mat-form-field>
-    <button mat-raised-button [disabled]="!tableForm.valid">Confirm</button>
-</form>
-      
+      </mat-form-field>
+      <button mat-raised-button [disabled]="!tableForm.valid">Confirm</button>
+    </form>
+  </div>
+</div>

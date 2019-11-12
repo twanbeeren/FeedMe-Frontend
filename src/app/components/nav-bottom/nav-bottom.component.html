@@ -45,7 +45,7 @@
   <!-- Order -->
   <div class="level-item">
     <button routerLink="/order" mat-button class="menu-item">
-      <i *ngIf="orderService.order.orderItems.length > 0; else noItems" matBadge="{{orderService.order.orderItems.length}}" matBadgeColor="primary" class="material-icons">
+      <i *ngIf="orderService.order && orderService.order.orderItems.length > 0; else noItems" matBadge="{{orderService.order.orderItems.length}}" matBadgeColor="primary" class="material-icons">
         send
       </i>
       <ng-template #noItems class="material-icons">

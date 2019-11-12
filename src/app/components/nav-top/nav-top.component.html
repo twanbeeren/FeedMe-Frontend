@@ -1,6 +1,6 @@
-<nav class="level card">
+<!-- <nav class="level card">
   <p class="level-item logo has-text-centered">
-      <!-- Restaurant logo here -->
+
     <img src="./assets/images/logo.png" alt="" style="height: 100px;">
   </p>
 
@@ -17,4 +17,19 @@
       </div>
     </div>
   </div>
-</nav>
+</nav> -->
+
+<div class="columns is-mobile card">
+  <div class="column"></div>
+  <div class="column has-text-centered">
+    <img src="./assets/images/logo.png" alt="" style="height: 100px;">
+  </div>
+  <div class="column has-text-right">
+    <button mat-icon-button (click)="changeLanguage('en')">
+      <span class="flag-icon flag-icon-gb"></span>
+    </button>
+    <button mat-icon-button (click)="changeLanguage('nl')">
+      <span class="flag-icon flag-icon-nl"></span>
+    </button>
+  </div>
+</div>

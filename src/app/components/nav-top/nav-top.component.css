@@ -11,6 +11,10 @@
     max-width: 105%;
 }
 
+.tablenumber{
+    display: inline;
+}
+
 .flag-icon{
     display: block;
     width: 100%;

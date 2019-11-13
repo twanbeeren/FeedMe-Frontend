@@ -31,6 +31,7 @@
         "vegan": "Vegan",
         "vegetarian": "Vegetarian"
     },
+    "total-price": "Total price: ",
     "snackbar": {
         "added": "Added {{name}}",
         "failed": "Failed to add {{name}}",

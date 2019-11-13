@@ -31,6 +31,7 @@
         "vegan": "Vegan",
         "vegetarian": "Vegetarisch"
     },
+    "total-price": "Totaalprijs: ",
     "snackbar": {
         "added": "{{name}} toegevoegd",
         "failed": "{{name}} toevoegen gefaald",

@@ -10,7 +10,7 @@ import { OrderService } from 'src/app/core/services/order.service';
 export class NavTopComponent implements OnInit {
   language: string;
 
-  constructor(private translator: TranslatorService, private orderservice: OrderService) { }
+  constructor(private translator: TranslatorService, public orderservice: OrderService) { }
 
   ngOnInit() {
     this.language = this.translator.getLanguage();

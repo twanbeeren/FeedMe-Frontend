@@ -9,25 +9,17 @@ import { TicketService } from './ticket.service';
 })
 export class OrderService {
 
-  tableNumber: number;
   order: Order;
 
   constructor(private db: AngularFirestore, private ticketService: TicketService) {
   }
 
-  setTableNumber(tableNr: number) {
-    this.tableNumber = tableNr;
-  }
-
-  newOrder(tableNr?: number) {
-    if (tableNr)
-      this.order = new Order(tableNr);
-    else if (this.tableNumber)
-      this.order = new Order(this.tableNumber);
+  newOrder() {
+    this.order = new Order();
   }
 
   addItem(item: MenuItem): boolean {
-    if (!this.order && this.tableNumber)
+    if (!this.order)
       this.newOrder();
 
     if (this.order) {
@@ -38,7 +30,7 @@ export class OrderService {
   }
 
   removeItem(item: MenuItem): boolean {
-    if (!this.order && this.tableNumber)
+    if (!this.order)
       this.newOrder();
 
     if (this.order) {

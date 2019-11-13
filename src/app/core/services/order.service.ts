@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MenuItem } from '../classes/menu-item';
 import { Order } from '../classes/order';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { TicketService } from './ticket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class OrderService {
   tableNumber: number;
   order: Order;
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private ticketService: TicketService) {
   }
 
   setTableNumber(tableNr: number) {
@@ -50,6 +51,7 @@ export class OrderService {
   sendOrder() {
 
     this.order.status = 'Sent';
+    this.ticketService.addOrder(this.order);
     this.order.orderItems.forEach(orderItem => {
       orderItem.item = orderItem.item.id;
     });

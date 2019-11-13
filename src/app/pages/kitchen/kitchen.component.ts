@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { KitchenService } from 'src/app/core/services/kitchen.service';
+import { Order } from 'src/app/core/classes/order';
 
 @Component({
   selector: 'app-kitchen',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KitchenComponent implements OnInit {
 
-  constructor() { }
+  orders$: Observable<Order[]>;
+
+  constructor(public kitchenService: KitchenService) { }
 
   ngOnInit() {
+    this.orders$ = this.kitchenService.getOrders();
+    console.log('kitchencomponent oninit : ' + this.orders$);
   }
 
 }

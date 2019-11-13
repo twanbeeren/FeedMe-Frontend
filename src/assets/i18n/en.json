@@ -38,6 +38,9 @@
         "undo": "Undo",
         "login_failed": "Wrong credentials"
     },
+    "nav-top": {
+        "tablenumber": "Tablenumber"
+    },
     "nav-bottom": {
         "preferences": "Preferences",
         "traditional_menu": "Traditional Menu",

@@ -16,7 +16,6 @@ import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
 import { NavTopComponent } from './components/nav-top/nav-top.component';
 import { NavBottomComponent } from './components/nav-bottom/nav-bottom.component';
 import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
-import { PreferencesComponent } from './pages/preferences/preferences.component';
 import { TableNumberComponent } from './pages/table-number/table-number.component';
 import { OrderComponent } from './pages/order/order.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -30,8 +29,11 @@ import { FilterTagsComponent } from './components/filter-tags/filter-tags.compon
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LoginComponent } from './pages/login/login.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,10 +47,10 @@ import { environment } from '../environments/environment';
     NavTopComponent,
     NavBottomComponent,
     DrinksMenuComponent,
-    PreferencesComponent,
     TableNumberComponent,
     OrderComponent,
-    FilterTagsComponent
+    FilterTagsComponent,
+    LoginComponent
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [
@@ -56,7 +58,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-
+    AngularFireAuthModule,
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({

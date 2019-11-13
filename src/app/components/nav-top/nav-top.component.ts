@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslatorService } from 'src/app/core/services/translator.service';
+import { OrderService } from 'src/app/core/services/order.service';
 
 @Component({
   selector: 'app-nav-top',
@@ -7,10 +8,9 @@ import { TranslatorService } from 'src/app/core/services/translator.service';
   styleUrls: ['./nav-top.component.css']
 })
 export class NavTopComponent implements OnInit {
-
   language: string;
 
-  constructor(private translator: TranslatorService) { }
+  constructor(private translator: TranslatorService, private orderservice: OrderService) { }
 
   ngOnInit() {
     this.language = this.translator.getLanguage();

@@ -38,6 +38,9 @@
         "undo": "Ongedaan maken",
         "login_failed": "Incorrecte inloggegevens"
     },
+    "nav-top": {
+        "tablenumber": "Tafelnummer"
+    },
     "nav-bottom": {
         "preferences": "Voorkeuren",
         "traditional_menu": "Traditioneel Menu",

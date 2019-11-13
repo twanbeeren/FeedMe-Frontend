@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslatorService } from 'src/app/core/services/translator.service';
-import { OrderService } from 'src/app/core/services/order.service';
+import { TicketService } from 'src/app/core/services/ticket.service';
 
 @Component({
   selector: 'app-nav-top',
@@ -8,8 +8,9 @@ import { OrderService } from 'src/app/core/services/order.service';
   styleUrls: ['./nav-top.component.css']
 })
 export class NavTopComponent implements OnInit {
-  
-  constructor(private translator: TranslatorService, private orderservice: OrderService) { }
+  language: string;
+
+  constructor(private translator: TranslatorService, private ticketservice: TicketService) { }
 
   ngOnInit() {
   }

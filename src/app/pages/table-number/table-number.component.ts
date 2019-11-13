@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from 'src/app/core/services/order.service';
+import { TicketService } from 'src/app/core/services/ticket.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { TranslatorService } from 'src/app/core/services/translator.service';
+import { Ticket } from 'src/app/core/classes/ticket';
 
 @Component({
   selector: 'app-table-number',
@@ -15,7 +16,7 @@ export class TableNumberComponent implements OnInit {
   tableForm: FormGroup;
 
   constructor(
-    private orderService: OrderService,
+    private ticketService: TicketService,
     private router: Router,
     private translator: TranslatorService,
     private snackbar: MatSnackBar) { }
@@ -27,7 +28,7 @@ export class TableNumberComponent implements OnInit {
   setTableNumber(tableFormValue) {
     const tableNr: number = tableFormValue.tableNumber;
     if (!isNaN(tableFormValue.tableNumber)) { // Is the tableNumber actually a number?
-      this.orderService.setTableNumber(tableNr); // Set tableNumber for new orders
+      this.ticketService.setTableNumber(tableNr); // Set tableNumber for new orders
       this.router.navigateByUrl('/swipemenu'); // Go to swipe menu if validated
     } else {
       this.showIncorrectSnackbar();

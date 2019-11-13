@@ -49,7 +49,7 @@ export class OrderService {
 
   sendOrder() {
 
-    this.order.status = 'Sent';
+    this.order.done = false;
     this.order.orderItems.forEach(orderItem => {
       orderItem.item = orderItem.item.id;
     });

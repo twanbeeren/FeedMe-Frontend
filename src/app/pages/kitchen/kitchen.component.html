@@ -1,11 +1,21 @@
 <p>kitchen works!</p><br/>
 <mat-expansion-panel *ngFor="let order of orders$ | async" [expanded]="true">
 
-  {{order.id}}
-  <mat-list>
+  <mat-list *ngIf="order.done === false">
+    <h4>Deze orders moeten nog bereid worden</h4>
     <mat-list-item *ngFor="let item of order.orderItems">
-      <p matLine>naam : {{item.item?.name}}</p>
+      <p matLine>naam : {{item.item?.name}} amount : {{item.amount}}</p>
+      <button mat-icon-button color="primary" (click)="finishOrder(order.id)">
+          <i class="material-icons">finish</i>
+      </button>
     </mat-list-item>
   </mat-list>
+
+  <mat-list *ngIf="order.done === true">
+      <h4>Deze orders zijn af</h4>
+      <mat-list-item *ngFor="let item of order.orderItems">
+        <p matLine>naam : {{item.item?.name}} amount : {{item.amount}}</p>
+      </mat-list-item>
+    </mat-list>
 
 </mat-expansion-panel>

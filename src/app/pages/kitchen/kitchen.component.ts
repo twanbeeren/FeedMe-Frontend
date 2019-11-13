@@ -19,4 +19,8 @@ export class KitchenComponent implements OnInit {
     console.log('kitchencomponent oninit : ' + this.orders$);
   }
 
+  finishOrder(id: number){
+
+  }
+
 }

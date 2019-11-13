@@ -2,31 +2,24 @@ import { Injectable } from '@angular/core';
 import { MenuItem } from '../classes/menu-item';
 import { Order } from '../classes/order';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { TicketService } from './ticket.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  tableNumber: number;
   order: Order;
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private ticketService: TicketService) {
   }
 
-  setTableNumber(tableNr: number) {
-    this.tableNumber = tableNr;
-  }
-
-  newOrder(tableNr?: number) {
-    if (tableNr)
-      this.order = new Order(tableNr);
-    else if (this.tableNumber)
-      this.order = new Order(this.tableNumber);
+  newOrder() {
+    this.order = new Order();
   }
 
   addItem(item: MenuItem): boolean {
-    if (!this.order && this.tableNumber)
+    if (!this.order)
       this.newOrder();
 
     if (this.order) {
@@ -37,7 +30,7 @@ export class OrderService {
   }
 
   removeItem(item: MenuItem): boolean {
-    if (!this.order && this.tableNumber)
+    if (!this.order)
       this.newOrder();
 
     if (this.order) {
@@ -50,6 +43,7 @@ export class OrderService {
   sendOrder() {
 
     this.order.done = false;
+    this.ticketService.addOrder(this.order);
     this.order.orderItems.forEach(orderItem => {
       orderItem.item = orderItem.item.id;
     });
@@ -58,6 +52,7 @@ export class OrderService {
     const data = JSON.parse(json);
 
     this.db.doc('Orders/' + this.order.id).set(data);
+    this.order = new Order();
   }
 
 }

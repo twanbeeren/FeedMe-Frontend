@@ -3,13 +3,12 @@ import { Guid } from 'guid-typescript';
 
 export class Order {
   id: string;
-  tableNr: number;
   time: Date;
   orderItems: { item: any, amount: number }[] = [];
   done: boolean;
+  ticketId: string;
 
-  constructor(table: number) {
-    this.tableNr = table;
+  constructor() {
     this.time = new Date();
     this.id = Guid.raw();
   }

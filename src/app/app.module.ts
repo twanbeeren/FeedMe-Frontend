@@ -28,9 +28,11 @@ import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/d
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { KitchenComponent } from './pages/kitchen/kitchen.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -47,8 +49,7 @@ import { KitchenComponent } from './pages/kitchen/kitchen.component';
     DrinksMenuComponent,
     PreferencesComponent,
     TableNumberComponent,
-    OrderComponent,
-    KitchenComponent
+    OrderComponent
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [
@@ -56,7 +57,7 @@ import { KitchenComponent } from './pages/kitchen/kitchen.component';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-
+    AngularFireAuthModule,
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({

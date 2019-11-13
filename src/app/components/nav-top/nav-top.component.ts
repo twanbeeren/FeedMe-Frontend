@@ -8,12 +8,10 @@ import { OrderService } from 'src/app/core/services/order.service';
   styleUrls: ['./nav-top.component.css']
 })
 export class NavTopComponent implements OnInit {
-  language: string;
-
+  
   constructor(private translator: TranslatorService, private orderservice: OrderService) { }
 
   ngOnInit() {
-    this.language = this.translator.getLanguage();
   }
 
   changeLanguage(language: string): void  {

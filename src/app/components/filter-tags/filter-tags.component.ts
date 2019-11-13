@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
+import { TranslatorService } from 'src/app/core/services/translator.service';
 
 @Component({
   selector: 'app-filter-tags',
@@ -18,11 +19,9 @@ export class FilterTagsComponent implements OnInit {
 
   toggleFilter(tag: string): void {
     var index = this.menuService.toggledTags.indexOf(tag);
-    console.log(index);
     if (index !== -1)
       this.menuService.toggledTags.splice(index, 1);
     else this.menuService.toggledTags.push(tag);
-    console.log(this.menuService.toggledTags);
   }
 
   isFilteredTag(tag: string): boolean {

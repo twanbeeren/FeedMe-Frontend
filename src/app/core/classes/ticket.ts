@@ -17,6 +17,8 @@ export class Ticket {
             this.id = Guid.raw();
             this.time = new Date();
             this.finished = false;
+            this.orders = [];
+            this.orderRefs = [];
         }
     }
 
@@ -29,9 +31,12 @@ export class Ticket {
     }
 
     setOrderRefs() {
-        this.orders.forEach(order => {
-            this.orderRefs.push(order.id);
-        });
+        if (this.orderRefs.length > 0) {
+            this.orders.forEach(order => {
+                this.orderRefs.push(order.id);
+            });
+        }
+
     }
 }
 

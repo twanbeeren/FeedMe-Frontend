@@ -13,7 +13,7 @@ export class TicketService {
 
   addOrder(order: Order){
     if(!this.ticket){
-      this.ticket = new Ticket(order);
+      this.ticket = new Ticket();
       this.sendTicket();
     }
     else if(this.ticket){
@@ -22,6 +22,7 @@ export class TicketService {
   }
 
   sendTicket(){
-    let dbTicket = this.ticket as new Ticket();
+    let dbTicket = new Ticket(this.ticket);
+    
   }
 }

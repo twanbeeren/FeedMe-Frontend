@@ -20,6 +20,10 @@ export class SwipePageComponent implements OnInit {
 
   public show = true;
 
+  // Tutorial mdoal
+  isTutorialActive = true;
+  phase = 0;
+
   constructor(
     private menuService: MenuService,
     private orderService: OrderService) {

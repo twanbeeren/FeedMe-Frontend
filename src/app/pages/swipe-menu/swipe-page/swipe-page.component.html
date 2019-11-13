@@ -21,7 +21,7 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Match Modal -->
 <div *ngIf="latestLikedItem" class="modal" [ngClass]="{'is-active': isModalActive}">
   <div class="modal-background"></div>
   <div class="modal-content has-text-centered">
@@ -38,3 +38,49 @@
     </div>
   </div>
 </div>
+
+<!-- Tutorial Modal -->
+<a (click)="phase = phase + 1">
+  {{phase}}
+  <div class="modal" [ngClass]="{'is-active': isTutorialActive}">
+    <div class="modal-background"></div>
+
+    <ng-container [ngSwitch]="phase">
+
+
+      <!-- Welcome -->
+      <div *ngSwitchCase="0">
+        <span style="width: 90%;">
+          <div class="modal-content has-text-centered">
+            <p class="title is-1" style="color: white;">Welcome!</p>
+            <p class="subtitle" style="color: white;">In this restaurant we use a menu that is a bit different from
+              other
+              restaurants.</p>
+            <p class="subtitle" style="color: grey;">Tap to continue...</p>
+          </div>
+        </span>
+      </div>
+
+      <!-- Swipe right -->
+      <div *ngSwitchCase="1" style="width: 90%; margin-bottom: 75%;">
+        <span>
+          <div class="modal-content">
+            <div class="columns is-mobile">
+              <div class="column has-text-right">
+              </div>
+              <div class="column has-text-right">
+              </div>
+              <div class="column is-5 has-text-right">
+                <p class="subtitle is-5" style="color: white;">Swipe right if you see something you like</p>
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+      <p *ngSwitchDefault>
+
+      </p>
+    </ng-container>
+
+  </div>
+</a>

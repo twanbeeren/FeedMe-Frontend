@@ -32,6 +32,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './pages/login/login.component';
+import { TutorialComponent } from './components/tutorial/tutorial.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { LoginComponent } from './pages/login/login.component';
     PreferencesComponent,
     TableNumberComponent,
     OrderComponent,
-    LoginComponent
+    LoginComponent,
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

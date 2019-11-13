@@ -52,6 +52,7 @@ export class OrderService {
     const data = JSON.parse(json);
 
     this.db.doc('Orders/' + this.order.id).set(data);
+    this.order = new Order();
   }
 
 }

@@ -8,13 +8,14 @@ export class Ticket {
     time: Date;
     finished: boolean;
 
-    constructor(ticket?: Ticket) {
+    constructor(tableNumber?: number, ticket?: Ticket) {
         if (ticket) {
             Object.keys(ticket).forEach(key => {
                 this[key] = ticket[key];
             })
         } else {
             this.id = Guid.raw();
+            this.tableNr = tableNumber;
             this.time = new Date();
             this.finished = false;
             this.orders = [];

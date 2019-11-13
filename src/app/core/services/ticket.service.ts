@@ -15,6 +15,10 @@ export class TicketService {
 
   setTableNumber(tableNr: number) {
     this.tableNumber = tableNr;
+    if (!this.ticket) {
+      this.ticket = new Ticket(this.tableNumber);
+      this.sendTicket();
+    }
   }
 
   addOrder(order: Order) {
@@ -34,7 +38,7 @@ export class TicketService {
   }
 
   sendTicket() {
-    let dbTicket = new Ticket(this.ticket);
+    let dbTicket = new Ticket(null,this.ticket);
     dbTicket.setOrderRefs();
     delete dbTicket.orders;
 

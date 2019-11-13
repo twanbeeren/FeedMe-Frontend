@@ -30,7 +30,7 @@ export class DrinksMenuComponent implements OnInit {
 
   addToOrder(item: MenuItem) {
     if (this.orderService.order == null)
-      this.orderService.newOrder(-1);
+      this.orderService.newOrder();
 
     if (this.orderService.addItem(item)) {
       this.showAddedToOrderSnackbar(item);

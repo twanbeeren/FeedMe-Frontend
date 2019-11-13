@@ -11,15 +11,7 @@
             </mat-button-toggle>
         </mat-button-toggle-group>
     </mat-list-item>
-
-    <mat-divider></mat-divider>
-
-    <h3 mat-header translate>preferences.filter_by</h3>
-    <mat-selection-list #tags [(ngModel)]="selectedOptions" (ngModelChange)="updateFilters()">
-        <mat-list-option *ngFor="let tag of filterTags" [value]="tag" [selected]="isFilteredTag(tag)">
-            <p translate>tag.{{tag | lowercase}}</p>
-        </mat-list-option>
-        <mat-divider></mat-divider>
-    </mat-selection-list>
 </mat-list>
-  
+
+
+<app-filter-tags></app-filter-tags>

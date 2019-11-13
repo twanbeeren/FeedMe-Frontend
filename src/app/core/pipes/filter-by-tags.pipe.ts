@@ -3,13 +3,14 @@ import { MenuItem } from '../classes/menu-item';
 import { MenuService } from '../services/menu.service';
 
 @Pipe({
-  name: 'filterByTags'
+  name: 'filterByTags',
+  pure: false
 })
 export class FilterByTagsPipe implements PipeTransform {
 
   constructor(private menuService: MenuService) {}
 
-  transform(items: MenuItem[], tags: string[] = this.menuService.filterTags): MenuItem[] {
+  transform(items: MenuItem[], tags: string[] = this.menuService.toggledTags): MenuItem[] {
     if (!items || !tags) { return items; } 
     if (tags.length == 0) { return items; }
     

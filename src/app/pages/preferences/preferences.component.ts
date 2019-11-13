@@ -12,7 +12,6 @@ export class PreferencesComponent implements OnInit {
 
   language: string;
 
-  filterTags: string[];
   selectedOptions: string[];
 
   constructor(
@@ -21,8 +20,6 @@ export class PreferencesComponent implements OnInit {
 
   ngOnInit() {
     this.language = this.translator.getLanguage();
-
-    this.filterTags = ["Vegetarian", "Meat", "Milk"]
   }
 
   changeLanguage(language: string): void  {
@@ -30,13 +27,9 @@ export class PreferencesComponent implements OnInit {
   }
 
   updateFilters(): void {
-    this.menuService.filterTags = [];
+    this.menuService.toggledTags = [];
     this.selectedOptions.forEach(option => {
-      this.menuService.filterTags.push(option);
+      this.menuService.toggledTags.push(option);
     });
-  }
-
-  isFilteredTag(tag: string): boolean {
-    return this.menuService.filterTags.includes(tag);
   }
 }

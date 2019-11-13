@@ -25,12 +25,13 @@ import { FilterByCoursePipe } from 'src/app/core/pipes/filter-by-course.pipe';
 import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
 import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
 import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/dish-info-dialog.component';
+import { FilterTagsComponent } from './components/filter-tags/filter-tags.component';
+
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { environment } from '../environments/environment';
     DrinksMenuComponent,
     PreferencesComponent,
     TableNumberComponent,
-    OrderComponent
+    OrderComponent,
+    FilterTagsComponent
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

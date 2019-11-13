@@ -40,7 +40,7 @@
 </div>
 
 <!-- Tutorial Modal -->
-<a (click)="phase = phase + 1" *ngIf="phase < 4">
+<a (click)="nextPhase()" *ngIf="phase < 4">
   <div class="modal" [ngClass]="{'is-active': isTutorialActive}">
     <div class="modal-background"></div>
 

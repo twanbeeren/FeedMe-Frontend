@@ -31,6 +31,9 @@ export class SwipePageComponent implements OnInit {
 
   ngOnInit() {
     this.getMenu();
+    if (this.menuService.hasHadTutorial) {
+      this.phase = 4;
+    }
   }
 
   getMenu() {
@@ -50,7 +53,7 @@ export class SwipePageComponent implements OnInit {
     card.classList.add('animated', 'slideOutRight', 'fast');
     const div = document.getElementById('dishcard-box');
     // tslint:disable-next-line: only-arrow-functions
-    setTimeout(function() { div.innerHTML = ''; }, 500);
+    setTimeout(function () { div.innerHTML = ''; }, 500);
   }
 
   closeModal() {
@@ -62,7 +65,7 @@ export class SwipePageComponent implements OnInit {
   unmatch() {
     this.orderService.removeItem(this.latestLikedItem);
     this.getMenuForUnmatch();
-  }  
+  }
 
   getMenuForUnmatch() {
     this.menuService.getMenu().subscribe(menu => {
@@ -78,10 +81,10 @@ export class SwipePageComponent implements OnInit {
     });
   }
 
-  addAnimationForPreviousItems(){
+  addAnimationForPreviousItems() {
     console.log(this.menu);
-    
-    for(var i = this.menu.length-1; i >= this.swipedIndex; i--){
+
+    for (var i = this.menu.length - 1; i >= this.swipedIndex; i--) {
       console.log("dink " + i.toString());
       const card = document.getElementById(i.toString());
       console.log(card);
@@ -132,4 +135,10 @@ export class SwipePageComponent implements OnInit {
     setTimeout(() => this.show = true);
   }
 
+  nextPhase() {
+    this.phase++;
+    if (this.phase >= 4) {
+      this.menuService.hasHadTutorial = true;
+    }
+  }
 }

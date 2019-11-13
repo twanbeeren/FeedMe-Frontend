@@ -13,6 +13,7 @@ export class MenuService {
 
   private courses: Course[] = [];
   filterTags: string[] = []; // Temp locations
+  hasHadTutorial = false;
 
   constructor(private db: AngularFirestore) {
     this.setCourses();

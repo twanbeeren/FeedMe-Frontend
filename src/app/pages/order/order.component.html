@@ -15,7 +15,8 @@
 
           <!-- Title -->
           <div class="level-item">
-            <p class="subtitle is-5">{{orderItem.item.name}}</p>
+            <!-- Not every item has a volume-->
+            <p class="subtitle is-5">{{orderItem.item.name}} {{orderItem.item.volume}}</p>
           </div>
 
           <!-- Price -->

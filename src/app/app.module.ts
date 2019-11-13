@@ -30,6 +30,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { KitchenComponent } from './pages/kitchen/kitchen.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { environment } from '../environments/environment';
     DrinksMenuComponent,
     PreferencesComponent,
     TableNumberComponent,
-    OrderComponent
+    OrderComponent,
+    KitchenComponent
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

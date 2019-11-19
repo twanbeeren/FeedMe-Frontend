@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/core/services/order.service';
 import { Order } from 'src/app/core/classes/order';
 import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-order',
@@ -9,15 +11,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  order: Order;
+
 
   constructor(public orderService: OrderService) { }
 
   ngOnInit() {
   }
 
-  getPrice(orderItem: { item: any, amount: number }) {
-    return orderItem.item.price * orderItem.amount;
+  getTotalPrice() {
+    let totalPrice = 0;
+    this.orderService.order.orderItems.forEach(orderItem => {      
+      totalPrice += orderItem.item.price * orderItem.amount;
+    });
+    return totalPrice;
   }
-
 }

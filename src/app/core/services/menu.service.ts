@@ -12,8 +12,8 @@ import { filter } from 'minimatch';
 export class MenuService {
 
   private courses: Course[] = [];
-  filterTags: string[] = []; // Temp locations
   hasHadTutorial = false;
+  toggledTags: string[] = []; // Temp locations
 
   constructor(private db: AngularFirestore) {
     this.setCourses();

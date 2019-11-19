@@ -33,6 +33,7 @@ export class MenuService {
         const filteredItems = [];
         items.forEach(item => {
           if(!item.tags.includes("Drink")){
+            item.dragDisabled = true;
             filteredItems.push(item);
           }
         });

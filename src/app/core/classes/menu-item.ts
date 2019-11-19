@@ -9,4 +9,5 @@ export class MenuItem {
     courseRef: firestore.DocumentReference;
     tags: string[];
     imgUrl: string;
+    dragDisabled: boolean;
 }

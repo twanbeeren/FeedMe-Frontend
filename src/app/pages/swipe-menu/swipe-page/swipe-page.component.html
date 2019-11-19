@@ -1,10 +1,14 @@
 <div class="container">
+  <div id="disliked-box" style="position: absolute; padding: 25em 0; background: #ff4d4d; width: 3em; top: 0.25em;" cdkDropList [cdkDropListData]="dislikedItems" cdkDropListConnectedTo="dishcard-box" (cdkDropListDropped)="dislikeDrop($event)"></div>
   <!-- Card -->
   <div class="columns is-mobile is-centered" style="height: 41.5rem;">
-    <div *ngIf="show" id="dishcard-box" class="column is-10">
-      <app-dishcard class="dishcard" *ngFor="let item of menu; let i = index" [cardId]="i" [item]='item'></app-dishcard>
+    <div *ngIf="show" id="dishcard-box" class="column is-10" cdkDropList [cdkDropListData]="menu" cdkDropListConnectedTo="disliked-box" (cdkDropListDropped)="drop($event)">
+      <app-dishcard class="dishcard" *ngFor="let item of menu; let i = index" [cardId]="i" [item]='item' cdkDrag [cdkDragDisabled]="item.dragDisabled"></app-dishcard>
     </div>
+    
   </div>
+  <div id="liked-box" style="position: relative; padding: 25em 0; background: #a3ff4d; width: 3em; float: right; top: -42em;" cdkDropList [cdkDropListData]="likedItems" cdkDropListConnectedTo="dishcard-box" (cdkDropListDropped)="likeDrop($event)"></div>
+  
   <!-- Buttons -->
   <div class="columns is-mobile is-centered">
     <div class="column is-11 has-text-centered">
@@ -18,7 +22,9 @@
         <mat-icon>favorite</mat-icon>
       </button>
     </div>
+    
   </div>
+  
 </div>
 
 <!-- Modal -->

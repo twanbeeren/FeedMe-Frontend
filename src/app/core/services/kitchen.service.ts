@@ -27,4 +27,9 @@ export class KitchenService {
       })
     );
   }
+
+  setStatus(id: string, newStatus: string) {
+    console.log('update status' + id + ' : ' + newStatus);
+    this.db.collection('Orders').doc(id).update({ status : newStatus });
+  }
 }

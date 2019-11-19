@@ -11,7 +11,6 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'preferences', component: PreferencesComponent },
   { path: 'home', component: HomeComponent },
   { path: 'swipemenu', component: SwipePageComponent },
   { path: 'regularmenu', component: RegularMenuComponent },

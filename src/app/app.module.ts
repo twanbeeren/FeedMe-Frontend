@@ -26,7 +26,6 @@ import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
 import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/dish-info-dialog.component';
 import { FilterTagsComponent } from './components/filter-tags/filter-tags.component';
 
-
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -50,7 +49,7 @@ import { LoginComponent } from './pages/login/login.component';
     TableNumberComponent,
     OrderComponent,
     FilterTagsComponent,
-    LoginComponent
+    LoginComponent,
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

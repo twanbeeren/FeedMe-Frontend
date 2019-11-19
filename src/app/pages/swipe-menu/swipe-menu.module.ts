@@ -14,7 +14,7 @@ import { SwipePageComponent } from './swipe-page/swipe-page.component';
   ],
   exports: [
     DishcardComponent,
-    SwipePageComponent
+    SwipePageComponent,
   ]
 })
 export class SwipeMenuModule { }

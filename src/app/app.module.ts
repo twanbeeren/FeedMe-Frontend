@@ -49,7 +49,9 @@ import { LoginComponent } from './pages/login/login.component';
     DrinksMenuComponent,
     PreferencesComponent,
     TableNumberComponent,
-    OrderComponent
+    OrderComponent,
+    KitchenComponent,
+    LoginComponent
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

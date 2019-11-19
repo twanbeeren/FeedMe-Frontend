@@ -1,21 +1,41 @@
-<p>kitchen works!</p><br/>
-<mat-expansion-panel *ngFor="let order of orders$ | async" [expanded]="true">
+<p>kitchen works!</p>
+<br />
+<!-- Unfinished orders -->
+<mat-expansion-panel *ngIf="orders$ | async as orders" [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title translate>
+      <h4>Deze orders moeten nog bereid worden</h4>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
 
-  <mat-list *ngIf="order.done === false">
-    <h4>Deze orders moeten nog bereid worden</h4>
-    <mat-list-item *ngFor="let item of order.orderItems">
-      <p matLine>naam : {{item.item?.name}} amount : {{item.amount}}</p>
-      <button mat-icon-button color="primary" (click)="finishOrder(order.id)">
+  <mat-divider></mat-divider>
+  <mat-list *ngFor="let order of orders">
+    <ng-container *ngIf="order.done === false">
+      <mat-list-item *ngFor="let item of order.orderItems">
+        <p matLine>naam : {{ item.item?.name }} amount : {{ item.amount }}</p>
+        <button mat-icon-button color="primary" (click)="finishOrder(order.id)">
           <i class="material-icons">finish</i>
-      </button>
+        </button>
+      </mat-list-item>
+    </ng-container>
+  </mat-list>
+</mat-expansion-panel>
+
+<!-- Finished orders -->
+<mat-expansion-panel  *ngIf="orders$ | async as orders" [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title translate>
+      <h4>Deze orders zijn af</h4>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <mat-divider></mat-divider>
+
+  <mat-list *ngFor="let order of orders" class="card">
+    <ng-container *ngIf="order.done === true"></ng-container>
+    {{order.id}}
+    <mat-list-item *ngFor="let item of order.orderItems">
+      <p matLine>naam : {{ item.item?.name }} amount : {{ item.amount }}</p>
     </mat-list-item>
   </mat-list>
-
-  <mat-list *ngIf="order.done === true">
-      <h4>Deze orders zijn af</h4>
-      <mat-list-item *ngFor="let item of order.orderItems">
-        <p matLine>naam : {{item.item?.name}} amount : {{item.amount}}</p>
-      </mat-list-item>
-    </mat-list>
-
 </mat-expansion-panel>

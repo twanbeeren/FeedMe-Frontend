@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'regularmenu', component: RegularMenuComponent },
   { path: 'order', component: OrderComponent },
   { path: 'drinksmenu', component: DrinksMenuComponent },
-  { path: 'kitchen', component: KitchenComponent }
+  { path: 'kitchen', component: KitchenComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'preferences', component: PreferencesComponent, canActivate: [AuthGuard] },

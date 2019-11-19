@@ -1,10 +1,11 @@
 <div class="container">
   <!-- Card -->
-  <div class="columns is-mobile is-centered" style="height: 41.5rem;">
-    <div *ngIf="show" id="dishcard-box" class="column is-10">
+  <div class="dishcard-parent">
+    <div *ngIf="show" id="dishcard-box" >
       <app-dishcard class="dishcard" *ngFor="let item of menu; let i = index" [cardId]="i" [item]='item'></app-dishcard>
     </div>
   </div>
+
   <!-- Buttons -->
   <div class="columns is-mobile is-centered">
     <div class="column is-11 has-text-centered">

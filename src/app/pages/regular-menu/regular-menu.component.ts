@@ -32,10 +32,6 @@ export class RegularMenuComponent implements OnInit {
   }
 
   addToOrder(item: MenuItem) {
-    if (this.orderService.order == null) {
-      this.orderService.newOrder();
-    }
-
     if (this.orderService.addItem(item)) {
       this.showAddedToOrderSnackbar(item);
     } else { this.snackbar.open(this.translator.translate('snackbar.failed', { name: item.name })); }

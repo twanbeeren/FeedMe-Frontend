@@ -13,7 +13,6 @@ export class NavTopComponent implements OnInit {
   constructor(private translator: TranslatorService, private ticketservice: TicketService) { }
 
   ngOnInit() {
-    this.language = this.translator.getLanguage();
   }
 
   changeLanguage(language: string): void  {

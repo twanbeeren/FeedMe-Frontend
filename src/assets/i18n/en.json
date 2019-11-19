@@ -19,16 +19,19 @@
     },
     "preferences": {
         "language": "Language",
-        "filter_by": "Filter by"
+        "filter_by": "Filter by",
+        "filters": "Filters"
     },
     "tag": {
         "drink": "Drink",
+        "glutenfree": "Gluten Free",
+        "lactosefree": "Lactose Free",
         "meat": "Meat",
-        "milk": "Milk",
         "pasta": "Pasta",
         "vegan": "Vegan",
         "vegetarian": "Vegetarian"
     },
+    "total-price": "Total price: ",
     "snackbar": {
         "added": "Added {{name}}",
         "failed": "Failed to add {{name}}",
@@ -41,7 +44,6 @@
     },
     "nav-bottom": {
         "preferences": "Preferences",
-        "filters": "Filters",
         "traditional_menu": "Traditional Menu",
         "drinks": "Drinks",
         "swipe_menu": "Swipe Menu",

@@ -23,13 +23,14 @@ export class KitchenService {
             });
           });
         });
+
+        orders = orders.sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime());
         return orders;
       })
     );
   }
 
   setStatus(id: string, newStatus: string) {
-    console.log('update status' + id + ' : ' + newStatus);
-    this.db.collection('Orders').doc(id).update({ status : newStatus });
+    this.db.collection('Orders').doc(id).update({ status: newStatus });
   }
 }

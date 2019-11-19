@@ -16,7 +16,6 @@ export class KitchenComponent implements OnInit {
 
   ngOnInit() {
     this.orders$ = this.kitchenService.getOrders();
-    console.log('kitchencomponent oninit : ' + this.orders$);
   }
 
   setStatus(id: string, newStatus: string) {

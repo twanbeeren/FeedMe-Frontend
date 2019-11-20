@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { MenuItem } from '../classes/menu-item';
 import { Order } from '../classes/order';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -7,11 +7,19 @@ import { TicketService } from './ticket.service';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService {
+export class OrderService implements OnInit {
 
   order: Order;
 
   constructor(private db: AngularFirestore, private ticketService: TicketService) {
+  }
+
+  ngOnInit() {
+    this.ticketService.hasToReset$.subscribe(hasToReset => { if (hasToReset) { this.reset(); } });
+  }
+
+  reset() {
+    this.newOrder();
   }
 
   newOrder() {
@@ -52,7 +60,7 @@ export class OrderService {
     const data = JSON.parse(json);
 
     this.db.doc('Orders/' + this.order.id).set(data);
-    this.order = new Order();
+    this.newOrder();
   }
 
 }

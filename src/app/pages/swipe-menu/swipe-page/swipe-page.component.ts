@@ -40,7 +40,6 @@ export class SwipePageComponent implements OnInit {
     this.menuService.getMenu().subscribe(menu => {
       this.menu = menu;
       this.currentIndex = this.menu.length - 1; // set index to last added menuItem, last menuItem is 0 so we do '-1'
-      console.log(this.menu);
     });
   }
 
@@ -53,7 +52,7 @@ export class SwipePageComponent implements OnInit {
     card.classList.add('animated', 'slideOutRight', 'fast');
     const div = document.getElementById('dishcard-box');
     // tslint:disable-next-line: only-arrow-functions
-    setTimeout(function () { div.innerHTML = ''; }, 500);
+    setTimeout(function() { div.innerHTML = ''; }, 500);
   }
 
   closeModal() {
@@ -73,7 +72,7 @@ export class SwipePageComponent implements OnInit {
       this.menu.splice((this.currentIndex + 1), (this.menu.length - 1 - this.currentIndex));
       this.currentIndex = this.menu.length - 1;
       this.reload();
-      var div = document.getElementById("dishcard-box");
+      // const div = document.getElementById('dishcard-box');
       // if(div.innerHTML != ""){
       //   this.addAnimationForPreviousItems();
       // }
@@ -82,21 +81,14 @@ export class SwipePageComponent implements OnInit {
   }
 
   addAnimationForPreviousItems() {
-    console.log(this.menu);
-
-    for (var i = this.menu.length - 1; i >= this.swipedIndex; i--) {
-      console.log("dink " + i.toString());
+    for (let i = this.menu.length - 1; i >= this.swipedIndex; i--) {
       const card = document.getElementById(i.toString());
-      console.log(card);
       card.classList.add('animated', 'slideOutLeft', 'fast');
     }
   }
 
   dislikeItem() {
-    console.log('ItemDisliked');
-    console.log(this.currentIndex);
     const card = document.getElementById(this.currentIndex.toString());
-    console.log(card);
     card.classList.add('animated', 'slideOutLeft', 'fast');
     this.nextItem();
   }
@@ -111,7 +103,6 @@ export class SwipePageComponent implements OnInit {
 
   previousItem() {
     if (!this.isFirstItem()) {
-      console.log('ItemPrevious');
       this.currentIndex += 1;
       const card = document.getElementById(this.currentIndex.toString());
 

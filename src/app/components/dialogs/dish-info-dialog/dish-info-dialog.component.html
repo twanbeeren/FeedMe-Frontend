@@ -4,9 +4,10 @@
 </h3>
 <div mat-dialog-content>
   <img src="{{data.dish.imgUrl}}" alt="{{data.dish.name}}">
-  <p>{{data.dish.price | currency:'€'}}</p>
+  <p class="subtitle is-6" style="margin-top: 24px;">{{data.dish.price | currency:'€'}}</p>
   <mat-chip-list>
-    <mat-chip *ngFor="let tag of data.dish.tags" disableRipple="true" [selectable]="false" translate>tag.{{tag | lowercase}}</mat-chip>
+    <mat-chip *ngFor="let tag of data.dish.tags" disableRipple="true" [selectable]="false" translate>
+      tag.{{tag | lowercase}}</mat-chip>
   </mat-chip-list>
 </div>
 <div mat-dialog-actions align="end">

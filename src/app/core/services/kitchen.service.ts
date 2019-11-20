@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Order } from '../classes/order';
+import { throwToolbarMixedModesError } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'

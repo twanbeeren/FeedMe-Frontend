@@ -7,6 +7,7 @@ export class Order {
   orderItems: { item: any, amount: number }[] = [];
   status: string;
   ticketId: string;
+  tableNr: number;
 
   constructor() {
     this.time = new Date();

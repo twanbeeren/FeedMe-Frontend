@@ -27,10 +27,8 @@ export class TicketService {
   }
   subscribeToDbTicket() {
     this.db.doc<Ticket>('Tickets/' + this.ticket.id).valueChanges().subscribe(data => {
-      console.log('Changed:' + data);
-      let finished = data.finished;
-      if(finished){
-        console.log('Time to close ticket.');
+      const finished = data.finished;
+      if (finished) {
         this.reset();
       }
     });
@@ -46,20 +44,20 @@ export class TicketService {
     if (!this.ticket) {
       this.ticket = new Ticket();
       this.sendTicket();
-    }
-    else if (this.ticket) {
+    } else if (this.ticket) {
       this.ticket.addOrder(order);
       this.sendOrderRef(order);
     }
   }
+
   sendOrderRef(order: Order) {
     this.db.doc('Tickets/' + this.ticket.id).update({
       orderRefs: firebase.firestore.FieldValue.arrayUnion(order.id)
-  })
+    });
   }
 
   sendTicket() {
-    let dbTicket = new Ticket(null,this.ticket);
+    const dbTicket = new Ticket(null, this.ticket);
     dbTicket.setOrderRefs();
     delete dbTicket.orders;
 

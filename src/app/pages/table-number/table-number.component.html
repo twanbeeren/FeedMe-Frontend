@@ -1,18 +1,45 @@
-<div class="columns is-mobile is-centered">
-  <div class="column is-6 has-text-centered">
-    <form [formGroup]="tableForm" (ngSubmit)="setTableNumber(tableForm.value)" class="container">
-      <mat-form-field>
-        <input matInput placeholder="Table Number" class="left-align" formControlName="tableNumber" required>
-        <span matPrefix>#&nbsp;</span>
-        <mat-error *ngIf="hasError('tableNumber', 'pattern')">Not a number</mat-error>
-        <mat-error *ngIf="hasError('tableNumber', 'required')">This field is required</mat-error>
-      </mat-form-field>
-      <button mat-raised-button [disabled]="!tableForm.valid">Confirm</button>
-    </form>
+<div class="columns is-mobile is-centered is-multiline">
 
-    <button routerLink="/kitchen" color="accent" class="button-kitchen" mat-raised-button>
-      <i class="icon-kitchen material-icons">kitchen</i>
-      <p>Kitchen</p>
-    </button>
+  <div style="margin-top: 30px;" class="column is-12">
+    <p>To use FeedMe select wether you want to use this device as a menu...</p>
+  </div>
+
+  <!-- Table number -->
+  <div class="column is-12 has-text-centered">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Menu mode</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="tableForm" (ngSubmit)="setTableNumber(tableForm.value)" class="container">
+          <mat-form-field>
+            <input matInput placeholder="Table Number" class="left-align" formControlName="tableNumber" required>
+            <span matPrefix>#&nbsp;</span>
+            <mat-error *ngIf="hasError('tableNumber', 'pattern')">Not a number</mat-error>
+            <mat-error *ngIf="hasError('tableNumber', 'required')">This field is required</mat-error>
+          </mat-form-field>
+          <button mat-raised-button [disabled]="!tableForm.valid">Confirm</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div style="margin-top: 30px;" class="column is-12">
+    <p>...or as a kitchen service: </p>
+  </div>
+
+  <!-- Kitchen button -->
+  <div class="column is-12 has-text-centered">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Kitchen mode</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <button routerLink="/kitchen" color="accent" class="button-kitchen" mat-raised-button>
+          <i class="icon-kitchen material-icons">kitchen</i>
+          <p>Kitchen</p>
+        </button>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

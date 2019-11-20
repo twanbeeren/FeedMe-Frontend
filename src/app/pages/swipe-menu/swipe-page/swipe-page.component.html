@@ -1,9 +1,9 @@
-<app-filter-tags></app-filter-tags>
+<app-filter-tags class="filter"></app-filter-tags>
 
 <div class="container">
   <!-- Card -->
   <div class="dishcard-parent">
-    <div *ngIf="show" id="dishcard-box" >
+    <div *ngIf="show" id="dishcard-box">
       <app-dishcard class="dishcard" *ngFor="let item of menu; let i = index" [cardId]="i" [item]='item'></app-dishcard>
     </div>
   </div>

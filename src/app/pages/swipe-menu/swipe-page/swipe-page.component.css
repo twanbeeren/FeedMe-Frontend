@@ -57,6 +57,11 @@ button {
   transform: translate(-50%, -50%);
 }
 
+.filter-container {
+  margin-bottom: 0px !important; 
+  margin-top: 0px !important;
+}
+
 /* mat-icon {
   font-size: 46px;
 } */

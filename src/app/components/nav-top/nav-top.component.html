@@ -1,16 +1,19 @@
 <div class="columns is-mobile card">
   <div class="column has-text-left">
-    <p *ngIf="ticketservice.tableNumber" class="tablenumber" style="padding-left: 5%;" [translate]="'nav-top.tablenumber'" [translateParams]="{number:ticketservice.tableNumber}"></p>
+    <div style="padding-left: 5%; padding-top: 3%;">
+      <p *ngIf="ticketservice.tableNumber" class="tablenumber" [translate]="'nav-top.tablenumber'"
+        [translateParams]="{number:ticketservice.tableNumber}"></p>
+    </div>
   </div>
   <div class="column has-text-centered">
     <img src="./assets/images/logo.png" alt="" style="height: 100px;">
   </div>
   <div class="column has-text-right">
-    <button mat-icon-button (click)="changeLanguage('en')">
-      <span class="flag-icon flag-icon-gb"></span>
+    <button class="flag" mat-icon-button (click)="changeLanguage('en')">
+      <span class="flag-icon flag-icon-gb flag-icon-squared"></span>
     </button>
-    <button mat-icon-button (click)="changeLanguage('nl')">
-      <span class="flag-icon flag-icon-nl"></span>
+    <button class="flag" mat-icon-button (click)="changeLanguage('nl')">
+      <span class="flag-icon flag-icon-nl flag-icon-squared"></span>
     </button>
   </div>
 </div>

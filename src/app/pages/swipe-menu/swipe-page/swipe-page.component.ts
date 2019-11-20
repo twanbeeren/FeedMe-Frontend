@@ -3,6 +3,7 @@ import { MenuService } from 'src/app/core/services/menu.service';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 import { OrderService } from 'src/app/core/services/order.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-swipe-page',
@@ -16,20 +17,27 @@ export class SwipePageComponent implements OnInit {
   menuitem = null;
   currentIndex;
   swipedIndex;
-  allSwiped = false;
 
   latestLikedItem: MenuItem;
   isModalActive = false;
 
   public show = true;
 
+  // Tutorial mdoal
+  isTutorialActive = true;
+  phase = 0;
+
   constructor(
     private menuService: MenuService,
-    private orderService: OrderService) {
+    private orderService: OrderService,
+    private router: Router) {
   }
 
   ngOnInit() {
     this.getMenu();
+    if (this.menuService.hasHadTutorial) {
+      this.phase = 4;
+    }
   }
 
   getMenu() {
@@ -52,7 +60,7 @@ export class SwipePageComponent implements OnInit {
     const card = document.getElementById(this.currentIndex.toString());
     const div = document.getElementById('dishcard-box');
     // tslint:disable-next-line: only-arrow-functions
-    setTimeout(function() { div.innerHTML = ''; }, 500);
+    setTimeout(function () { div.innerHTML = ''; }, 500);
   }
 
   closeModal() {
@@ -64,9 +72,10 @@ export class SwipePageComponent implements OnInit {
   unmatch() {
     this.orderService.removeItem(this.latestLikedItem);
     this.getMenuForUnmatch();
-  }  
+  }
 
   getMenuForUnmatch() {
+    //Werkt niet meer...
     this.menuService.getMenu().subscribe(menu => {
       this.menu = menu;
       this.menu.splice((this.currentIndex + 1), (this.menu.length - 1 - this.currentIndex));
@@ -76,34 +85,32 @@ export class SwipePageComponent implements OnInit {
     });
   }
 
-  addAnimationForPreviousItems(){  
-    for(var i = this.menu.length-1; i >= this.swipedIndex; i--){
-      const card = document.getElementById(i.toString());
-      card.classList.add('animated', 'slideOutLeft', 'fast');
-    }
+  dislikeOnClick(){
+    const card = document.getElementById(this.currentIndex.toString());
+    card.classList.add('animated', 'slideOutLeft', 'fast');
+    this.dislikeItem();
   }
 
-  dislikeItem() {
-    const card = document.getElementById(this.currentIndex.toString());
-    // card.classList.add('animated', 'slideOutLeft', 'fast');
+  dislikeItem() {  
+    this.dislikedItems.push(this.menu[this.currentIndex]);
+    this.menu.splice(this.currentIndex);  
     this.nextItem();
-    this.changeDragability();
   }
 
   nextItem() {
     if (!this.isLastItem()) {
       this.currentIndex -= 1;
+      this.changeDragability();
     } else {
-      this.allSwiped = true;
+      this.router.navigate(['/regularmenu']);
     }
   }
 
   previousItem() {
     if (!this.isFirstItem()) {
       this.currentIndex += 1;
-      const card = document.getElementById(this.currentIndex.toString());
-      this.menu.push(this.dislikedItems[0]);
-      this.dislikedItems.splice(0, 1);
+      this.menu.push(this.dislikedItems[this.dislikedItems.length - 1]);
+      this.dislikedItems.splice(this.dislikedItems.length - 1, 1);
       this.changeDragability();
     } else {
       // TODO Eventuele melding
@@ -128,12 +135,6 @@ export class SwipePageComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       this.dislikeItem();
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
-                        console.log(this.dislikedItems);
-                        console.log(this.menu);
     }
   }
 
@@ -157,6 +158,13 @@ export class SwipePageComponent implements OnInit {
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
+    }
+  }
+
+  nextPhase() {
+    this.phase++;
+    if (this.phase >= 4) {
+      this.menuService.hasHadTutorial = true;
     }
   }
 }

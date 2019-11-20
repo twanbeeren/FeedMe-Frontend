@@ -4,6 +4,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DishcardComponent } from './swipe-page/dishcard/dishcard.component';
 import { CustomMaterialModule } from 'src/app/core/material.module';
 import { SwipePageComponent } from './swipe-page/swipe-page.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,11 +13,12 @@ import { SwipePageComponent } from './swipe-page/swipe-page.component';
   imports: [
     CommonModule,
     CustomMaterialModule,
-    DragDropModule
+    DragDropModule,
+    RouterModule
   ],
   exports: [
     DishcardComponent,
-    SwipePageComponent
+    SwipePageComponent,
   ]
 })
 export class SwipeMenuModule { }

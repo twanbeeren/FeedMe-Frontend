@@ -15,7 +15,13 @@
 
           <!-- Title -->
           <div class="level-item">
-            <p class="subtitle is-5">{{orderItem.item.name}}</p>
+            <!-- Not every item has a volume-->
+            <p class="subtitle is-5">{{orderItem.item.name}} {{orderItem.item.volume}}</p>
+          </div>
+
+          <!-- Price -->
+          <div class="level-item">
+            <p>{{orderItem.item.price | currency:'€'}}</p>
           </div>
         </div>
 
@@ -52,6 +58,9 @@
     <!-- Order button -->
     <nav class="level is-mobile">
       <div class="level-left">
+        <p class="level-item">
+          {{'total-price' | translate}}{{getTotalPrice() | currency:'€'}}
+        </p>
       </div>
 
       <div class="level-right">

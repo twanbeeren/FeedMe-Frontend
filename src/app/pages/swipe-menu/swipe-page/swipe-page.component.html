@@ -1,13 +1,12 @@
 <div class="container">
-  <div id="disliked-box" style="position: absolute; padding: 25em 0; background: #ff4d4d; width: 3em; top: 0.25em;" cdkDropList [cdkDropListData]="dislikedItems" cdkDropListConnectedTo="dishcard-box" (cdkDropListDropped)="dislikeDrop($event)"></div>
+  <div id="disliked-box" style="position: absolute; padding: 25em 0; background: #ff4d4d; width: 5em; top: 0.75em;" cdkDropList [cdkDropListData]="dislikedItems" cdkDropListConnectedTo="dishcard-box" (cdkDropListDropped)="dislikeDrop($event)"></div>
   <!-- Card -->
-  <div class="columns is-mobile is-centered" style="height: 41.5rem;">
-    <div *ngIf="show" id="dishcard-box" class="column is-10" cdkDropList [cdkDropListData]="menu" cdkDropListConnectedTo="disliked-box" (cdkDropListDropped)="drop($event)">
+  <div class="dishcard-parent">
+    <div *ngIf="show" id="dishcard-box" cdkDropList [cdkDropListData]="menu" cdkDropListConnectedTo="liked-box" (cdkDropListDropped)="drop($event)">
       <app-dishcard class="dishcard" *ngFor="let item of menu; let i = index" [cardId]="i" [item]='item' cdkDrag [cdkDragDisabled]="item.dragDisabled"></app-dishcard>
-    </div>
-    
+    </div>    
   </div>
-  <div id="liked-box" style="position: relative; padding: 25em 0; background: #a3ff4d; width: 3em; float: right; top: -42em;" cdkDropList [cdkDropListData]="likedItems" cdkDropListConnectedTo="dishcard-box" (cdkDropListDropped)="likeDrop($event)"></div>
+  <div id="liked-box" style="position: relative; z-index: -999; padding: 25em 0; background: #a3ff4d; width: 5em; float: right; top: -41.5em;" cdkDropList [cdkDropListData]="likedItems" cdkDropListConnectedTo="dishcard-box" (cdkDropListDropped)="likeDrop($event)"></div>
   
   <!-- Buttons -->
   <div class="columns is-mobile is-centered">
@@ -15,7 +14,7 @@
       <button (click)="previousItem()" mat-fab aria-label="Return" class="return-button">
         <mat-icon class="undo-icon">undo</mat-icon>
       </button>
-      <button (click)="dislikeItem()" mat-fab aria-label="Dislike" class="dislike-button">
+      <button (click)="dislikeOnClick()" mat-fab aria-label="Dislike" class="dislike-button">
         <mat-icon>close</mat-icon>
       </button>
       <button (click)="likeItem()" mat-fab aria-label="Like" class="like-button">
@@ -27,7 +26,7 @@
   
 </div>
 
-<!-- Modal -->
+<!-- Match Modal -->
 <div *ngIf="latestLikedItem" class="modal" [ngClass]="{'is-active': isModalActive}">
   <div class="modal-background"></div>
   <div class="modal-content has-text-centered">
@@ -37,10 +36,101 @@
       <img src="{{latestLikedItem.imgUrl}}" />
     </div>
     <div class="modal-button-container">
-      <button class="modal-button" mat-raised-button color="primary" (click)="closeModal()">Continue swiping</button>
+      <button class="modal-button" mat-raised-button color="primary" (click)="closeModal()">Continue ordering</button>
     </div>
     <div class="modal-button-container">
-      <button class="modal-button" mat-raised-button color="warn" (click)="unmatch()">Unmatch</button>
+      <button class="modal-button" mat-raised-button color="warn" (click)="unmatch()">Unmatch (remove from
+        order)</button>
+    </div>
+    <hr style="width: 50%; margin: auto;">
+    <div class="modal-button-container">
+      <button routerLink="/order" class="modal-button" mat-raised-button color="primary">To my order</button>
     </div>
   </div>
 </div>
+
+<!-- Tutorial Modal -->
+<a (click)="nextPhase()" *ngIf="phase < 4">
+  <div class="modal" [ngClass]="{'is-active': isTutorialActive}">
+    <div class="modal-background"></div>
+
+    <ng-container [ngSwitch]="phase">
+
+      <!-- Welcome -->
+      <div *ngSwitchCase="0">
+        <span style="width: 90%;">
+          <div class="modal-content has-text-centered">
+            <p class="title is-1" style="color: white;">Welcome!</p>
+            <p class="subtitle" style="color: white;">In this restaurant we use a menu that is a bit different from
+              other
+              restaurants.</p>
+            <p class="subtitle" style="color: grey;">Tap to continue...</p>
+          </div>
+        </span>
+      </div>
+
+      <!-- Swipe right -->
+      <div *ngSwitchCase="1" style="width: 90%; margin-bottom: 75%;">
+        <span>
+          <div class="modal-content">
+            <div class="columns is-mobile">
+              <div class="column has-text-right">
+              </div>
+              <div class="column has-text-right">
+              </div>
+              <div class="column is-5 has-text-right">
+                <p class="subtitle is-5" style="color: white;">Swipe right if you see something you like</p>
+                <img src="./assets/images/swipe.svg" alt="Swipe icon" style="fill: white !important; width: 50%;">
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+
+      <!-- Swipe left -->
+      <div *ngSwitchCase="2" style="width: 90%; margin-bottom: 75%;">
+        <span>
+          <div class="modal-content">
+            <div class="columns is-mobile">
+              <div class="column is-5 has-text-left">
+                <p class="subtitle is-5" style="color: white;">Swipe left if you see something you don't like</p>
+                <img src="./assets/images/swipe.svg" alt="Swipe icon"
+                  style="width: 50%; -webkit-transform: scaleX(-1); transform: scaleX(-1);">
+              </div>
+              <div class="column has-text-right">
+              </div>
+              <div class="column has-text-right">
+
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+
+      <!-- Mistake? -->
+      <div *ngSwitchCase="3" style="width: 90%; margin-top: 50%;">
+        <span>
+          <div class="modal-content">
+            <div class="columns is-mobile">
+              <div class="column is-4 has-text-left">
+                <p class="subtitle is-5" style="color: white;">Accidentally disliked something? Fix your mistake by
+                  clicking here.</p>
+                <div class="has-text-right">
+                  <i class="material-icons" style="color: white; font-size: 72px;">
+                    arrow_downward
+                  </i>
+                </div>
+              </div>
+              <div class="column has-text-right">
+              </div>
+              <div class="column has-text-right">
+
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+    </ng-container>
+
+  </div>
+</a>

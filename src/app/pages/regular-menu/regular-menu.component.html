@@ -1,3 +1,6 @@
+<mat-divider></mat-divider>
+<app-filter-tags></app-filter-tags>
+
 <mat-expansion-panel *ngFor="let course of courses$ | async | sortCourses" [expanded]="true">    
     <mat-expansion-panel-header>
         <mat-panel-title translate>

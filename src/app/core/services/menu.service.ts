@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { MenuItem } from '../classes/menu-item';
-import { MENU, COURSES } from './mock-menu';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Course } from '../classes/course';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -14,7 +12,8 @@ import { filter } from 'minimatch';
 export class MenuService {
 
   private courses: Course[] = [];
-  filterTags: string[] = []; // Temp locations
+  hasHadTutorial = false;
+  toggledTags: string[] = []; // Temp locations
 
   constructor(private db: AngularFirestore) {
     this.setCourses();

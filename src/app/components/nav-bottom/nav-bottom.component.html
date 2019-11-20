@@ -1,8 +1,8 @@
 <nav class="level navbar is-fixed-bottom card is-mobile">
   <!-- Preferences -->
-  <div class="level-item">
+  <!-- <div class="level-item">
     <button routerLink="/preferences" mat-button class="menu-item">
-      <i *ngIf="menuService.filterTags.length > 0; else noTags" matBadge="{{menuService.filterTags.length}}" matBadgeColor="accent" class="material-icons">
+      <i *ngIf="menuService.toggledTags.length > 0; else noTags" matBadge="{{menuService.toggledTags.length}}" matBadgeColor="accent" class="material-icons">
           filter_list
       </i>
       <ng-template #noTags class="material-icons">
@@ -10,7 +10,7 @@
       </ng-template>
       <p translate>nav-bottom.filters</p>
     </button>
-  </div>
+  </div> -->
 
   <!-- Traditional menu -->
   <div class="level-item">
@@ -45,7 +45,7 @@
   <!-- Order -->
   <div class="level-item">
     <button routerLink="/order" mat-button class="menu-item">
-      <i *ngIf="orderService.order.orderItems.length > 0; else noItems" matBadge="{{orderService.order.orderItems.length}}" matBadgeColor="primary" class="material-icons">
+      <i *ngIf="orderService.order && orderService.order.orderItems.length > 0; else noItems" matBadge="{{orderService.order.orderItems.length}}" matBadgeColor="primary" class="material-icons">
         send
       </i>
       <ng-template #noItems class="material-icons">

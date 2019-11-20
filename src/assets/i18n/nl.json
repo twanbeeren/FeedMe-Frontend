@@ -19,25 +19,31 @@
     },
     "preferences": {
         "language": "Taal",
-        "filter_by": "Filteren op"
+        "filter_by": "Filteren op",
+        "filters": "Filters"
     },
     "tag": {
         "drink": "Drinken",
+        "glutenfree": "Glutenvrij",
+        "lactosefree": "Lactosevrij",
         "meat": "Vlees",
-        "milk": "Melk",
         "pasta": "Pasta",
         "vegan": "Vegan",
         "vegetarian": "Vegetarisch"
     },
+    "total-price": "Totaalprijs: ",
     "snackbar": {
         "added": "{{name}} toegevoegd",
         "failed": "{{name}} toevoegen gefaald",
         "removed": "{{name}} verwijderd",
-        "undo": "Ongedaan maken"
+        "undo": "Ongedaan maken",
+        "login_failed": "Incorrecte inloggegevens"
+    },
+    "nav-top": {
+        "tablenumber": "Tafelnummer"
     },
     "nav-bottom": {
         "preferences": "Voorkeuren",
-        "filters": "Filters",
         "traditional_menu": "Traditioneel Menu",
         "drinks": "Drinken",
         "swipe_menu": "Swipe Menu",

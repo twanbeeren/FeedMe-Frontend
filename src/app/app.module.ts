@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CustomMaterialModule } from './core/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { I18nComponent } from './components/i18n/i18n.component';
@@ -15,20 +15,23 @@ import { RegularMenuComponent } from './pages/regular-menu/regular-menu.componen
 import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
 import { NavTopComponent } from './components/nav-top/nav-top.component';
 import { NavBottomComponent } from './components/nav-bottom/nav-bottom.component';
+import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
+import { TableNumberComponent } from './pages/table-number/table-number.component';
+import { OrderComponent } from './pages/order/order.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { FilterByCoursePipe } from 'src/app/core/pipes/filter-by-course.pipe';
+import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
+import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
 import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/dish-info-dialog.component';
+import { FilterTagsComponent } from './components/filter-tags/filter-tags.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
-import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
-import { PreferencesComponent } from './pages/preferences/preferences.component';
-import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
-import { OrderComponent } from './pages/order/order.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +46,10 @@ import { environment } from '../environments/environment';
     NavTopComponent,
     NavBottomComponent,
     DrinksMenuComponent,
-    PreferencesComponent,
-    OrderComponent
+    TableNumberComponent,
+    OrderComponent,
+    FilterTagsComponent,
+    LoginComponent,
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [
@@ -52,7 +57,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-
+    AngularFireAuthModule,
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -65,6 +70,7 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     CustomMaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     SwipeMenuModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],

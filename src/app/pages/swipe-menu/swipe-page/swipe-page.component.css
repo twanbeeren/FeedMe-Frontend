@@ -48,6 +48,8 @@ button {
 .dishcard-parent {
   height: 66vh;
   position: relative;
+  width: 86%;
+  margin: auto;
 }
 
 .dishcard {

@@ -32,6 +32,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './pages/login/login.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { LoginComponent } from './pages/login/login.component';
     ReactiveFormsModule,
     SwipeMenuModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent],

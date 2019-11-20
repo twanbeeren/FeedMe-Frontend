@@ -80,6 +80,7 @@ export class SwipePageComponent implements OnInit {
       this.menu = menu;
       this.menu.splice((this.currentIndex + 1), (this.menu.length - 1 - this.currentIndex));
       this.currentIndex = this.menu.length - 1;
+      this.changeDragability();
       this.reload();
       this.isModalActive = false;
     });

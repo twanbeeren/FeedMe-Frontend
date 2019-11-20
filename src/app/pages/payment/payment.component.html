@@ -1,0 +1,6 @@
+<mat-list *ngFor="let order of ticketService.ticket.orders">
+    <mat-list-item *ngFor="let orderItem of order.orderItems">
+        <p matLine>Naam : {{ item.item?.name }}</p>
+        <p matLine>Amount : {{ item.amount }}</p>
+    </mat-list-item>
+</mat-list>>

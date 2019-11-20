@@ -10,17 +10,27 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class TicketService {
+
+  private _tableNumber = new BehaviorSubject<number>(null);
+  tableNumber = this._tableNumber.asObservable();
+
   ticket: Ticket;
-  tableNumber: number;
+  // tableNumber: number;
   private hasToResetSubject = new BehaviorSubject<boolean>(false);
   hasToReset$ = this.hasToResetSubject.asObservable();
 
-  constructor(private db: AngularFirestore, private router: Router) { }
+  constructor(private db: AngularFirestore, private router: Router) {
+    this.tableNumber.subscribe(tableNumber => {
+      if (!tableNumber) {
+        this.router.navigate(['/tablenumber']);
+      }
+    })
+  }
 
   setTableNumber(tableNr: number) {
-    this.tableNumber = tableNr;
+    this._tableNumber.next(tableNr);
     if (!this.ticket) {
-      this.ticket = new Ticket(this.tableNumber);
+      this.ticket = new Ticket(this._tableNumber.value);
       this.sendTicket();
       this.subscribeToDbTicket();
     }
@@ -37,7 +47,7 @@ export class TicketService {
     this.ticket = null;
     this.tableNumber = null;
     this.hasToResetSubject.next(true);
-    this.router.navigate(['/home']);
+    this.router.navigate(['/tablenumber']);
   }
 
   addOrder(order: Order) {

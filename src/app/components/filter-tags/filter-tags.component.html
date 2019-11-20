@@ -1,7 +1,7 @@
 <mat-expansion-panel [expanded]="true">    
     <mat-expansion-panel-header>
-        <mat-panel-title translate>
-            preferences.filters
+        <mat-panel-title>
+            {{'preferences.filters' | translate}}
         </mat-panel-title>
     </mat-expansion-panel-header>
     
@@ -9,9 +9,8 @@
         <mat-chip *ngFor="let tag of filterTags"
             [ngStyle]="{'background-color': isFilteredTag(tag)? 'pink' : ''}"
             [selectable]="false"
-            (click)="toggleFilter(tag)"
-            translate>
-            tag.{{tag | lowercase}}
+            (click)="toggleFilter(tag)">
+            {{('tag.' + tag) | lowercase | translate}}
             <i class="material-icons" *ngIf="tag=='Vegan' || tag=='Vegetarian'" style="color: green">eco</i>
         </mat-chip>
     </mat-chip-list>

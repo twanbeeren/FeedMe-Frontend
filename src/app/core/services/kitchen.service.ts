@@ -30,11 +30,8 @@ export class KitchenService {
   }
 
   getTickets(): Observable<Ticket[]> {
-
     return this.db.collection<Ticket>('Tickets').valueChanges().pipe(
-
       map(tickets => {
-
         tickets.forEach(ticket => {
           ticket.orderRefs.forEach(async orderRef => {
             let receivedOrder = await this.getOrder(orderRef);
@@ -44,7 +41,7 @@ export class KitchenService {
             });
           });
         });
-        
+
         return tickets;
       })
     );

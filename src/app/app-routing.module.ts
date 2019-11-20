@@ -10,17 +10,19 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { TableNumberComponent } from './pages/table-number/table-number.component';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { KitchenGuard } from './core/guards/kitchen.guard';
+import { TableGuard } from './core/guards/table.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'tablenumber', component: TableNumberComponent, canActivate: [AuthGuard] },
-  { path: 'regularmenu', component: RegularMenuComponent, canActivate: [AuthGuard] },
-  { path: 'drinksmenu', component: DrinksMenuComponent, canActivate: [AuthGuard] },
-  { path: 'swipemenu', component: SwipePageComponent, canActivate: [AuthGuard] },
-  { path: 'order', component: OrderComponent, canActivate: [AuthGuard] },
-  { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
-  { path: 'kitchen', component: KitchenComponent, canActivate: [AuthGuard] },
+  { path: 'regularmenu', component: RegularMenuComponent, canActivate: [AuthGuard, TableGuard] },
+  { path: 'drinksmenu', component: DrinksMenuComponent, canActivate: [AuthGuard, TableGuard] },
+  { path: 'swipemenu', component: SwipePageComponent, canActivate: [AuthGuard, TableGuard] },
+  { path: 'order', component: OrderComponent, canActivate: [AuthGuard, TableGuard] },
+  { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard, TableGuard] },
+  { path: 'kitchen', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
 ];
 
 @NgModule({

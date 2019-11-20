@@ -20,11 +20,6 @@ export class TicketService {
   hasToReset$ = this.hasToResetSubject.asObservable();
 
   constructor(private db: AngularFirestore, private router: Router) {
-    this.tableNumber.subscribe(tableNumber => {
-      if (!tableNumber) {
-        this.router.navigate(['/tablenumber']);
-      }
-    })
   }
 
   setTableNumber(tableNr: number) {

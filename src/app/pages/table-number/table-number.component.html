@@ -10,7 +10,7 @@
       <button mat-raised-button [disabled]="!tableForm.valid">Confirm</button>
     </form>
 
-    <button routerLink="/kitchen" color="accent" class="button-kitchen" mat-raised-button>
+    <button color="accent" class="button-kitchen" mat-raised-button (click)="goToKitchen()">
       <i class="icon-kitchen material-icons">kitchen</i>
       <p>Kitchen</p>
     </button>

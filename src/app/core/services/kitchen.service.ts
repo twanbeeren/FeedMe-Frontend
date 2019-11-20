@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Order } from '../classes/order';
 import { throwToolbarMixedModesError } from '@angular/material';
+import { Ticket } from '../classes/ticket';
+import { MenuItem } from '../classes/menu-item';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +19,7 @@ export class KitchenService {
       map(orders => {
         orders.forEach(order => {
           order.orderItems.forEach(async item => {
-
-            const ref = this.db.collection('MenuItems').doc(item.item);
-            await ref.get().toPromise().then(receivedItem => {
-              item.item = receivedItem.data();
-            });
+            item.item = await this.getItem(item.item);
           });
         });
 
@@ -29,6 +27,41 @@ export class KitchenService {
         return orders;
       })
     );
+  }
+
+  getTickets(): Observable<Ticket[]> {
+
+    return this.db.collection<Ticket>('Tickets').valueChanges().pipe(
+
+      map(tickets => {
+
+        tickets.forEach(ticket => {
+          ticket.orderRefs.forEach(async orderRef => {
+            let receivedOrder = await this.getOrder(orderRef);
+            receivedOrder.orderItems.forEach(async orderItem => {
+              let receivedItem = await this.getItem(orderItem.item);
+              receivedOrder.addItem(receivedItem);
+            });
+          });
+        });
+        
+        return tickets;
+      })
+    );
+  }
+
+  async getItem(id: string): Promise<MenuItem> {
+    const ref = this.db.collection('MenuItems').doc(id);
+    return await ref.get().toPromise().then(receivedItem => {
+      return receivedItem.data() as MenuItem;
+    });
+  }
+
+  async getOrder(id: string): Promise<Order> {
+    const ref = this.db.collection('Orders').doc(id);
+    return await ref.get().toPromise().then(receivedItem => {
+      return receivedItem.data() as Order;
+    });
   }
 
   setStatus(id: string, newStatus: string) {

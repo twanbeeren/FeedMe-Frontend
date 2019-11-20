@@ -44,7 +44,9 @@ export class TicketService {
     if (!this.ticket) {
       this.ticket = new Ticket();
       this.sendTicket();
-    } else if (this.ticket) {
+    }
+    else if (this.ticket) {
+      order.tableNr = this.ticket.tableNr;
       this.ticket.addOrder(order);
       this.sendOrderRef(order);
     }

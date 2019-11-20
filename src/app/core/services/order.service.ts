@@ -50,7 +50,7 @@ export class OrderService implements OnInit {
 
   sendOrder() {
 
-    this.order.done = false;
+    this.order.status = 'Sent';
     this.ticketService.addOrder(this.order);
     this.order.orderItems.forEach(orderItem => {
       orderItem.item = orderItem.item.id;

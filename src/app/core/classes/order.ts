@@ -5,7 +5,7 @@ export class Order {
   id: string;
   time: Date;
   orderItems: { item: any, amount: number }[] = [];
-  done: boolean;
+  status: string;
   ticketId: string;
 
   constructor() {

@@ -1,11 +1,35 @@
 button {
-    margin: 20px;
+  margin: 20px;
 }
 
 .container-kitchen {
-    margin: 35px;
+  display: table;
+  width: 100%;
+  padding: 35px;
+  overflow: hidden;
 }
 
 .mat-expansion-panel {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+#wrapper {
+  width: 500px;
+  border: 1px solid black;
+  overflow: hidden; /* add this to contain floated children */
+}
+
+.first {
+  /*width: 50%;
+  height: 100%;
+  float:left; /* add this */
+  border: 2px solid red;
+  display: table-cell;
+}
+.second {
+  /*width: 50%;*/
+  /*height: 100%;*/
+  border: 2px solid green;
+  display: table-cell;
+  /*float: left; /* add this */
 }

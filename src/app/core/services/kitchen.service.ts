@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Order } from '../classes/order';
+import { throwToolbarMixedModesError } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class KitchenService {
     return this.db.collection<Order>('Orders').valueChanges().pipe(
       map(orders => {
         orders.forEach(order => {
+          this.playNewOrderSound(order);
           order.orderItems.forEach(async item => {
-
             const ref = this.db.collection('MenuItems').doc(item.item);
             await ref.get().toPromise().then(receivedItem => {
               item.item = receivedItem.data();
@@ -32,5 +33,14 @@ export class KitchenService {
 
   setStatus(id: string, newStatus: string) {
     this.db.collection('Orders').doc(id).update({ status: newStatus });
+  }
+
+  playNewOrderSound(order: Order) {
+    if(order.status === 'Sent') {
+      const audio = new Audio();
+      audio.src = '../../../assets/sounds/light.mp3';
+      audio.load();
+      audio.play();
+    }
   }
 }

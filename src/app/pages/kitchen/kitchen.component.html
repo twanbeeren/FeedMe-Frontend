@@ -15,7 +15,7 @@
         <ng-container *ngIf="order.status === 'Sent'">
           <mat-list class="card" class="setHeight">
             <p style="color: #c9c9c9;">Order id: {{ order.id }}</p>
-            <p>Date: {{order.time | date:'short'}}</p>
+            <p>Date: {{order.time | date:'short'}} TableNr: {{order.tableNr}}</p>
             <hr>
             <mat-list-item *ngFor="let item of order.orderItems">
               <p matLine>Naam : {{ item.item?.name }}</p>
@@ -44,7 +44,7 @@
         <ng-container *ngIf="order.status === 'Done'">
           <mat-list class="card" class="setHeight">
             <p style="color: #c9c9c9;">Order id: {{ order.id }}</p>
-            <p>Date: {{order.time | date:'short'}}</p>
+            <p>Date: {{order.time | date:'short'}} TableNr: {{order.tableNr}}</p>
             <hr>
             <mat-list-item *ngFor="let item of order.orderItems">
               <p matLine>Naam : {{ item.item?.name }}</p>

@@ -1,0 +1,9 @@
+.mat-dialog-content {
+    overflow: hidden;
+}
+
+img {
+    max-width: 410px;
+    display: block;
+    margin: auto;
+}

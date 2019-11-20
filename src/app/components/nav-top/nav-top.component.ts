@@ -10,12 +10,12 @@ import { TicketService } from 'src/app/core/services/ticket.service';
 export class NavTopComponent implements OnInit {
   language: string;
 
-  constructor(private translator: TranslatorService, private ticketservice: TicketService) { }
+  constructor(private translator: TranslatorService, public ticketservice: TicketService) { }
 
   ngOnInit() {
   }
 
-  changeLanguage(language: string): void  {
+  changeLanguage(language: string): void {
     this.translator.setLanguage(language);
   }
 }

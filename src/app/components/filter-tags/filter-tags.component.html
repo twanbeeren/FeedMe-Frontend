@@ -1,10 +1,14 @@
-<mat-expansion-panel [expanded]="true">    
+<div class="filter-container">
+  <mat-expansion-panel [expanded]="false" hideToggle>
     <mat-expansion-panel-header>
-        <mat-panel-title>
-            {{'preferences.filters' | translate}}
-        </mat-panel-title>
+      <i class="material-icons">
+        filter_list
+      </i>
+      <mat-panel-title>
+          {{'preferences.filters' | translate}}
+      </mat-panel-title>
     </mat-expansion-panel-header>
-    
+
     <mat-chip-list #chipList>
         <mat-chip *ngFor="let tag of filterTags"
             [ngStyle]="{'background-color': isFilteredTag(tag)? 'pink' : ''}"
@@ -14,4 +18,5 @@
             <i class="material-icons" *ngIf="tag=='Vegan' || tag=='Vegetarian'" style="color: green">eco</i>
         </mat-chip>
     </mat-chip-list>
-</mat-expansion-panel>
+  </mat-expansion-panel>
+</div>

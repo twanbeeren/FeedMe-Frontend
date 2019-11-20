@@ -18,4 +18,5 @@ img {
     min-height: 347px;
     max-width: 447px;
     max-height: 347px;
+    object-fit: cover;
 }

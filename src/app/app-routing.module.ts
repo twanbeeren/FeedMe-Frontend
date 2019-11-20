@@ -11,20 +11,14 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { TableNumberComponent } from './pages/table-number/table-number.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'swipemenu', component: SwipePageComponent },
-  { path: 'regularmenu', component: RegularMenuComponent },
-  { path: 'order', component: OrderComponent },
-  { path: 'drinksmenu', component: DrinksMenuComponent },
-  { path: 'kitchen', component: KitchenComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'tablenumber', component: TableNumberComponent, canActivate: [AuthGuard] },
   { path: 'swipemenu', component: SwipePageComponent, canActivate: [AuthGuard] },
   { path: 'regularmenu', component: RegularMenuComponent, canActivate: [AuthGuard] },
   { path: 'order', component: OrderComponent, canActivate: [AuthGuard] },
-  { path: 'drinksmenu', component: DrinksMenuComponent, canActivate: [AuthGuard] }
+  { path: 'drinksmenu', component: DrinksMenuComponent, canActivate: [AuthGuard] },
+  { path: 'kitchen', component: KitchenComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

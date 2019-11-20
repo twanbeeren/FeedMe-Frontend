@@ -42,7 +42,7 @@ export class OrderService {
 
   sendOrder() {
 
-    this.order.status = 'Sent';
+    this.order.done = false;
     this.ticketService.addOrder(this.order);
     this.order.orderItems.forEach(orderItem => {
       orderItem.item = orderItem.item.id;

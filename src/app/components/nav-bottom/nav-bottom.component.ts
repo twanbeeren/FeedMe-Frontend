@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/core/services/order.service';
+import { MenuService } from 'src/app/core/services/menu.service';
 
 @Component({
   selector: 'app-nav-bottom',
@@ -8,14 +9,10 @@ import { OrderService } from 'src/app/core/services/order.service';
 })
 export class NavBottomComponent implements OnInit {
 
-  
-
-  constructor(private orderService: OrderService) { }
+  constructor(
+    public orderService: OrderService,
+    public menuService: MenuService) { }
 
   ngOnInit() {
-  }
-
-  itemsInOrder(): string {
-    return this.orderService.getItemCount().toString();
   }
 }

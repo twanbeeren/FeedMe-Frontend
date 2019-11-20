@@ -6,25 +6,33 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CustomMaterialModule } from './core/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { I18nComponent } from './components/i18n/i18n.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RegularMenuComponent } from './pages/regular-menu/regular-menu.component';
-import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
 import { NavTopComponent } from './components/nav-top/nav-top.component';
 import { NavBottomComponent } from './components/nav-bottom/nav-bottom.component';
+import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
+import { TableNumberComponent } from './pages/table-number/table-number.component';
+import { OrderComponent } from './pages/order/order.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.component';
 
 import { FilterByCoursePipe } from 'src/app/core/pipes/filter-by-course.pipe';
+import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
+import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
 import { DishInfoDialogComponent } from './components/dialogs/dish-info-dialog/dish-info-dialog.component';
 
-import { environment } from 'src/environments/environment';
+import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
+import { FilterTagsModule } from './components/filter-tags/filter-tags.module';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +41,15 @@ import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
     HomeComponent,
     RegularMenuComponent,
     FilterByCoursePipe,
+    FilterByTagsPipe,
     SortCoursesPipe,
     DishInfoDialogComponent,
     NavTopComponent,
     NavBottomComponent,
+    DrinksMenuComponent,
+    TableNumberComponent,
+    OrderComponent,
+    LoginComponent,
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [
@@ -44,7 +57,7 @@ import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-
+    AngularFireAuthModule,
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -57,10 +70,13 @@ import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
     BrowserAnimationsModule,
     CustomMaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     SwipeMenuModule,
+    FilterTagsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
 

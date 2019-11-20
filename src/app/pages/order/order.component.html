@@ -1,0 +1,82 @@
+<div *ngIf="orderService.order as order" class="main-container">
+  <ng-container *ngIf="order.orderItems.length > 0; else empty">
+    <!-- Ng for order items -->
+    <div *ngFor="let orderItem of order.orderItems" class="order-container">
+      <nav class="level is-mobile">
+        <!-- Left side -->
+        <div class="level-left">
+
+          <!-- Image -->
+          <div class="level-item">
+            <div class="circular-landscape">
+              <img src="{{orderItem.item.imgUrl}}" />
+            </div>
+          </div>
+
+          <!-- Title -->
+          <div class="level-item">
+            <!-- Not every item has a volume-->
+            <p class="subtitle is-5">{{orderItem.item.name}} {{orderItem.item.volume}}</p>
+          </div>
+
+          <!-- Price -->
+          <div class="level-item">
+            <p>{{orderItem.item.price | currency:'€'}}</p>
+          </div>
+        </div>
+
+        <!-- Right side -->
+        <div class="level-right">
+
+          <!-- Remove button -->
+          <p class="level-item">
+            <button (click)="orderService.removeItem(orderItem.item)" mat-mini-fab color="primary">
+              <i class="material-icons">
+                remove
+              </i>
+            </button>
+          </p>
+
+          <!-- Amount -->
+          <p class="level-item">
+            {{orderItem.amount}}
+          </p>
+
+          <!-- Add button -->
+          <p class="level-item">
+            <button (click)="orderService.addItem(orderItem.item)" mat-mini-fab color="primary">
+              <i class="material-icons">
+                add
+              </i>
+            </button>
+          </p>
+        </div>
+      </nav>
+      <hr>
+    </div>
+
+    <!-- Order button -->
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <p class="level-item">
+          {{'total-price' | translate}}{{getTotalPrice() | currency:'€'}}
+        </p>
+      </div>
+
+      <div class="level-right">
+        <!-- Order -->
+        <p class="level-item">
+          <button (click)="orderService.sendOrder()" class="order-button" mat-raised-button
+            color="accent">Order</button>
+        </p>
+      </div>
+    </nav>
+  </ng-container>
+
+  <ng-template #empty>
+    <div class="has-text-centered">
+      <p class="subtitle is-5 empty-text">You haven't added anything to your order yet.</p>
+    </div>
+  </ng-template>
+
+</div>

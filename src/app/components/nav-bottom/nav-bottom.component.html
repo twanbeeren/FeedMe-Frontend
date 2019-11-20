@@ -1,13 +1,16 @@
 <nav class="level navbar is-fixed-bottom card is-mobile">
   <!-- Preferences -->
-  <div class="level-item">
-    <button routerLink="/i18n" mat-button class="menu-item">
-      <i class="material-icons">
-        build
+  <!-- <div class="level-item">
+    <button routerLink="/preferences" mat-button class="menu-item">
+      <i *ngIf="menuService.toggledTags.length > 0; else noTags" matBadge="{{menuService.toggledTags.length}}" matBadgeColor="accent" class="material-icons">
+          filter_list
       </i>
-      <p translate>nav-bottom.preferences</p>
+      <ng-template #noTags class="material-icons">
+        <i class="material-icons">filter_list</i>
+      </ng-template>
+      <p translate>nav-bottom.filters</p>
     </button>
-  </div>
+  </div> -->
 
   <!-- Traditional menu -->
   <div class="level-item">
@@ -21,7 +24,7 @@
 
   <!-- Drinks -->
   <div class="level-item">
-    <button mat-button class="menu-item">
+    <button routerLink="/drinksmenu" mat-button class="menu-item">
       <i class="material-icons">
         local_bar
       </i>
@@ -41,8 +44,8 @@
 
   <!-- Order -->
   <div class="level-item">
-    <button mat-button class="menu-item">
-      <i *ngIf="itemsInOrder() > 0; else noItems" matBadge="{{itemsInOrder()}}" matBadgeColor="primary" class="material-icons">
+    <button routerLink="/order" mat-button class="menu-item">
+      <i *ngIf="orderService.order && orderService.order.orderItems.length > 0; else noItems" matBadge="{{orderService.order.orderItems.length}}" matBadgeColor="primary" class="material-icons">
         send
       </i>
       <ng-template #noItems class="material-icons">

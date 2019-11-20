@@ -11,18 +11,36 @@
         "dessert": "Nagerechten"
     },
     "info": "Informatie",
+    "match": {
+        "matched": "Het is een match!",
+        "added": "{{name}} is toegevoegd aan je bestelling",
+        "continue": "Doorgaan met swipen",
+        "unmatch": "Unmatch"
+    },
+    "preferences": {
+        "language": "Taal",
+        "filter_by": "Filteren op",
+        "filters": "Filters"
+    },
     "tag": {
+        "drink": "Drinken",
+        "glutenfree": "Glutenvrij",
+        "lactosefree": "Lactosevrij",
         "meat": "Vlees",
-        "milk": "Melk",
         "pasta": "Pasta",
         "vegan": "Vegan",
         "vegetarian": "Vegetarisch"
     },
+    "total-price": "Totaalprijs: ",
     "snackbar": {
         "added": "{{name}} toegevoegd",
         "failed": "{{name}} toevoegen gefaald",
         "removed": "{{name}} verwijderd",
-        "undo": "Ongedaan maken"
+        "undo": "Ongedaan maken",
+        "login_failed": "Incorrecte inloggegevens"
+    },
+    "nav-top": {
+        "tablenumber": "Tafelnummer"
     },
     "nav-bottom": {
         "preferences": "Voorkeuren",

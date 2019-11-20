@@ -1,27 +1,6 @@
-<!-- <nav class="level card">
-  <p class="level-item logo has-text-centered">
-
-    <img src="./assets/images/logo.png" alt="" style="height: 100px;">
-  </p>
-
-  <div class="level-right">
-    <div class="level-item">
-      <button mat-icon-button (click)="changeLanguage('en')">
-        <span class="flag-icon flag-icon-gb flag-icon-squared"></span>
-      </button>
-
-      <div class="level-item">
-        <button mat-icon-button (click)="changeLanguage('nl')">
-          <span class="flag-icon flag-icon-nl flag-icon-squared"></span>
-        </button>
-      </div>
-    </div>
-  </div>
-</nav> -->
-
 <div class="columns is-mobile card">
   <div class="column has-text-left">
-    <p translate class="tablenumber" style="padding-left: 5%;">nav-top.tablenumber</p><p class="tablenumber"> : {{ticketservice.tableNumber}}</p>
+    <p *ngIf="ticketservice.tableNumber" class="tablenumber" style="padding-left: 5%;" [translate]="'nav-top.tablenumber'" [translateParams]="{number:ticketservice.tableNumber}"></p>
   </div>
   <div class="column has-text-centered">
     <img src="./assets/images/logo.png" alt="" style="height: 100px;">

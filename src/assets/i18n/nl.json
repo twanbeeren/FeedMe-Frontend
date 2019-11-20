@@ -40,7 +40,7 @@
         "login_failed": "Incorrecte inloggegevens"
     },
     "nav-top": {
-        "tablenumber": "Tafelnummer"
+        "tablenumber": "Tafelnummer: {{number}}"
     },
     "nav-bottom": {
         "preferences": "Voorkeuren",

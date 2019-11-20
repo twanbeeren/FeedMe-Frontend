@@ -1,0 +1,83 @@
+<br />
+<div class="container-kitchen">
+  <!-- Unfinished orders -->
+  <mat-expansion-panel *ngIf="orders$ | async as orders" [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        <h4>Received orders</h4>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-divider></mat-divider>
+
+    <ng-container *ngFor="let order of orders">
+      <ng-container *ngIf="order.status === 'Sent'">
+        <mat-list class="card">
+          <p style="color: #c9c9c9;">Order id: {{ order.id }}</p>
+          <p>Date: {{order.time | date:'short'}}</p>
+          <hr>
+          <mat-list-item *ngFor="let item of order.orderItems">
+            <p matLine>Naam : {{ item.item?.name }}</p>
+            <p matLine>Amount : {{ item.amount }}</p>
+            <hr>
+          </mat-list-item>
+          <button mat-raised-button color="primary" (click)="setStatus(order.id, 'Done')">Mark as finished</button>
+        </mat-list>
+      </ng-container>
+    </ng-container>
+  </mat-expansion-panel>
+
+  <!-- Finished orders -->
+  <mat-expansion-panel *ngIf="orders$ | async as orders" [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        <h4>Finished orders</h4>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-divider></mat-divider>
+
+    <ng-container *ngFor="let order of orders">
+      <ng-container *ngIf="order.status === 'Done'">
+        <mat-list class="card">
+          <p style="color: #c9c9c9;">Order id: {{ order.id }}</p>
+          <p>Date: {{order.time | date:'short'}}</p>
+          <hr>
+          <mat-list-item *ngFor="let item of order.orderItems">
+            <p matLine>Naam : {{ item.item?.name }}</p>
+            <p matLine>Amount : {{ item.amount }}</p>
+            <hr>
+          </mat-list-item>
+          <button mat-raised-button color="primary" (click)="setStatus(order.id, 'BeingDelivered')">Mark as being
+            delivered</button>
+        </mat-list>
+      </ng-container>
+    </ng-container>
+  </mat-expansion-panel>
+
+  <!-- Delivered orders -->
+  <mat-expansion-panel *ngIf="orders$ | async as orders" [expanded]="false">
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        <h4>Delivered orders</h4>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-divider></mat-divider>
+
+    <ng-container *ngFor="let order of orders">
+      <ng-container *ngIf="order.status === 'Delivered'">
+        <mat-list class="card">
+          <p style="color: #c9c9c9;">Order id: {{ order.id }}</p>
+          <p>Date: {{order.time | date:'short'}}</p>
+          <hr>
+          <mat-list-item *ngFor="let item of order.orderItems">
+            <p matLine>Naam : {{ item.item?.name }}</p>
+            <p matLine>Amount : {{ item.amount }}</p>
+            <hr>
+          </mat-list-item>
+        </mat-list>
+      </ng-container>
+    </ng-container>
+  </mat-expansion-panel>
+</div>

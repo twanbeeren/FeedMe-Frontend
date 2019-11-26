@@ -10,7 +10,7 @@ import { TicketService } from './core/services/ticket.service';
 export class AppComponent {
 
   constructor(
-    private ticketService: TicketService,
+    public ticketService: TicketService,
     private authService: AuthService) {
   }
 }

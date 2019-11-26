@@ -22,6 +22,7 @@
         "filter_by": "Filter by",
         "filters": "Filters"
     },
+    "tablenumber": "Tablenumber: {{number}}",
     "tag": {
         "drink": "Drink",
         "glutenfree": "Gluten Free",
@@ -38,9 +39,6 @@
         "removed": "Removed {{name}}",
         "undo": "Undo",
         "login_failed": "Wrong credentials"
-    },
-    "nav-top": {
-        "tablenumber": "Tablenumber: {{number}}"
     },
     "nav-bottom": {
         "preferences": "Preferences",

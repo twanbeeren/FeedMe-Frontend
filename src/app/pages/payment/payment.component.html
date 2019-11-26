@@ -1,6 +1,27 @@
-<mat-list *ngFor="let order of ticketService.ticket.orders">
-    <mat-list-item *ngFor="let item of order.orderItems">
-        <p matLine>Naam : {{item.item?.name +'*'+ item.amount}} </p>
-        <!-- <p matLine>Amount : {{ item.amount }}</p> -->
-    </mat-list-item>
-</mat-list>
+<mat-card class="card" *ngIf="ticketService.ticket.orders.length > 0; else nothing">
+    <mat-card-header>
+        <mat-card-title>
+            {{'tablenumber' | translate:tableNrParam}}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-list *ngFor="let order of ticketService.ticket.orders">
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let item of order.orderItems">
+            <p matLine>Naam : {{item.item}} </p>
+            <p matLine>Amount : {{item.amount}}</p>
+        </mat-list-item>
+    </mat-list>
+</mat-card>
+
+<ng-template #nothing>
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>
+                There is nothing on your ticket yet...
+            </mat-card-title>
+            <mat-card-subtitle>
+                Please order something before you come back :)
+            </mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+</ng-template>

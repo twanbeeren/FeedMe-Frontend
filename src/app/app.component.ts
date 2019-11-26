@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
+  tableNumber: number;
+
   constructor(
     private ticketService: TicketService,
     private authService: AuthService,
@@ -20,5 +22,9 @@ export class AppComponent {
         this.router.navigate(['/tablenumber']);
       }
     });
+  }
+
+  ngOnInit() {    
+    this.ticketService.tableNumber.subscribe(tableNumber => this.tableNumber = tableNumber);
   }
 }

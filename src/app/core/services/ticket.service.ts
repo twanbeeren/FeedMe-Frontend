@@ -4,7 +4,7 @@ import { Ticket } from '../classes/ticket';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,6 @@ export class TicketService {
   tableNumber = this._tableNumber.asObservable();
 
   ticket: Ticket;
-  // tableNumber: number;
   private hasToResetSubject = new BehaviorSubject<boolean>(false);
   hasToReset$ = this.hasToResetSubject.asObservable();
 

@@ -20,6 +20,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.authService.isLoggedIn.subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.router.navigate(['/tablenumber']);
+      }
+    })
   }
 
   initForm() {
@@ -35,7 +40,7 @@ export class LoginComponent implements OnInit {
     const password = this.loginForm.get('password').value;
 
     this.authService.emailLogin(email, password).then(x => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/tablenumber']);
     }).catch(() => {
       this.hasError = true;
     });

@@ -48,7 +48,7 @@ export class SwipePageComponent implements OnInit {
     });
   }
 
-  changeDragability(){
+  changeDragability() {
     this.menu[this.currentIndex].dragDisabled = false;
   }
 
@@ -60,7 +60,7 @@ export class SwipePageComponent implements OnInit {
     const card = document.getElementById(this.currentIndex.toString());
     const div = document.getElementById('dishcard-box');
     // tslint:disable-next-line: only-arrow-functions
-    setTimeout(function () { div.innerHTML = ''; }, 500);
+    setTimeout(function() { div.innerHTML = ''; }, 500);
   }
 
   closeModal() {

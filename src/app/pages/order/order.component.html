@@ -1,4 +1,4 @@
-<div *ngIf="orderService.order as order" class="main-container">
+<div *ngIf="orderService.order as order; else empty;" class="main-container">
   <ng-container *ngIf="order.orderItems.length > 0; else empty">
     <!-- Ng for order items -->
     <div *ngFor="let orderItem of order.orderItems" class="order-container">
@@ -73,10 +73,12 @@
     </nav>
   </ng-container>
 
-  <ng-template #empty>
-    <div class="has-text-centered">
-      <p class="subtitle is-5 empty-text">You haven't added anything to your order yet.</p>
-    </div>
-  </ng-template>
+
 
 </div>
+
+<ng-template #empty>
+  <div class="has-text-centered">
+    <p class="subtitle is-5 empty-text">You haven't added anything to your order yet.</p>
+  </div>
+</ng-template>

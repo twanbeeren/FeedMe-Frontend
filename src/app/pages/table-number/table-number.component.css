@@ -1,3 +1,8 @@
+.columns {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -18,4 +23,15 @@ input.left-align::-webkit-inner-spin-button {
 
 input.left-align {
     -moz-appearance: textfield;
+}
+
+.button-kitchen {
+    height: 128px;
+    width: 128px;
+    font-size: 24px;
+}
+
+form {
+    margin-top: 5px;
+    width: 50%;
 }

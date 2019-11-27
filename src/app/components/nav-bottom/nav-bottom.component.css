@@ -12,6 +12,21 @@ i {
   padding-bottom: 1rem;
 }
 
-p, i {
-    color: #707070;
+.mat-button {
+  width: 100%;
+}
+
+.level-item {
+  margin: 0px;
+  width: 100px;
+}
+
+.navbar.is-fixed-bottom {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+p,
+i {
+  color: #707070;
 }

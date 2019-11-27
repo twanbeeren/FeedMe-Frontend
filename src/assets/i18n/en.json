@@ -22,6 +22,7 @@
         "filter_by": "Filter by",
         "filters": "Filters"
     },
+    "tablenumber": "Tablenumber: {{number}}",
     "tag": {
         "drink": "Drink",
         "glutenfree": "Gluten Free",
@@ -39,9 +40,6 @@
         "undo": "Undo",
         "login_failed": "Wrong credentials"
     },
-    "nav-top": {
-        "tablenumber": "Tablenumber"
-    },
     "nav-bottom": {
         "preferences": "Preferences",
         "traditional_menu": "Traditional Menu",
@@ -49,5 +47,10 @@
         "swipe_menu": "Swipe Menu",
         "order": "Order",
         "pay": "Pay"
+    },
+    "nav-kitchen": {
+        "orders": "Orders",
+        "tickets": "Tickets",
+        "history": "History"
     }
 }

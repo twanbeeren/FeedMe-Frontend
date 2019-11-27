@@ -22,6 +22,7 @@
         "filter_by": "Filteren op",
         "filters": "Filters"
     },
+    "tablenumber": "Tafelnummer: {{number}}",
     "tag": {
         "drink": "Drinken",
         "glutenfree": "Glutenvrij",
@@ -39,9 +40,6 @@
         "undo": "Ongedaan maken",
         "login_failed": "Incorrecte inloggegevens"
     },
-    "nav-top": {
-        "tablenumber": "Tafelnummer"
-    },
     "nav-bottom": {
         "preferences": "Voorkeuren",
         "traditional_menu": "Traditioneel Menu",
@@ -49,5 +47,10 @@
         "swipe_menu": "Swipe Menu",
         "order": "Bestelling",
         "pay": "Betalen"
+    },
+    "nav-kitchen": {
+        "orders": "Bestellingen",
+        "tickets": "Tickets",
+        "history": "Geschiedenis"
     }
 }

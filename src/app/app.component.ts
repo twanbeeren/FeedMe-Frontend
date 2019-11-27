@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { TranslatorService } from './core/services/translator.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from './core/services/auth.service';
+import { TicketService } from './core/services/ticket.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,23 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  tableNumber: number;
+
   constructor(
-    private translator: TranslatorService) {
+    private ticketService: TicketService,
+    private authService: AuthService,
+    private router: Router) {
+
+    this.ticketService.tableNumber.subscribe(tableNumber => {
+      if (!tableNumber && !this.authService.isInKitchen) {
+        this.router.navigate(['/tablenumber']);
+      }
+    });
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnInit() {
+    this.ticketService.tableNumber.subscribe(tableNumber => this.tableNumber = tableNumber);
   }
 }

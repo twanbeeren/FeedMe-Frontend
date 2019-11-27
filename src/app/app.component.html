@@ -1,3 +1,6 @@
 <app-nav-top></app-nav-top>
 <router-outlet></router-outlet>
-<app-nav-bottom></app-nav-bottom>
+<app-nav-table *ngIf="tableNumber; else kitchen"></app-nav-table>
+<ng-template #kitchen>
+    <app-nav-kitchen *ngIf="authService.isInKitchen"></app-nav-kitchen>
+</ng-template>

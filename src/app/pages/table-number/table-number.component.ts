@@ -39,7 +39,7 @@ export class TableNumberComponent implements OnInit {
 
   goToKitchen() {
     this.authService.isInKitchen = true;
-    this.router.navigateByUrl('/kitchen');
+    this.router.navigateByUrl('/kitchen-orders');
   }
 
   showIncorrectSnackbar() {

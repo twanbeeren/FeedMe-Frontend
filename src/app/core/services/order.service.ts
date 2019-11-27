@@ -10,6 +10,7 @@ import { TicketService } from './ticket.service';
 export class OrderService implements OnInit {
 
   order: Order;
+  totalPrice = 0;
 
   constructor(private db: AngularFirestore, private ticketService: TicketService) {
   }
@@ -24,32 +25,40 @@ export class OrderService implements OnInit {
 
   newOrder() {
     this.order = new Order();
+    this.calculateTotalPrice();
   }
 
   addItem(item: MenuItem): boolean {
-    if (!this.order)
+    if (!this.order) {
       this.newOrder();
+    }
 
     if (this.order) {
       this.order.addItem(item);
+      this.calculateTotalPrice();
       return true;
     }
+
     return false;
   }
 
   removeItem(item: MenuItem): boolean {
-    if (!this.order)
+    if (!this.order) {
       this.newOrder();
+    }
 
     if (this.order) {
       this.order.removeItem(item.id);
+      this.calculateTotalPrice();
       return true;
     }
+
     return false;
   }
 
   sendOrder() {
 
+    this.calculateTotalPrice();
     this.order.status = 'Sent';
     this.ticketService.addOrder(this.order);
     this.order.orderItems.forEach(orderItem => {
@@ -61,6 +70,13 @@ export class OrderService implements OnInit {
 
     this.db.doc('Orders/' + this.order.id).set(data);
     this.newOrder();
+  }
+
+  private calculateTotalPrice() {
+    this.totalPrice = 0;
+    this.order.orderItems.forEach(orderItem => {
+      this.totalPrice += orderItem.item.price * orderItem.amount;
+    });
   }
 
 }

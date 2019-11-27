@@ -1,0 +1,31 @@
+<nav class="level navbar is-fixed-bottom card is-mobile">
+    <!-- Orders -->
+    <div class="level-item">
+        <button routerLink="/kitchen-orders" mat-button class="menu-item">
+            <i class="material-icons">
+                list
+            </i>
+            <p>{{'nav-kitchen.orders' | translate}}</p>
+        </button>
+    </div>
+
+    <!-- Tickets -->
+    <div class="level-item">
+        <button routerLink="/kitchen-tickets" mat-button class="menu-item">
+            <i class="material-icons">
+                receipt
+            </i>
+            <p>{{'nav-kitchen.tickets' | translate}}</p>
+        </button>
+    </div>
+
+    <!-- Ticket history -->
+    <div class="level-item">
+        <button routerLink="/kitchen-history" mat-button class="menu-item">
+            <i class="material-icons">
+                history
+            </i>
+            <p>{{'nav-kitchen.history' | translate}}</p>
+        </button>
+    </div>
+</nav>

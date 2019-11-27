@@ -1,8 +1,8 @@
 <div class="columns is-mobile card">
   <div class="column has-text-left">
     <div style="padding-left: 5%; padding-top: 3%;">
-      <p *ngIf="ticketservice.tableNumber" class="tablenumber" [translate]="'nav-top.tablenumber'"
-        [translateParams]="{number:ticketservice.tableNumber}"></p>
+      <p *ngIf="tableNumber" class="tablenumber" [translate]="'tablenumber'"
+        [translateParams]="{number:tableNumber}"></p>
     </div>
   </div>
   <div class="column has-text-centered">

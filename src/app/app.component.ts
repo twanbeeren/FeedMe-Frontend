@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
 import { TicketService } from './core/services/ticket.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,22 @@ import { TicketService } from './core/services/ticket.service';
 })
 export class AppComponent {
 
+  tableNumber: number;
+
   constructor(
     private ticketService: TicketService,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private router: Router) {
+
+    this.ticketService.tableNumber.subscribe(tableNumber => {
+      if (!tableNumber && !this.authService.isInKitchen) {
+        this.router.navigate(['/tablenumber']);
+      }
+    });
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnInit() {
+    this.ticketService.tableNumber.subscribe(tableNumber => this.tableNumber = tableNumber);
   }
 }

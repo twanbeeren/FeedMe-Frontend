@@ -24,7 +24,6 @@ export class KitchenGuard implements CanActivate, CanDeactivate<KitchenComponent
   }
 
   canDeactivate(): boolean {
-    this.authService.isInKitchen = false;
     return true;
   }
 

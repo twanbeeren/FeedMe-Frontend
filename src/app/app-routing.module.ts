@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SwipePageComponent } from './pages/swipe-menu/swipe-page/swipe-page.component';
-import { HomeComponent } from './pages/home/home.component';
 import { RegularMenuComponent } from './pages/regular-menu/regular-menu.component';
 import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
 import { OrderComponent } from './pages/order/order.component';
@@ -14,7 +13,7 @@ import { KitchenGuard } from './core/guards/kitchen.guard';
 import { TableGuard } from './core/guards/table.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', component: TableNumberComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'tablenumber', component: TableNumberComponent, canActivate: [AuthGuard] },
   { path: 'regularmenu', component: RegularMenuComponent, canActivate: [AuthGuard, TableGuard] },
@@ -22,7 +21,9 @@ const routes: Routes = [
   { path: 'swipemenu', component: SwipePageComponent, canActivate: [AuthGuard, TableGuard] },
   { path: 'order', component: OrderComponent, canActivate: [AuthGuard, TableGuard] },
   { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard, TableGuard] },
-  { path: 'kitchen', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
+  { path: 'kitchen-orders', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
+  { path: 'kitchen-tickets', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
+  { path: 'kitchen-history', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
 ];
 
 @NgModule({

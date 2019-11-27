@@ -47,5 +47,10 @@
         "swipe_menu": "Swipe Menu",
         "order": "Order",
         "pay": "Pay"
+    },
+    "nav-kitchen": {
+        "orders": "Orders",
+        "tickets": "Tickets",
+        "history": "History"
     }
 }

@@ -9,7 +9,7 @@ import { TicketService } from 'src/app/core/services/ticket.service';
 })
 export class NavTopComponent implements OnInit {
   language: string;
-  tableNumber: number
+  tableNumber: number;
 
   constructor(private translator: TranslatorService, public ticketservice: TicketService) { }
 

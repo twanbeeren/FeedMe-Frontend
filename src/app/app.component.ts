@@ -16,7 +16,7 @@ export class AppComponent {
     private ticketService: TicketService,
     private authService: AuthService,
     private router: Router) {
-      
+
     this.ticketService.tableNumber.subscribe(tableNumber => {
       if (!tableNumber && !this.authService.isInKitchen) {
         this.router.navigate(['/tablenumber']);
@@ -24,7 +24,7 @@ export class AppComponent {
     });
   }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.ticketService.tableNumber.subscribe(tableNumber => this.tableNumber = tableNumber);
   }
 }

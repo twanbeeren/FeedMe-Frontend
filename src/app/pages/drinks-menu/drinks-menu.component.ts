@@ -29,24 +29,26 @@ export class DrinksMenuComponent implements OnInit {
   }
 
   addToOrder(item: MenuItem) {
-    if (this.orderService.order == null)
+    if (this.orderService.order == null) {
       this.orderService.newOrder();
+    }
 
     if (this.orderService.addItem(item)) {
       this.showAddedToOrderSnackbar(item);
-    } else this.snackbar.open(this.translator.translate("snackbar.failed", { name: item.name }));
+    } else { this.snackbar.open(this.translator.translate('snackbar.failed', { name: item.name })); }
   }
 
   showAddedToOrderSnackbar(item: MenuItem) {
-    let snackbarRef = this.snackbar.open(
-      this.translator.translate("snackbar.added", { name: item.name }),
-      this.translator.translate("snackbar.undo"), {
+    const snackbarRef = this.snackbar.open(
+      this.translator.translate('snackbar.added', { name: item.name }),
+      this.translator.translate('snackbar.undo'), {
       duration: 3000,
+      panelClass: 'snackbar'
     });
 
     snackbarRef.onAction().subscribe(() => {
       this.orderService.removeItem(item);
-      this.snackbar.open(this.translator.translate("snackbar.removed", { name: item.name }), "", {
+      this.snackbar.open(this.translator.translate('snackbar.removed', { name: item.name }), '', {
         duration: 1000,
       });
     })

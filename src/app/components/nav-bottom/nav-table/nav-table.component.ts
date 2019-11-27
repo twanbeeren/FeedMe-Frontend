@@ -3,11 +3,11 @@ import { OrderService } from 'src/app/core/services/order.service';
 import { MenuService } from 'src/app/core/services/menu.service';
 
 @Component({
-  selector: 'app-nav-bottom',
-  templateUrl: './nav-bottom.component.html',
-  styleUrls: ['./nav-bottom.component.css']
+  selector: 'app-nav-table',
+  templateUrl: './nav-table.component.html',
+  styleUrls: ['../nav-bottom.component.css']
 })
-export class NavBottomComponent implements OnInit {
+export class NavTableComponent implements OnInit {
 
   constructor(
     public orderService: OrderService,

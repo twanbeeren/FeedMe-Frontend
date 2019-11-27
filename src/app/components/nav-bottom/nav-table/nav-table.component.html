@@ -1,0 +1,55 @@
+<nav class="level navbar is-fixed-bottom card is-mobile">
+    <!-- Traditional menu -->
+    <div class="level-item">
+        <button routerLink="/regularmenu" mat-button class="menu-item">
+            <i class="material-icons">
+                local_library
+            </i>
+            <p>{{'nav-bottom.traditional_menu' | translate}}</p>
+        </button>
+    </div>
+
+    <!-- Drinks -->
+    <div class="level-item">
+        <button routerLink="/drinksmenu" mat-button class="menu-item">
+            <i class="material-icons">
+                local_bar
+            </i>
+            <p>{{'nav-bottom.drinks' | translate}}</p>
+        </button>
+    </div>
+
+    <!-- Swipe menu -->
+    <div class="level-item">
+        <button routerLink="/swipemenu" mat-button class="menu-item">
+            <i class="material-icons">
+                favorite
+            </i>
+            <p>{{'nav-bottom.swipe_menu' | translate}}</p>
+        </button>
+    </div>
+
+    <!-- Order -->
+    <div class="level-item">
+        <button routerLink="/order" mat-button class="menu-item">
+            <i *ngIf="orderService.order && orderService.order.orderItems.length > 0; else noItems"
+                matBadge="{{orderService.order.orderItems.length}}" matBadgeColor="primary" class="material-icons">
+                send
+            </i>
+            <ng-template #noItems class="material-icons">
+                <i class="material-icons">send</i>
+            </ng-template>
+            <p>{{'nav-bottom.order' | translate}}</p>
+        </button>
+    </div>
+
+    <!-- Pay -->
+    <div class="level-item">
+        <button routerLink="/payment" mat-button class="menu-item">
+            <i class="material-icons">
+                attach_money
+            </i>
+            <p>{{'nav-bottom.pay' | translate}}</p>
+        </button>
+    </div>
+</nav>

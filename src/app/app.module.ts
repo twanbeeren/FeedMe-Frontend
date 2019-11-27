@@ -13,8 +13,8 @@ import { AppComponent } from './app.component';
 import { I18nComponent } from './components/i18n/i18n.component';
 import { RegularMenuComponent } from './pages/regular-menu/regular-menu.component';
 import { NavTopComponent } from './components/nav-top/nav-top.component';
+import { NavTableComponent } from './components/nav-bottom/nav-table/nav-table.component';
 import { NavKitchenComponent } from './components/nav-bottom/nav-kitchen/nav-kitchen.component';
-import { NavBottomComponent } from './components/nav-bottom/nav-bottom.component';
 import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
 import { TableNumberComponent } from './pages/table-number/table-number.component';
 import { OrderComponent } from './pages/order/order.component';
@@ -46,7 +46,7 @@ import { environment } from '../environments/environment';
     SortCoursesPipe,
     DishInfoDialogComponent,
     NavTopComponent,
-    NavBottomComponent,
+    NavTableComponent,
     NavKitchenComponent,
     DrinksMenuComponent,
     TableNumberComponent,

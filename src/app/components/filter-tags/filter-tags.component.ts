@@ -14,7 +14,7 @@ export class FilterTagsComponent implements OnInit {
   constructor(private menuService: MenuService) { }
 
   ngOnInit() {
-    this.filterTags = ["Vegetarian", "Meat", "LactoseFree", "GlutenFree"]
+    this.filterTags = ["Vegetarian", "LactoseFree", "GlutenFree"]
   }
 
   toggleFilter(tag: string): void {

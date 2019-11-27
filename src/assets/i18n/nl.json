@@ -22,6 +22,7 @@
         "filter_by": "Filteren op",
         "filters": "Filters"
     },
+    "tablenumber": "Tafelnummer: {{number}}",
     "tag": {
         "drink": "Drinken",
         "glutenfree": "Glutenvrij",
@@ -38,9 +39,6 @@
         "removed": "{{name}} verwijderd",
         "undo": "Ongedaan maken",
         "login_failed": "Incorrecte inloggegevens"
-    },
-    "nav-top": {
-        "tablenumber": "Tafelnummer: {{number}}"
     },
     "nav-bottom": {
         "preferences": "Voorkeuren",

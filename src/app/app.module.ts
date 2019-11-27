@@ -34,6 +34,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { KitchenComponent } from './pages/kitchen/kitchen.component';
 import { LoginComponent } from './pages/login/login.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { LoginComponent } from './pages/login/login.component';
     OrderComponent,
     LoginComponent,
     KitchenComponent,
+    PaymentComponent,
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

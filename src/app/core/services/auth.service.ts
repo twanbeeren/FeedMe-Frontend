@@ -9,6 +9,7 @@ export class AuthService {
 
   private _isLoggedIn = new BehaviorSubject<boolean>(false);
   isLoggedIn = this._isLoggedIn.asObservable();
+  isInKitchen = false;
 
   constructor(private auth: AngularFireAuth) {
     this.auth.authState.subscribe(user => {

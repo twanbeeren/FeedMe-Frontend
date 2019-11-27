@@ -4,23 +4,27 @@ import { Ticket } from '../classes/ticket';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
+
+  private _tableNumber = new BehaviorSubject<number>(null);
+  tableNumber = this._tableNumber.asObservable();
+
   ticket: Ticket;
-  tableNumber: number;
   private hasToResetSubject = new BehaviorSubject<boolean>(false);
   hasToReset$ = this.hasToResetSubject.asObservable();
 
-  constructor(private db: AngularFirestore, private router: Router) { }
+  constructor(private db: AngularFirestore, private router: Router) {
+  }
 
   setTableNumber(tableNr: number) {
-    this.tableNumber = tableNr;
+    this._tableNumber.next(tableNr);
     if (!this.ticket) {
-      this.ticket = new Ticket(this.tableNumber);
+      this.ticket = new Ticket(this._tableNumber.value);
       this.sendTicket();
       this.subscribeToDbTicket();
     }
@@ -37,7 +41,7 @@ export class TicketService {
     this.ticket = null;
     this.tableNumber = null;
     this.hasToResetSubject.next(true);
-    this.router.navigate(['/home']);
+    this.router.navigate(['/tablenumber']);
   }
 
   addOrder(order: Order) {

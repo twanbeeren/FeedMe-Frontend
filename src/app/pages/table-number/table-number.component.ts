@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators, AbstractControl, ValidatorFn } from
 import { MatSnackBar } from '@angular/material';
 import { TranslatorService } from 'src/app/core/services/translator.service';
 import { Ticket } from 'src/app/core/classes/ticket';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-table-number',
@@ -17,6 +18,7 @@ export class TableNumberComponent implements OnInit {
 
   constructor(
     private ticketService: TicketService,
+    private authService: AuthService,
     private router: Router,
     private translator: TranslatorService,
     private snackbar: MatSnackBar) { }
@@ -33,6 +35,11 @@ export class TableNumberComponent implements OnInit {
     } else {
       this.showIncorrectSnackbar();
     }
+  }
+
+  goToKitchen() {
+    this.authService.isInKitchen = true;
+    this.router.navigateByUrl('/kitchen');
   }
 
   showIncorrectSnackbar() {

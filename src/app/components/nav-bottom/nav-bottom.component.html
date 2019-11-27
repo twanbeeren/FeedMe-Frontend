@@ -5,7 +5,7 @@
       <i class="material-icons">
         local_library
       </i>
-      <p translate>nav-bottom.traditional_menu</p>
+      <p>{{'nav-bottom.traditional_menu' | translate}}</p>
     </button>
   </div>
 
@@ -15,7 +15,7 @@
       <i class="material-icons">
         local_bar
       </i>
-      <p translate>nav-bottom.drinks</p>
+      <p>{{'nav-bottom.drinks' | translate}}</p>
     </button>
   </div>
 
@@ -25,7 +25,7 @@
       <i class="material-icons">
         favorite
       </i>
-      <p translate>nav-bottom.swipe_menu</p>
+      <p>{{'nav-bottom.swipe_menu' | translate}}</p>
     </button>
   </div>
 
@@ -38,17 +38,17 @@
       <ng-template #noItems class="material-icons">
         <i class="material-icons">send</i>
       </ng-template>
-      <p translate>nav-bottom.order</p>
+      <p>{{'nav-bottom.order' | translate}}</p>
     </button>
   </div>
 
   <!-- Pay -->
   <div class="level-item">
-    <button mat-button class="menu-item">
+    <button routerLink="/payment" mat-button class="menu-item">
       <i class="material-icons">
         attach_money
       </i>
-      <p translate>nav-bottom.pay</p>
+      <p>{{'nav-bottom.pay' | translate}}</p>
     </button>
   </div>
 </nav>

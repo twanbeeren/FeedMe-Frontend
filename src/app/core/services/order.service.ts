@@ -27,8 +27,9 @@ export class OrderService implements OnInit {
   }
 
   addItem(item: MenuItem): boolean {
-    if (!this.order)
+    if (!this.order) {
       this.newOrder();
+    }
 
     if (this.order) {
       this.order.addItem(item);
@@ -38,8 +39,9 @@ export class OrderService implements OnInit {
   }
 
   removeItem(item: MenuItem): boolean {
-    if (!this.order)
+    if (!this.order) {
       this.newOrder();
+    }
 
     if (this.order) {
       this.order.removeItem(item.id);

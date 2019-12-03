@@ -20,7 +20,7 @@ export class OrderComponent implements OnInit {
 
   getTotalPrice() {
     let totalPrice = 0;
-    this.orderService.order.orderItems.forEach(orderItem => {      
+    this.orderService.order.orderItems.forEach(orderItem => {
       totalPrice += orderItem.item.price * orderItem.amount;
     });
     return totalPrice;

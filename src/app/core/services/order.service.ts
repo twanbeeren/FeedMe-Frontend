@@ -79,4 +79,9 @@ export class OrderService implements OnInit {
     });
   }
 
+  async getItem(itemId: any) {
+    return this.db.collection('MenuItems').doc<MenuItem>(itemId).get().toPromise();
+    // .then(item => console.log(item));
+  }
+
 }

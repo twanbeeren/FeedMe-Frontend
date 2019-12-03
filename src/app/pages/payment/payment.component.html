@@ -1,27 +1,61 @@
 <mat-card class="card" *ngIf="ticketService.ticket.orders.length > 0; else nothing">
-    <mat-card-header>
-        <mat-card-title>
-            {{'tablenumber' | translate:tableNrParam}}
-        </mat-card-title>
-    </mat-card-header>
-    <mat-list *ngFor="let order of ticketService.ticket.orders">
-        <mat-divider></mat-divider>
-        <mat-list-item *ngFor="let item of order.orderItems">
-            <p matLine>Naam : {{item.item}} </p>
-            <p matLine>Amount : {{item.amount}}</p>
-        </mat-list-item>
-    </mat-list>
+  <mat-card-header>
+    <mat-card-title>
+      {{'tablenumber' | translate:tableNrParam}}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-list *ngFor="let order of ticketService.ticket.orders">
+    <mat-divider></mat-divider>
+    <br>
+    <p matLine>Order: {{order.id}} </p>
+    <br>
+    <nav class="level is-mobile" *ngFor="let item of order.orderItems">
+      <!-- Ng for order items -->
+      <!-- Left side -->
+      <div class="level-left">
+
+        <!-- Image -->
+        <div class="level-item">
+          <div class="circular-landscape">
+            <img src="{{item.item.imgUrl}}" />
+          </div>
+        </div>
+
+        <!-- Title -->
+        <div class="level-item">
+          <!-- Not every item has a volume-->
+          <p class="subtitle is-5">{{item.item.name}} {{item.volume}}</p>
+        </div>
+
+        <!-- Price -->
+        <div class="level-item">
+          <p>{{item.item.price | currency:'€'}}</p>
+        </div>
+      </div>
+
+      <!-- Right side -->
+      <div class="level-right">
+
+        <!-- Amount -->
+        <div class="level-item">
+          <p>x {{item.amount}}</p>
+        </div>
+
+      </div>
+      <hr>
+    </nav>
+  </mat-list>
 </mat-card>
 
 <ng-template #nothing>
-    <mat-card class="card">
-        <mat-card-header>
-            <mat-card-title>
-                There is nothing on your ticket yet...
-            </mat-card-title>
-            <mat-card-subtitle>
-                Please order something before you come back :)
-            </mat-card-subtitle>
-        </mat-card-header>
-    </mat-card>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>
+        There is nothing on your ticket yet...
+      </mat-card-title>
+      <mat-card-subtitle>
+        Please order something before you come back :)
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
 </ng-template>

@@ -10,12 +10,14 @@ import { Order } from 'src/app/core/classes/order';
 })
 export class KitchenComponent implements OnInit {
 
-  orders$: Observable<Order[]>;
+  doneOrders$: Observable<Order[]>;
+  sentOrders$: Observable<Order[]>;
 
   constructor(public kitchenService: KitchenService) { }
 
   ngOnInit() {
-    this.orders$ = this.kitchenService.getOrders();
+    this.doneOrders$ = this.kitchenService.getDoneOrders();
+    this.sentOrders$ = this.kitchenService.getSentOrders();
   }
 
   setStatus(id: string, newStatus: string) {

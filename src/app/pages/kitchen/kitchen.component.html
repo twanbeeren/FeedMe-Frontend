@@ -1,68 +1,62 @@
 <br />
 <div class="container-kitchen">
   <!-- Unfinished orders -->
-  <div class="first" *ngIf="orders$ | async as orders">
+  <div class="first" *ngIf="sentOrders$ | async as orders">
     <h1>Bestellingen</h1>
 
     <mat-divider></mat-divider>
 
     <ng-container *ngFor="let order of orders">
-      <ng-container *ngIf="order.status === 'Sent'">
-        <mat-expansion-panel class="setHeight">
-          <mat-expansion-panel-header>
-              Bestelling van tafel {{ order.tableNr }} van
-              {{ order.time | date: "shortTime" }}
-            <mat-divider></mat-divider>
-          </mat-expansion-panel-header>
-
-          <mat-list-item *ngFor="let item of order.orderItems">
-            <p matLine>{{ item.amount }}x {{ item.item?.name }}</p>
-          </mat-list-item>
-
-          <mat-action-row>
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="setStatus(order.id, 'Done')"
-            >
-              Klaar
-            </button>
-          </mat-action-row>
-        </mat-expansion-panel>
-      </ng-container>
+      <mat-expansion-panel class="setHeight">
+        <mat-expansion-panel-header>
+            Bestelling van tafel {{ order.tableNr }} van
+            {{ order.time | date: "shortTime" }}
+          <mat-divider></mat-divider>
+        </mat-expansion-panel-header>
+        <mat-list-item *ngFor="let item of order.orderItems">
+          <p matLine>{{ item.amount }} X {{ item.item?.name }}</p>
+        </mat-list-item>
+        <mat-action-row>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="setStatus(order.id, 'Done')"
+          >
+            Klaar
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
     </ng-container>
   </div>
 
   <!-- Finished orders -->
-  <div class="second" *ngIf="orders$ | async as orders">
+  <div class="second" *ngIf="doneOrders$ | async as orders">
     <h1>Af</h1>
 
     <mat-divider></mat-divider>
 
     <ng-container *ngFor="let order of orders">
-      <ng-container *ngIf="order.status === 'Done'">
-        <mat-expansion-panel class="setHeight">
-            <mat-expansion-panel-header>
-                Bestelling van tafel {{ order.tableNr }} van
-                {{ order.time | date: "shortTime" }}
-              <mat-divider></mat-divider>
-            </mat-expansion-panel-header>
+      <mat-expansion-panel class="setHeight">
+         <mat-expansion-panel-header>
+            Bestelling van tafel {{ order.tableNr }} van
+            {{ order.time | date: "shortTime" }}
+            <mat-divider></mat-divider>
+          </mat-expansion-panel-header>
 
-            <mat-list-item *ngFor="let item of order.orderItems">
-                <p matLine>{{ item.amount }}x {{ item.item?.name }}</p>
-              </mat-list-item>
+          <mat-list-item *ngFor="let item of order.orderItems">
+            <p matLine>{{ item.amount }} X {{ item.item?.name }}</p>
+            </mat-list-item>
 
-          <mat-action-row>
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="setStatus(order.id, 'Delivered')"
-            >
-              Geserveerd
-            </button>
-          </mat-action-row>
-        </mat-expansion-panel>
-      </ng-container>
+        <mat-action-row>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="setStatus(order.id, 'Delivered')"
+          >
+            Geserveerd
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
     </ng-container>
   </div>
 </div>

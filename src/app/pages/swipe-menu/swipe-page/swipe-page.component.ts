@@ -109,6 +109,7 @@ export class SwipePageComponent implements OnInit {
 
   previousItem() {
     if (!this.isFirstItem()) {
+      this.menu[this.currentIndex].dragDisabled = true;
       this.currentIndex += 1;
       this.menu.push(this.dislikedItems[this.dislikedItems.length - 1]);
       this.dislikedItems.splice(this.dislikedItems.length - 1, 1);
@@ -151,15 +152,16 @@ export class SwipePageComponent implements OnInit {
     }
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
-    }
+  drop() {
+    console.log("droppedddd!!!");
+    // if (event.previousContainer === event.container) {
+    //   moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    // } else {
+    //   transferArrayItem(event.previousContainer.data,
+    //                     event.container.data,
+    //                     event.previousIndex,
+    //                     event.currentIndex);
+    // }
   }
 
   nextPhase() {
@@ -167,5 +169,9 @@ export class SwipePageComponent implements OnInit {
     if (this.phase >= 4) {
       this.menuService.hasHadTutorial = true;
     }
+  }
+
+  test(){
+    console.log("droppedddd!")
   }
 }

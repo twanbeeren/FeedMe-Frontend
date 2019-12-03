@@ -5,7 +5,7 @@ import { MenuItem } from 'src/app/core/classes/menu-item';
 import { TranslatorService } from 'src/app/core/services/translator.service';
 import { OrderService } from 'src/app/core/services/order.service';
 import { MenuService } from 'src/app/core/services/menu.service';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-dialog/dish-info-dialog.component';
 
 @Component({
@@ -26,6 +26,7 @@ export class DrinksMenuComponent implements OnInit {
 
   ngOnInit() {
     this.drinks = this.menuService.getDrinks();
+    
   }
 
   addToOrder(item: MenuItem) {
@@ -43,15 +44,16 @@ export class DrinksMenuComponent implements OnInit {
       this.translator.translate('snackbar.added', { name: item.name }),
       this.translator.translate('snackbar.undo'), {
       duration: 3000,
-      panelClass: 'snackbar'
+      panelClass: 'snackbarlayout'
     });
 
     snackbarRef.onAction().subscribe(() => {
       this.orderService.removeItem(item);
       this.snackbar.open(this.translator.translate('snackbar.removed', { name: item.name }), '', {
         duration: 1000,
+        panelClass: 'snackbarlayout'
       });
-    })
+    });
   }
 
   showInfo(item: MenuItem): void {

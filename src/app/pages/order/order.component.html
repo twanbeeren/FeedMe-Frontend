@@ -1,7 +1,7 @@
 <div *ngIf="orderService.order as order; else empty;" class="main-container">
   <ng-container *ngIf="order.orderItems.length > 0; else empty">
     <!-- Ng for order items -->
-    <div *ngFor="let orderItem of order.orderItems" class="order-container">
+    <div *ngFor="let orderItem of order.orderItems">
       <nav class="level is-mobile">
         <!-- Left side -->
         <div class="level-left">
@@ -55,22 +55,36 @@
       <hr>
     </div>
 
-    <!-- Order button -->
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <p class="level-item">
-          {{'total-price' | translate}}{{getTotalPrice() | currency:'€'}}
-        </p>
-      </div>
+    <div style="background-color:white;;">
+      <!-- Total price -->
+      <nav class="level navbar is-fixed-bottom is-mobile sticky-level" style="bottom: 165px; border-top: 2px solid whitesmoke;">
+        <div class="level-left">
+        </div>
 
-      <div class="level-right">
-        <!-- Order -->
-        <p class="level-item">
-          <button (click)="orderService.sendOrder()" class="order-button" mat-raised-button
-            color="accent">Order</button>
-        </p>
-      </div>
-    </nav>
+        <div class="level-right">
+          <!-- Order -->
+          <div class="level-item">
+            <p class="subtitle is-4">{{'total-price' | translate}}{{orderService.totalPrice | currency:'€'}}</p>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Order button -->
+      <nav class="level navbar is-fixed-bottom is-mobile sticky-level">
+
+        <div class="level-left">
+        </div>
+
+        <div class="level-right">
+          <!-- Order -->
+          <div class="level-item">
+            <button (click)="orderService.sendOrder()" class="order-button" mat-raised-button
+              color="accent">Order</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+
   </ng-container>
 
 

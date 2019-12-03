@@ -5,7 +5,7 @@ import { MenuItem } from 'src/app/core/classes/menu-item';
 import { TranslatorService } from 'src/app/core/services/translator.service';
 import { OrderService } from 'src/app/core/services/order.service';
 import { MenuService } from 'src/app/core/services/menu.service';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-dialog/dish-info-dialog.component';
 
 @Component({
@@ -26,30 +26,34 @@ export class DrinksMenuComponent implements OnInit {
 
   ngOnInit() {
     this.drinks = this.menuService.getDrinks();
+    
   }
 
   addToOrder(item: MenuItem) {
-    if (this.orderService.order == null)
+    if (this.orderService.order == null) {
       this.orderService.newOrder();
+    }
 
     if (this.orderService.addItem(item)) {
       this.showAddedToOrderSnackbar(item);
-    } else this.snackbar.open(this.translator.translate("snackbar.failed", { name: item.name }));
+    } else { this.snackbar.open(this.translator.translate('snackbar.failed', { name: item.name })); }
   }
 
   showAddedToOrderSnackbar(item: MenuItem) {
-    let snackbarRef = this.snackbar.open(
-      this.translator.translate("snackbar.added", { name: item.name }),
-      this.translator.translate("snackbar.undo"), {
+    const snackbarRef = this.snackbar.open(
+      this.translator.translate('snackbar.added', { name: item.name }),
+      this.translator.translate('snackbar.undo'), {
       duration: 3000,
+      panelClass: 'snackbarlayout'
     });
 
     snackbarRef.onAction().subscribe(() => {
       this.orderService.removeItem(item);
-      this.snackbar.open(this.translator.translate("snackbar.removed", { name: item.name }), "", {
+      this.snackbar.open(this.translator.translate('snackbar.removed', { name: item.name }), '', {
         duration: 1000,
+        panelClass: 'snackbarlayout'
       });
-    })
+    });
   }
 
   showInfo(item: MenuItem): void {

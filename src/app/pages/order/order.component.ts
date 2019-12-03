@@ -17,12 +17,4 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  getTotalPrice() {
-    let totalPrice = 0;
-    this.orderService.order.orderItems.forEach(orderItem => {
-      totalPrice += orderItem.item.price * orderItem.amount;
-    });
-    return totalPrice;
-  }
 }

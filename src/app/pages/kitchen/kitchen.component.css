@@ -20,7 +20,7 @@ button {
 }
 
 .first {
-  float:left; /* add this */
+  float: left; /* add this */
   padding: 10px;
   border: 2px solid red;
   width: 50%;

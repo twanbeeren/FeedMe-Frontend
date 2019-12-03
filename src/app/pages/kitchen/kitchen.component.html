@@ -1,11 +1,19 @@
 <br />
 <div class="container-kitchen">
   <!-- Unfinished orders -->
-  <div class="first" *ngIf="orders$ | async as orders">
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile
+        *ngFor="let tile of tiles"
+        [style.background]="tile.color">
+      <div class="table">
+
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <!-- <div class="first" *ngIf="orders$ | async as orders">
     <h1>Bestellingen</h1>
-
     <mat-divider></mat-divider>
-
     <ng-container *ngFor="let order of orders">
       <ng-container *ngIf="order.status === 'Sent'">
         <mat-expansion-panel class="setHeight">
@@ -31,10 +39,10 @@
         </mat-expansion-panel>
       </ng-container>
     </ng-container>
-  </div>
+  </div> -->
 
   <!-- Finished orders -->
-  <div class="second" *ngIf="orders$ | async as orders">
+  <!-- <div class="second" *ngIf="orders$ | async as orders">
     <h1>Af</h1>
 
     <mat-divider></mat-divider>
@@ -64,5 +72,7 @@
         </mat-expansion-panel>
       </ng-container>
     </ng-container>
-  </div>
+  </div> -->
+
+
 </div>

@@ -1,0 +1,31 @@
+<div class="filter-container">
+    <mat-expansion-panel [expanded]="false" hideToggle>
+        <mat-expansion-panel-header>
+            <i class="material-icons">
+                filter_list
+            </i>
+            <mat-panel-title>
+                {{'preferences.filters' | translate}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <input matInput placeholder="table number" [(ngModel)]="filterTableNr">
+        <button mat-raised-button color="primary" (click)="getTicketsByTableNumber()">Filter</button>
+        <button mat-raised-button color="primary" (click)="doIt()">Do It</button>
+    </mat-expansion-panel>
+</div>
+
+<div *ngIf="filteredTickets.length > 0">
+    <mat-expansion-panel *ngFor="let ticket of filteredTickets">
+        <mat-expansion-panel-header>
+            {{'tablenumber' | translate: {number: ticket.tableNr} }} van
+            {{ ticket.time | date: "short" }}
+        </mat-expansion-panel-header>
+        <mat-list *ngFor="let order of ticket.orders">
+            <mat-divider></mat-divider>
+            <mat-list-item *ngFor="let item of order.orderItems">
+                <p matLine>{{ item.amount }}x {{ item.item?.name }}</p>
+            </mat-list-item>
+        </mat-list>
+    </mat-expansion-panel>
+</div>

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, combineLatest } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Order } from '../classes/order';
-import { throwToolbarMixedModesError } from '@angular/material';
+import { Ticket } from '../classes/ticket';
 @Injectable({
   providedIn: 'root'
 })
@@ -45,6 +45,78 @@ export class KitchenService {
         });
         console.log(orders);
         return orders;
+      })
+    );
+  }
+
+  getTicketsByTableNr(tableNr: number): Observable<Ticket[]> {
+    return this.db.collection('Tickets', ref => ref
+      .where('tableNr', '==', tableNr))
+      .snapshotChanges()
+      .pipe(
+        map(snaps => {
+          return this.mapTickets(snaps);
+        })
+      );
+  }
+
+  private mapTickets(snaps) {
+    return snaps.map(snap => {
+      const ticket = {
+        id: snap.payload.doc.id,
+        ...snap.payload.doc.data()
+      } as Ticket;
+      ticket.time = new Date(ticket.time);
+      ticket.orders = this.getOrdersByTicket(ticket);
+      return ticket;
+    });
+  }
+
+  getTicketsByDay(day: Date): Observable<Ticket[]> {
+    const startTime = new Date(day);
+    const endTime = new Date(day);
+    startTime.setHours(0, 0, 0, 0);
+    endTime.setHours(23, 59, 59, 999);
+
+    return this.db.collection('Tickets', ref => ref
+      .orderBy('time')
+      .where('time', '>=', startTime.valueOf())
+      .where('time', '<=', endTime.valueOf()))
+      .snapshotChanges()
+      .pipe(
+        map(snaps => {
+          return this.mapTickets(snaps);
+        })
+      );
+  }
+
+  getOrdersByTicket(ticket: Ticket): Order[] {
+    const orders: Order[] = [];
+    ticket.orderRefs.forEach(async orderRef => {
+      const ref = this.db.collection('Orders').doc(orderRef);
+      await ref.get().toPromise().then(order => {
+        let o = order.data() as Order;
+        o = this.setOrderItems(o);
+        orders.push(o);
+      });
+    });
+    return orders;
+  }
+
+  setOrderItems(order: Order): Order {
+    order.orderItems.forEach(async item => {
+      const ref = this.db.collection('MenuItems').doc(item.item);
+      await ref.get().toPromise().then(receivedItem => {
+        item.item = receivedItem.data();
+      });
+    });
+    return order;
+  }
+
+  getAllTickets(): Observable<Ticket[]> {
+    return this.db.collection<Ticket>('Tickets').valueChanges().pipe(
+      map(tickets => {
+        return tickets;
       })
     );
   }

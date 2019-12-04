@@ -9,13 +9,20 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <input matInput placeholder="table number" [(ngModel)]="filterTableNr">
-        <button mat-raised-button color="primary" (click)="getTicketsByTableNumber()">Filter</button>
-        <button mat-raised-button color="primary" (click)="doIt()">Do It</button>
+        <div>
+            <input matInput [matDatepicker]="dp" placeholder="Pick a date" [max]="maxDate" [(ngModel)]="date" disabled>
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp disabled="false"></mat-datepicker>
+        </div>
+
+        <div>
+            <input matInput placeholder="Table Number" type="number" [(ngModel)]="filterTableNr">
+            <button mat-raised-button color="primary" (click)="getTicketsByDayAndTableNr()">Filter</button>
+        </div>
     </mat-expansion-panel>
 </div>
 
-<div *ngIf="filteredTickets.length > 0">
+<div class="history-container" *ngIf="filteredTickets.length > 0">
     <mat-expansion-panel *ngFor="let ticket of filteredTickets">
         <mat-expansion-panel-header>
             {{'tablenumber' | translate: {number: ticket.tableNr} }} van

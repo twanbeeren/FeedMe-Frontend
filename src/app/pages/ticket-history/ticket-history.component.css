@@ -1,3 +1,11 @@
-.card {
-    margin: 3%;
+.history-container {
+    display: table;
+    width: 100%;
+    padding: 35px;
+    overflow: hidden;
+}
+
+.filter-container {
+    margin-top: 10px;
+    margin-left: 65%;
 }

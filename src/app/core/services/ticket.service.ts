@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -48,8 +49,7 @@ export class TicketService {
     if (!this.ticket) {
       this.ticket = new Ticket();
       this.sendTicket();
-    }
-    else if (this.ticket) {
+    } else if (this.ticket) {
       order.tableNr = this.ticket.tableNr;
       this.ticket.addOrder(order);
       this.sendOrderRef(order);
@@ -69,8 +69,8 @@ export class TicketService {
 
     const json = JSON.stringify(dbTicket);
     const data = JSON.parse(json);
+    data.time = new Date(data.time).valueOf();
 
     this.db.doc('Tickets/' + dbTicket.id).set(data);
-
   }
 }

@@ -5,6 +5,7 @@ import { RegularMenuComponent } from './pages/regular-menu/regular-menu.componen
 import { DrinksMenuComponent } from './pages/drinks-menu/drinks-menu.component';
 import { OrderComponent } from './pages/order/order.component';
 import { KitchenComponent } from './pages/kitchen/kitchen.component';
+import { TicketHistoryComponent } from './pages/ticket-history/ticket-history.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { TableNumberComponent } from './pages/table-number/table-number.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
   { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard, TableGuard] },
   { path: 'kitchen-orders', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
   { path: 'kitchen-tickets', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
-  { path: 'kitchen-history', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
+  { path: 'kitchen-history', component: TicketHistoryComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
 ];
 
 @NgModule({

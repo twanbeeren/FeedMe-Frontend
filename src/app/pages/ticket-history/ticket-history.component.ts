@@ -11,6 +11,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class TicketHistoryComponent implements OnInit {
 
+  date: Date;
+  maxDate: Date;
   filterTableNr: number;
 
   filteredTickets: Ticket[] = [];
@@ -18,16 +20,32 @@ export class TicketHistoryComponent implements OnInit {
   constructor(private kitchenService: KitchenService) { }
 
   ngOnInit() {
-    this.kitchenService.getTicketsByDay(new Date())
+    this.date = new Date();
+    this.maxDate = this.date;
+    this.kitchenService.getTicketsByDay(this.date)
     .subscribe(tickets => {
       this.filteredTickets = tickets;
     });
   }
 
-  getTicketsByTableNumber(tableNr: number = this.filterTableNr) {
-    this.kitchenService.getTicketsByTableNr(tableNr)
+  getTicketsByDayAndTableNr(day: Date = this.date, tableNr: number = this.filterTableNr) {
+    if (isNaN(tableNr) || tableNr === null) {
+      this.getTicketsByDay(day);
+      return;
+    }
+
+    this.kitchenService.getTicketsByDayAndTableNr(day, tableNr)
     .subscribe(tickets => {
       this.filteredTickets = tickets;
     });
+  }
+
+  getTicketsByDay(date: Date = this.date) {
+    if (date !== null) {
+      this.kitchenService.getTicketsByDay(date)
+        .subscribe(tickets => {
+          this.filteredTickets = tickets;
+        });
+    }
   }
 }

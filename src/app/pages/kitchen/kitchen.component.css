@@ -13,6 +13,17 @@ button {
   margin-bottom: 10px;
 }
 
+.mat-grid-tile {
+  border-radius: 10px;
+  font-size: 24px;
+}
+
+.mat-grid-list {
+  float: left; /* add this */
+  padding: 10px;
+  width: 50%;
+}
+
 #wrapper {
   width: 500px;
   border: 1px solid black;
@@ -20,7 +31,7 @@ button {
 }
 
 .first {
-  float:left; /* add this */
+  float: left; /* add this */
   padding: 10px;
   border: 2px solid red;
   width: 50%;

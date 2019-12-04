@@ -1,11 +1,33 @@
 <br />
 <div class="container-kitchen">
   <!-- Unfinished orders -->
-  <div class="first" *ngIf="sentOrders$ | async as orders">
+  <mat-grid-list cols="2" rowHeight="100px">
+    <mat-grid-tile
+      *ngFor="let tile of sentTiles"
+      [style.background]="tile.color"
+      (click)="setStatus(tile.order.id, 'Done')">
+
+      {{tile.order.tableNr}}
+
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="2" rowHeight="100px">
+    <mat-grid-tile 
+      *ngFor="let tile of doneTiles"
+      [style.background]="tile.color"
+      (click)="setStatus(tile.order.id, 'Delivered')">
+
+      {{tile.order.tableNr}}
+
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  
+
+  <!-- <div class="first" *ngIf="sentOrders$ | async as orders">
     <h1>Bestellingen</h1>
-
     <mat-divider></mat-divider>
-
     <ng-container *ngFor="let order of orders">
       <mat-expansion-panel class="setHeight">
         <mat-expansion-panel-header>
@@ -27,10 +49,10 @@
         </mat-action-row>
       </mat-expansion-panel>
     </ng-container>
-  </div>
+  </div> -->
 
   <!-- Finished orders -->
-  <div class="second" *ngIf="doneOrders$ | async as orders">
+  <!-- <div class="second" *ngIf="doneOrders$ | async as orders">
     <h1>Af</h1>
 
     <mat-divider></mat-divider>
@@ -58,5 +80,5 @@
         </mat-action-row>
       </mat-expansion-panel>
     </ng-container>
-  </div>
+  </div> -->
 </div>

@@ -4,7 +4,7 @@
   <div id="disliked-box" style="position: absolute; padding: 25em 0; background: #ff4d4d; width: 5em; top: 0.75em;"></div>
   <div class="dishcard-parent">
     <div *ngIf="show" id="dishcard-box">
-      <app-dishcard class="dishcard" *ngFor="let item of menu; let i = index" [cardId]="i" [item]='item' cdkDrag [cdkDragDisabled]="item.dragDisabled"></app-dishcard>
+      <app-dishcard class="dishcard" *ngFor="let item of menu; let i = index" [cardId]="i" [item]='item' cdkDrag [cdkDragDisabled]="item.dragDisabled" (cdkDragStarted)="dragStart()" (cdkDragReleased)="dragReleased()"></app-dishcard>
     </div>    
   </div>
   <div id="liked-box" style="position: relative; z-index: -999; padding: 25em 0; background: #a3ff4d; width: 5em; float: right; top: -41.5em;"></div>

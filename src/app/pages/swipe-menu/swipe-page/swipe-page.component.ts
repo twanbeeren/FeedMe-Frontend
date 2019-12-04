@@ -1,29 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 import { OrderService } from 'src/app/core/services/order.service';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-swipe-page',
   templateUrl: './swipe-page.component.html',
   styleUrls: ['./swipe-page.component.css']
 })
-export class SwipePageComponent implements OnInit {
+export class SwipePageComponent implements OnInit {  
   menu = [];
   dislikedItems = [];
   likedItems = [];
   menuitem = null;
   currentIndex;
   swipedIndex;
+  dishRect = null;
+  dislikeRect = null;
+  likeRect = null;
 
   latestLikedItem: MenuItem;
   isModalActive = false;
 
   public show = true;
 
-  // Tutorial mdoal
+  // Tutorial modal
   isTutorialActive = true;
   phase = 0;
 
@@ -38,6 +41,18 @@ export class SwipePageComponent implements OnInit {
     if (this.menuService.hasHadTutorial) {
       this.phase = 4;
     }
+  }
+
+  getDislikeRect(){
+    var dislike = document.getElementById("disliked-box");
+      this.dislikeRect = dislike.getBoundingClientRect();
+      console.log(this.dislikeRect.top, this.dislikeRect.right, this.dislikeRect.bottom, this.dislikeRect.left);
+  }
+
+  getLikeRect(){
+    var like = document.getElementById("liked-box");
+    this.likeRect = like.getBoundingClientRect();
+    console.log(this.likeRect.top, this.likeRect.right, this.likeRect.bottom, this.likeRect.left);
   }
 
   getMenu() {
@@ -132,38 +147,6 @@ export class SwipePageComponent implements OnInit {
     setTimeout(() => this.show = true);
   }
 
-  dislikeDrop(event: CdkDragDrop<string[]>){
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      this.dislikeItem();
-    }
-  }
-
-  likeDrop(event: CdkDragDrop<string[]>){
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      this.likeItem();
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
-    }
-  }
-
-  drop() {
-    console.log("droppedddd!!!");
-    // if (event.previousContainer === event.container) {
-    //   moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    // } else {
-    //   transferArrayItem(event.previousContainer.data,
-    //                     event.container.data,
-    //                     event.previousIndex,
-    //                     event.currentIndex);
-    // }
-  }
-
   nextPhase() {
     this.phase++;
     if (this.phase >= 4) {
@@ -171,7 +154,50 @@ export class SwipePageComponent implements OnInit {
     }
   }
 
-  test(){
-    console.log("droppedddd!")
+  dragStart(){
+    var element =  document.getElementById(this.currentIndex.toString());
+    this.dishRect = element.getBoundingClientRect();
+    console.log(this.dishRect.top, this.dishRect.right, this.dishRect.bottom, this.dishRect.left);
+  }
+
+  dragReleased(){
+    console.log(this.dishRect.top, this.dishRect.right, this.dishRect.bottom, this.dishRect.left);
+    
+    if(this.likeColide() || this.dislikeColide()){
+      console.log("Hier");
+    }
+    else {
+      console.log("Niet hier");
+      this.placeDishcardBack();
+    }
+    
+  }
+
+  placeDishcardBack(){
+    //   var element =  document.getElementById(this.currentIndex.toString());
+    //   element.style.left = -this.dishRect.left/2 + 'px';
+    //   element.style.top = -this.dishRect.top/2 + 'px';
+  }
+
+  likeColide(){
+    this.getLikeRect();
+    
+    if(this.dishRect.x + this.dishRect.width > this.likeRect.x){
+      console.log("jaja");
+      return true;
+    }    
+
+    return false;
+  }
+
+  dislikeColide(){
+    this.getDislikeRect();
+    
+    if(this.dishRect.x < this.dislikeRect.x + this.dislikeRect.width){
+      console.log("ja");
+      return true;
+    }    
+
+    return false;
   }
 }

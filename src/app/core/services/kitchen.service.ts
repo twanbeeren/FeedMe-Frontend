@@ -25,12 +25,10 @@ export class KitchenService {
     return this.db.collection<Order>('Orders', ref => ref.where(property, '==', value)).valueChanges().pipe(
       map(orders => {
         const orderLength = orders.length;
-        console.log('orderlength ' + orderLength);
         orders.forEach(order => {
 
           if (order.status === 'Sent') {
             if (orderLength > this.currentOrdersAmount && order.status === 'Sent') {
-              console.log('currentorderamount ' + this.currentOrdersAmount);
               this.playNewOrderSound(order);
             }
             this.currentOrdersAmount = orderLength;
@@ -39,37 +37,13 @@ export class KitchenService {
           order.orderItems.forEach(async item => {
             const ref = this.db.collection('MenuItems').doc(item.item);
             await ref.get().toPromise().then(receivedItem => {
-            item.item = receivedItem.data();
+              item.item = receivedItem.data();
             });
           });
         });
-        console.log(orders);
         return orders;
       })
     );
-  }
-
-  getTicketsByTableNr(tableNr: number): Observable<Ticket[]> {
-    return this.db.collection('Tickets', ref => ref
-      .where('tableNr', '==', tableNr))
-      .snapshotChanges()
-      .pipe(
-        map(snaps => {
-          return this.mapTickets(snaps);
-        })
-      );
-  }
-
-  private mapTickets(snaps) {
-    return snaps.map(snap => {
-      const ticket = {
-        id: snap.payload.doc.id,
-        ...snap.payload.doc.data()
-      } as Ticket;
-      ticket.time = new Date(ticket.time);
-      ticket.orders = this.getOrdersByTicket(ticket);
-      return ticket;
-    });
   }
 
   getTicketsByDay(day: Date): Observable<Ticket[]> {
@@ -88,6 +62,38 @@ export class KitchenService {
           return this.mapTickets(snaps);
         })
       );
+  }
+
+  getTicketsByDayAndTableNr(day: Date, tableNr: number): Observable<Ticket[]> {
+    const startTime = new Date(day);
+    const endTime = new Date(day);
+    startTime.setHours(0, 0, 0, 0);
+    endTime.setHours(23, 59, 59, 999);
+
+    console.log(`${day.valueOf()}, ${startTime.valueOf()}, ${endTime.valueOf()}, ${tableNr}`);
+    return this.db.collection('Tickets', ref => ref
+      .orderBy('time', 'desc')
+      .where('tableNr', '==', tableNr.toString())
+      .where('time', '>=', startTime.valueOf())
+      .where('time', '<=', endTime.valueOf()))
+      .snapshotChanges()
+      .pipe(
+        map(snaps => {
+          return this.mapTickets(snaps);
+        })
+      );
+  }
+
+  private mapTickets(snaps) {
+    return snaps.map(snap => {
+      const ticket = {
+        id: snap.payload.doc.id,
+        ...snap.payload.doc.data()
+      } as Ticket;
+      ticket.time = new Date(ticket.time);
+      ticket.orders = this.getOrdersByTicket(ticket);
+      return ticket;
+    });
   }
 
   getOrdersByTicket(ticket: Ticket): Order[] {

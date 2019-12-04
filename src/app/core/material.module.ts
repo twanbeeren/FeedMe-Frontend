@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatButtonModule, MatButtonToggleModule, MatBadgeModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule, MatListModule, MatChipsModule,
-  MatToolbarModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, MatRadioModule, MatFormFieldModule, MatExpansionModule, MatSnackBarModule
+  MatToolbarModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, MatRadioModule, MatFormFieldModule, MatExpansionModule, MatSnackBarModule, MatGridListModule
 } from '@angular/material';
 
 @NgModule({
@@ -25,6 +25,7 @@ import {
     MatFormFieldModule,
     MatExpansionModule,
     MatSnackBarModule,
+    MatGridListModule
   ],
   exports: [
     CommonModule,
@@ -45,6 +46,7 @@ import {
     MatFormFieldModule,
     MatExpansionModule,
     MatSnackBarModule,
+    MatGridListModule
   ],
   declarations: [],
 })

@@ -27,11 +27,11 @@ export class KitchenService {
         const orderLength = orders.length;
         console.log('orderlength ' + orderLength);
         orders.forEach(order => {
-
-          if (order.status === 'Sent') {
-            if (orderLength > this.currentOrdersAmount && order.status === 'Sent') {
+          if (value === 'Sent') {
+            if (orderLength >= this.currentOrdersAmount && value === 'Sent') {
               console.log('currentorderamount ' + this.currentOrdersAmount);
               this.playNewOrderSound(order);
+              console.log('play sound ' + value);
             }
             this.currentOrdersAmount = orderLength;
           }

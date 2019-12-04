@@ -18,23 +18,39 @@ export class KitchenComponent implements OnInit {
   constructor(public kitchenService: KitchenService) { }
 
   sentOrders$: Observable<Order[]>;
+  doneOrders$: Observable<Order[]>;
   tile: Tile;
 
-  tiles: Tile[] = [];
+  sentTiles: Tile[] = [];
+  doneTiles: Tile[] = [];
 
   ngOnInit() {
     this.sentOrders$ = this.kitchenService.getSentOrders();
-    this.setTiles();
+    this.doneOrders$ = this.kitchenService.getDoneOrders();
+    this.setSentTiles();
+    this.setDoneTiles();
   }
 
-  setTiles() {
+  setSentTiles() {
     this.sentOrders$.subscribe(orders => {
-      this.tiles = [];
+      this.sentTiles = [];
       orders.forEach(order => {
         this.tile = new Tile();
         this.tile.color = 'lightblue';
         this.tile.order = order;
-        this.tiles.push(this.tile);
+        this.sentTiles.push(this.tile);
+      });
+    });
+  }
+
+  setDoneTiles() {
+    this.doneOrders$.subscribe(orders => {
+      this.doneTiles = [];
+      orders.forEach(order => {
+        this.tile = new Tile();
+        this.tile.color = 'orangered';
+        this.tile.order = order;
+        this.doneTiles.push(this.tile);
       });
     });
   }
@@ -42,6 +58,7 @@ export class KitchenComponent implements OnInit {
   setStatus(id: string, newStatus: string) {
     console.log(id, newStatus);
     this.kitchenService.setStatus(id, newStatus);
-    this.setTiles();
+    this.setSentTiles();
+    this.setDoneTiles();
   }
 }

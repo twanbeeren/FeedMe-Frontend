@@ -18,6 +18,12 @@ button {
   font-size: 24px;
 }
 
+.mat-grid-list {
+  float: left; /* add this */
+  padding: 10px;
+  width: 50%;
+}
+
 #wrapper {
   width: 500px;
   border: 1px solid black;

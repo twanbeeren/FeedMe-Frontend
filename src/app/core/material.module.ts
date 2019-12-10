@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  MatButtonModule, MatButtonToggleModule, MatBadgeModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule, MatListModule, MatChipsModule, MatDatepickerModule,
-  MatToolbarModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, MatRadioModule, MatFormFieldModule, MatExpansionModule, MatSnackBarModule, MatNativeDateModule, MatGridListModule
+  MatButtonModule, MatButtonToggleModule, MatBadgeModule, MatCardModule, MatCheckboxModule, MatDialogModule, MatInputModule, MatTableModule, MatListModule, MatChipsModule, MatDatepickerModule,
+  MatToolbarModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule, MatRadioModule, MatFormFieldModule, MatExpansionModule, MatSnackBarModule, MatNativeDateModule, MatGridListModule, MatSlideToggleModule
 } from '@angular/material';
 
 @NgModule({
@@ -14,6 +14,7 @@ import {
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
+    MatCheckboxModule,
     MatInputModule,
     MatDialogModule,
     MatTableModule,
@@ -27,6 +28,7 @@ import {
     MatFormFieldModule,
     MatExpansionModule,
     MatSnackBarModule,
+    MatSlideToggleModule,
     MatGridListModule
   ],
   exports: [
@@ -36,6 +38,7 @@ import {
     MatButtonToggleModule,
     MatBadgeModule,
     MatCardModule,
+    MatCheckboxModule,
     MatRadioModule,
     MatInputModule,
     MatDialogModule,
@@ -49,6 +52,7 @@ import {
     MatFormFieldModule,
     MatExpansionModule,
     MatSnackBarModule,
+    MatSlideToggleModule,
     MatGridListModule
   ],
   declarations: [],

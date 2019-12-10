@@ -9,16 +9,22 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <div>
-            <input matInput [matDatepicker]="dp" placeholder="Pick a date" [max]="maxDate" [(ngModel)]="date" disabled>
-            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-            <mat-datepicker #dp disabled="false"></mat-datepicker>
-        </div>
+        <form (submit)="filter()">
+            <mat-form-field>
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="dp" placeholder="Pick a date" [max]="maxDate" [(ngModel)]="date" [ngModelOptions]="{standalone: true}" disabled>
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp disabled="false"></mat-datepicker>
+            </mat-form-field>
 
-        <div>
-            <input matInput placeholder="Table Number" type="number" [(ngModel)]="filterTableNr">
-            <button mat-raised-button color="primary" (click)="getTicketsByDayAndTableNr()">Filter</button>
-        </div>
+            <mat-form-field>
+                <mat-label>Table Number</mat-label>
+                <input matInput placeholder="Table Number" type="number" [(ngModel)]="filterTableNr" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit">Filter</button>
+            <button mat-raised-button color="primary" (click)="reset()">Reset</button>
+        </form>
     </mat-expansion-panel>
 </div>
 

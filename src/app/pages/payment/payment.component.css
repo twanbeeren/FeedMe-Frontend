@@ -1,5 +1,6 @@
 .card {
   margin: 3%;
+  margin-bottom: 30%;
 }
 
 .main-container {
@@ -34,7 +35,7 @@
 }
 
 .sticky-level {
-  bottom: 109px;
+  bottom: 104px;
   padding-right: 40px;
   margin: 0;
   background-color: white;

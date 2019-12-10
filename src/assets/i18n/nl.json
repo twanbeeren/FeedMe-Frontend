@@ -52,5 +52,9 @@
         "orders": "Bestellingen",
         "tickets": "Tickets",
         "history": "Geschiedenis"
+    },
+    "kitchen-header": {
+        "new": "Nieuw",
+        "ready": "Klaar"
     }
 }

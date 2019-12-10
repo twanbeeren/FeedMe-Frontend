@@ -2,7 +2,7 @@
 <div class="container-kitchen">
   <!-- Unfinished orders -->
   <div class="orderList">
-    <h1>New</h1>
+    <h1>{{'kitchen-header.new' | translate}}</h1>
     <mat-grid-list cols="2" rowHeight="100px">
       <mat-grid-tile
         *ngFor="let tile of sentTiles"
@@ -21,7 +21,7 @@
 
   <!-- Finished orders-->
   <div class="orderList">
-    <h1>Ready</h1>
+    <h1>{{'kitchen-header.ready' | translate}}</h1>
     <mat-grid-list cols="2" rowHeight="100px">
       <mat-grid-tile 
         *ngFor="let tile of doneTiles"

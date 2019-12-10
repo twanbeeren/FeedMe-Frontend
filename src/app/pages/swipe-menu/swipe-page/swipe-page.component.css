@@ -48,13 +48,17 @@ button {
 .dishcard-parent {
   height: 54vh;
   position: relative;
+
+  right: 200px;
+  top: 50px;
 }
 
 .dishcard {
   position: absolute;
-  top: 50%;
+  height: 12rem;
+  /* top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
 /* mat-icon {

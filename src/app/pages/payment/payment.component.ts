@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { TicketService } from 'src/app/core/services/ticket.service';
-import { Order } from 'src/app/core/classes/order';
 import { OrderService } from 'src/app/core/services/order.service';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 

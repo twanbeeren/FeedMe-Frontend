@@ -2,6 +2,7 @@ import { MenuItem } from './menu-item';
 import { Guid } from 'guid-typescript';
 
 export class Order {
+
   id: string;
   time: Date;
   orderItems: { item: any, amount: number }[] = [];
@@ -40,5 +41,13 @@ export class Order {
       this.orderItems.push({ item: itemToAdd, amount: 1 });
     }
 
+  }
+
+  getTotalPrice() {
+    let price = 0;
+    this.orderItems.forEach(item => {
+      price += item.item.price * item.amount;
+    });
+    return price;
   }
 }

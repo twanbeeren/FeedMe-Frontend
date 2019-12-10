@@ -34,9 +34,9 @@
 }
 
 .sticky-level {
-  bottom: 115px;
+  bottom: 109px;
   padding-right: 40px;
-  height: 70px;
   margin: 0;
   background-color: white;
+  border-bottom: 6px solid white;
 }

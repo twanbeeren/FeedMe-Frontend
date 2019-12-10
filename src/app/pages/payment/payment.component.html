@@ -45,6 +45,36 @@
       <hr>
     </nav>
   </mat-list>
+
+  <div style="background-color:white;">
+    <!-- Total price -->
+    <nav class="level navbar is-fixed-bottom is-mobile sticky-level" style="bottom: 154px; border-top: 2px solid white;">
+      <div class="level-left">
+      </div>
+
+      <div class="level-right">
+        <!-- Order -->
+        <div class="level-item">
+          <p class="subtitle is-4">{{'total-price' | translate}}{{ticketService.totalPrice | currency:'€'}}</p>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Order button -->
+    <nav class="level navbar is-fixed-bottom is-mobile sticky-level">
+
+      <div class="level-left">
+      </div>
+
+      <div class="level-right">
+        <!-- Order -->
+        <div class="level-item">
+          <button (click)="ticketService.payIdeal()" class="order-button" mat-raised-button
+            color="accent">Pay with iDeal</button>
+        </div>
+      </div>
+    </nav>
+  </div>
 </mat-card>
 
 <ng-template #nothing>

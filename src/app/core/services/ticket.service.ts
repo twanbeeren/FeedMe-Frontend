@@ -13,6 +13,7 @@ export class TicketService {
 
   private tableNumberSubject = new BehaviorSubject<number>(null);
   tableNumber = this.tableNumberSubject.asObservable();
+  totalPrice = 0;
 
   ticket: Ticket;
   private hasToResetSubject = new BehaviorSubject<boolean>(false);
@@ -52,6 +53,7 @@ export class TicketService {
       this.sendTicket();
     } else if (this.ticket) {
       order.tableNr = this.ticket.tableNr;
+      this.totalPrice += order.getTotalPrice();
       this.ticket.addOrder(order);
       this.sendOrderRef(order);
     }
@@ -72,6 +74,14 @@ export class TicketService {
     const data = JSON.parse(json);
 
     this.db.doc('Tickets/' + dbTicket.id).set(data);
+  }
 
+  payIdeal() {
+    this.totalPrice = 0;
+    this.ticket.orders.forEach(order => {
+      this.totalPrice += order.getTotalPrice();
+    });
+
+    console.log(this.totalPrice);
   }
 }

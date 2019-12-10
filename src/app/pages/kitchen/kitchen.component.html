@@ -1,27 +1,39 @@
 <br />
 <div class="container-kitchen">
   <!-- Unfinished orders -->
-  <mat-grid-list cols="2" rowHeight="100px">
-    <mat-grid-tile
-      *ngFor="let tile of sentTiles"
-      [style.background]="tile.color"
-      (click)="setStatus(tile.order.id, 'Done')">
+  <div class="orderList">
+    <h1>New</h1>
+    <mat-grid-list cols="2" rowHeight="100px">
+      <mat-grid-tile
+        *ngFor="let tile of sentTiles"
+        [style.background]="tile.color"
+        (click)="setStatus(tile.order.id, 'Done')">
+  
+        {{tile.order.tableNr}}
+        <p class="timeDisplay">
+        
+        </p>
+  
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  
 
-      {{tile.order.tableNr}}
-
-    </mat-grid-tile>
-  </mat-grid-list>
-
-  <mat-grid-list cols="2" rowHeight="100px">
-    <mat-grid-tile 
-      *ngFor="let tile of doneTiles"
-      [style.background]="tile.color"
-      (click)="setStatus(tile.order.id, 'Delivered')">
-
-      {{tile.order.tableNr}}
-
-    </mat-grid-tile>
-  </mat-grid-list>
+  <!-- Finished orders-->
+  <div class="orderList">
+    <h1>Ready</h1>
+    <mat-grid-list cols="2" rowHeight="100px">
+      <mat-grid-tile 
+        *ngFor="let tile of doneTiles"
+        [style.background]="tile.color"
+        (click)="setStatus(tile.order.id, 'Delivered')">
+  
+        {{tile.order.tableNr}}
+  
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  
 
   
 

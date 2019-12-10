@@ -14,19 +14,19 @@ export class TicketHistoryComponent implements OnInit {
   filterTableNr: number;
   hideEmpty: boolean;
 
-  filteredTickets: Ticket[] = [];
+  tickets: Ticket[] = [];
 
   constructor(private kitchenService: KitchenService) { }
 
   ngOnInit() {
-    this.maxDate = this.date;
+    this.maxDate = new Date();
     this.kitchenService.getTicketsByDay(this.date)
       .subscribe(tickets => {
         const currentDate = new Date();
         if (this.date.getFullYear() === currentDate.getFullYear()
           && this.date.getMonth() === currentDate.getMonth()
           && this.date.getDate() === currentDate.getDate()) {
-          this.filteredTickets = tickets;
+          this.tickets = tickets;
         }
       });
   }
@@ -34,15 +34,15 @@ export class TicketHistoryComponent implements OnInit {
   private getTicketsByDayAndTableNr(day: Date = this.date, tableNr: number = this.filterTableNr) {
     this.kitchenService.getTicketsByDayAndTableNr(day, tableNr)
       .subscribe(tickets => {
-        this.filteredTickets = tickets;
+        this.tickets = tickets;
       });
   }
 
-  private getTicketsByDay(date: Date = this.date) {
-    if (date !== null) {
-      this.kitchenService.getTicketsByDay(date)
+  private getTicketsByDay(day: Date = this.date) {
+    if (day !== null) {
+      this.kitchenService.getTicketsByDay(day)
         .subscribe(tickets => {
-          this.filteredTickets = tickets;
+          this.tickets = tickets;
         });
     }
   }
@@ -50,7 +50,6 @@ export class TicketHistoryComponent implements OnInit {
   filter(day: Date = this.date, tableNr: number = this.filterTableNr) {
     if (isNaN(tableNr) || tableNr === null) {
       this.getTicketsByDay(day);
-      return;
     } else { this.getTicketsByDayAndTableNr(day, tableNr); }
   }
 

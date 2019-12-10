@@ -36,6 +36,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { TicketHistoryComponent } from './pages/ticket-history/ticket-history.component';
+import { TicketOverviewComponent } from './pages/ticket-overview/ticket-overview.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { TicketHistoryComponent } from './pages/ticket-history/ticket-history.co
     KitchenComponent,
     PaymentComponent,
     TicketHistoryComponent,
+    TicketOverviewComponent,
   ],
   entryComponents: [DishInfoDialogComponent],
   imports: [

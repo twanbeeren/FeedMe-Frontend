@@ -12,7 +12,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class TicketService {
 
   private tableNumberSubject = new BehaviorSubject<number>(null);
-  tableNumber = this.tableNumberSubject.asObservable();
+  tableNumber$ = this.tableNumberSubject.asObservable();
   totalPrice = 0;
 
   ticket: Ticket;
@@ -42,7 +42,7 @@ export class TicketService {
 
   reset() {
     this.ticket = null;
-    this.tableNumber = null;
+    this.tableNumberSubject.next(null);
     this.hasToResetSubject.next(true);
     this.router.navigate(['/tablenumber']);
   }

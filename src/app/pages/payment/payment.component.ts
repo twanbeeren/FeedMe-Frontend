@@ -19,7 +19,7 @@ export class PaymentComponent implements OnInit {
     private paymentService: PaymentService) { }
 
   ngOnInit() {
-    this.ticketService.tableNumber.subscribe(tableNr => this.tableNrParam = `{number: ${tableNr}}`);
+    this.ticketService.tableNumber$.subscribe(tableNr => this.tableNrParam = `{number: ${tableNr}}`);
 
     Promise.all(this.ticketService.ticket.orders.map(order => {
       Promise.all(order.orderItems.map(async menuItem => {

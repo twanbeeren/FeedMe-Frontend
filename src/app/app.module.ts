@@ -35,6 +35,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { PaymentFinishedComponent } from './pages/payment/payment-finished/payment-finished.component';
+import { TicketHistoryComponent } from './pages/ticket-history/ticket-history.component';
+import { TicketOverviewComponent } from './pages/ticket-overview/ticket-overview.component';
+import { OrdersDialogComponent } from './components/dialogs/orders-dialog/orders-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,8 +58,12 @@ import { environment } from '../environments/environment';
     LoginComponent,
     KitchenComponent,
     PaymentComponent,
+    TicketHistoryComponent,
+    TicketOverviewComponent,
+    OrdersDialogComponent,
+    PaymentFinishedComponent,
   ],
-  entryComponents: [DishInfoDialogComponent],
+  entryComponents: [DishInfoDialogComponent, OrdersDialogComponent],
   imports: [
     HttpClientModule,
     BrowserModule,

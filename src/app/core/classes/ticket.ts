@@ -12,7 +12,7 @@ export class Ticket {
         if (ticket) {
             Object.keys(ticket).forEach(key => {
                 this[key] = ticket[key];
-            })
+            });
         } else {
             this.id = Guid.raw();
             this.tableNr = tableNumber;

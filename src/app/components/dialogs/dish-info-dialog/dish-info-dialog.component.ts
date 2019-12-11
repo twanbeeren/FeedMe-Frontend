@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 
 export interface DishInfoData {
-  dish: MenuItem
+  dish: MenuItem;
 }
 
 @Component({
@@ -22,6 +22,6 @@ export class DishInfoDialogComponent {
   }
 
   isVegetarian(item: MenuItem): boolean {
-    return item.tags.indexOf("Vegetarian") !== -1;
+    return item.tags.indexOf('Vegetarian') !== -1;
   }
 }

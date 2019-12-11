@@ -5,14 +5,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
 
-  private _tableNumber = new BehaviorSubject<number>(null);
-  tableNumber = this._tableNumber.asObservable();
+  private tableNumberSubject = new BehaviorSubject<number>(null);
+  tableNumber$ = this.tableNumberSubject.asObservable();
+  totalPrice = 0;
 
   ticket: Ticket;
   private hasToResetSubject = new BehaviorSubject<boolean>(false);
@@ -22,24 +24,28 @@ export class TicketService {
   }
 
   setTableNumber(tableNr: number) {
-    this._tableNumber.next(tableNr);
+    this.tableNumberSubject.next(tableNr);
     if (!this.ticket) {
-      this.ticket = new Ticket(this._tableNumber.value);
+      this.ticket = new Ticket(this.tableNumberSubject.value);
       this.sendTicket();
       this.subscribeToDbTicket();
     }
   }
+
   subscribeToDbTicket() {
     this.db.doc<Ticket>('Tickets/' + this.ticket.id).valueChanges().subscribe(data => {
-      const finished = data.finished;
-      if (finished) {
-        this.reset();
+      if (data) {
+        const finished = data.finished;
+        if (finished) {
+          this.reset();
+        }
       }
     });
   }
+
   reset() {
     this.ticket = null;
-    this.tableNumber = null;
+    this.tableNumberSubject.next(null);
     this.hasToResetSubject.next(true);
     this.router.navigate(['/tablenumber']);
   }
@@ -48,9 +54,9 @@ export class TicketService {
     if (!this.ticket) {
       this.ticket = new Ticket();
       this.sendTicket();
-    }
-    else if (this.ticket) {
+    } else if (this.ticket) {
       order.tableNr = this.ticket.tableNr;
+      this.totalPrice += order.getTotalPrice();
       this.ticket.addOrder(order);
       this.sendOrderRef(order);
     }
@@ -69,8 +75,17 @@ export class TicketService {
 
     const json = JSON.stringify(dbTicket);
     const data = JSON.parse(json);
+    data.time = new Date(data.time).valueOf();
 
     this.db.doc('Tickets/' + dbTicket.id).set(data);
+  }
 
+  payIdeal() {
+    this.totalPrice = 0;
+    this.ticket.orders.forEach(order => {
+      this.totalPrice += order.getTotalPrice();
+    });
+
+    console.log(this.totalPrice);
   }
 }

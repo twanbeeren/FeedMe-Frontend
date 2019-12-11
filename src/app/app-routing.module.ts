@@ -11,6 +11,7 @@ import { TableNumberComponent } from './pages/table-number/table-number.componen
 import { PaymentComponent } from './pages/payment/payment.component';
 import { KitchenGuard } from './core/guards/kitchen.guard';
 import { TableGuard } from './core/guards/table.guard';
+import { PaymentFinishedComponent } from './pages/payment/payment-finished/payment-finished.component';
 
 const routes: Routes = [
   { path: '', component: TableNumberComponent, canActivate: [AuthGuard] },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'swipemenu', component: SwipePageComponent, canActivate: [AuthGuard, TableGuard] },
   { path: 'order', component: OrderComponent, canActivate: [AuthGuard, TableGuard] },
   { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard, TableGuard] },
+  { path: 'payment-finished', component: PaymentFinishedComponent, canActivate: [AuthGuard, TableGuard] },
   { path: 'kitchen-orders', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
   { path: 'kitchen-tickets', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
   { path: 'kitchen-history', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },

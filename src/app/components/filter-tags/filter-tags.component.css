@@ -1,4 +1,9 @@
 .filter-container {
-    margin-top: 10px;
-    margin-left: 65%;
+  margin-top: 10px;
+  margin-left: 65%;
+}
+
+.badge {
+    top: 11px; 
+    left: 18px;
 }

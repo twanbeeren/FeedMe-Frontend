@@ -34,9 +34,11 @@ export class TicketService {
 
   subscribeToDbTicket() {
     this.db.doc<Ticket>('Tickets/' + this.ticket.id).valueChanges().subscribe(data => {
-      const finished = data.finished;
-      if (finished) {
-        this.reset();
+      if (data) {
+        const finished = data.finished;
+        if (finished) {
+          this.reset();
+        }
       }
     });
   }

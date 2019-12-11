@@ -32,7 +32,9 @@ export class PaymentComponent implements OnInit {
   }
 
   pay() {
+    const id = this.ticketService.ticket.id;
     this.paymentService.pay();
-    this.router.navigate(['/payment-finished']);
+    console.log(id);
+    this.router.navigate(['/payment-finished', id]);
   }
 }

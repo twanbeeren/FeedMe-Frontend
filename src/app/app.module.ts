@@ -37,6 +37,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { TicketHistoryComponent } from './pages/ticket-history/ticket-history.component';
 import { TicketOverviewComponent } from './pages/ticket-overview/ticket-overview.component';
+import { OrdersDialogComponent } from './components/dialogs/orders-dialog/orders-dialog.component';
 
 @NgModule({
   declarations: [
@@ -58,8 +59,9 @@ import { TicketOverviewComponent } from './pages/ticket-overview/ticket-overview
     PaymentComponent,
     TicketHistoryComponent,
     TicketOverviewComponent,
+    OrdersDialogComponent,
   ],
-  entryComponents: [DishInfoDialogComponent],
+  entryComponents: [DishInfoDialogComponent, OrdersDialogComponent],
   imports: [
     HttpClientModule,
     BrowserModule,

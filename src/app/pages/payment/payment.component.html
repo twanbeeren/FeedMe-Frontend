@@ -1,4 +1,4 @@
-<mat-card class="card" *ngIf="ticketService.ticket.orders.length > 0; else nothing">
+<mat-card class="card" *ngIf="ticketService.ticket.orders.length > 0; else empty">
     <mat-card-header>
         <mat-card-title>
             {{'tablenumber' | translate:tableNrParam}}
@@ -13,7 +13,7 @@
     </mat-list>
 </mat-card>
 
-<ng-template #nothing>
+<ng-template #empty>
     <mat-card class="card">
         <mat-card-header>
             <mat-card-title>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Ticket } from 'src/app/core/classes/ticket';
 import { KitchenService } from 'src/app/core/services/kitchen.service';
+import { MatTableDataSource, MatDialog } from '@angular/material';
+import { OrdersDialogComponent } from 'src/app/components/dialogs/orders-dialog/orders-dialog.component';
 
 @Component({
   selector: 'app-ticket-history',
@@ -15,8 +17,12 @@ export class TicketHistoryComponent implements OnInit {
   hideEmpty: boolean;
 
   tickets: Ticket[] = [];
+  ticketDataSource: MatTableDataSource<Ticket> = new MatTableDataSource<Ticket>();
+  ticketDisplayedColumns: string[] = ['tableNr', 'time', 'finished', 'orderAmount'];
 
-  constructor(private kitchenService: KitchenService) { }
+  constructor(
+    private kitchenService: KitchenService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.maxDate = new Date();
@@ -27,6 +33,7 @@ export class TicketHistoryComponent implements OnInit {
           && this.date.getMonth() === currentDate.getMonth()
           && this.date.getDate() === currentDate.getDate()) {
           this.tickets = tickets;
+          this.ticketDataSource.data = tickets;
         }
       });
   }
@@ -35,6 +42,7 @@ export class TicketHistoryComponent implements OnInit {
     this.kitchenService.getTicketsByDayAndTableNr(day, tableNr)
       .subscribe(tickets => {
         this.tickets = tickets;
+        this.ticketDataSource.data = tickets;
       });
   }
 
@@ -43,6 +51,7 @@ export class TicketHistoryComponent implements OnInit {
       this.kitchenService.getTicketsByDay(day)
         .subscribe(tickets => {
           this.tickets = tickets;
+          this.ticketDataSource.data = tickets;
         });
     }
   }
@@ -57,5 +66,9 @@ export class TicketHistoryComponent implements OnInit {
     this.date = new Date();
     this.filterTableNr = null;
     this.filter();
+  }
+
+  showOrders(ticket: Ticket) {
+    this.dialog.open(OrdersDialogComponent, { data: ticket });
   }
 }

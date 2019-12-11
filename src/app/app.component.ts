@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
 import { TicketService } from './core/services/ticket.service';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   tableNumber: number;
 
@@ -17,15 +17,14 @@ export class AppComponent {
     private authService: AuthService,
     private router: Router) {
 
-    this.ticketService.tableNumber.subscribe(tableNumber => {
+    this.ticketService.tableNumber$.subscribe(tableNumber => {
       if (!tableNumber && !this.authService.isInKitchen) {
         this.router.navigate(['/tablenumber']);
       }
     });
   }
 
-  // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
-    this.ticketService.tableNumber.subscribe(tableNumber => this.tableNumber = tableNumber);
+    this.ticketService.tableNumber$.subscribe(tableNumber => this.tableNumber = tableNumber);
   }
 }

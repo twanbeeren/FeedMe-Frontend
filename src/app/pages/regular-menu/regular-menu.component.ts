@@ -42,12 +42,14 @@ export class RegularMenuComponent implements OnInit {
       this.translator.translate('snackbar.added', { name: item.name }),
       this.translator.translate('snackbar.undo'), {
       duration: 3000,
+      panelClass: 'snackbarlayout'
     });
 
     snackbarRef.onAction().subscribe(() => {
       this.orderService.removeItem(item);
       this.snackbar.open(this.translator.translate('snackbar.removed', { name: item.name }), '', {
         duration: 1000,
+        panelClass: 'snackbarlayout'
       });
     });
   }

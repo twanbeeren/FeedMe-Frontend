@@ -10,9 +10,12 @@ export class Order {
   ticketId: string;
   tableNr: number;
 
+  madeNoise: boolean;
+
   constructor() {
     this.time = new Date();
     this.id = Guid.raw();
+    this.madeNoise = false;
   }
 
   removeItem(itemId: string) {

@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       if (isLoggedIn) {
         this.router.navigate(['/tablenumber']);
       }
-    })
+    });
   }
 
   initForm() {

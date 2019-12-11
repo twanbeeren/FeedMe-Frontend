@@ -36,6 +36,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PaymentFinishedComponent } from './pages/payment/payment-finished/payment-finished.component';
+import { TicketHistoryComponent } from './pages/ticket-history/ticket-history.component';
+import { TicketOverviewComponent } from './pages/ticket-overview/ticket-overview.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { PaymentFinishedComponent } from './pages/payment/payment-finished/payme
     LoginComponent,
     KitchenComponent,
     PaymentComponent,
+    TicketHistoryComponent,
+    TicketOverviewComponent,
     PaymentFinishedComponent,
   ],
   entryComponents: [DishInfoDialogComponent],

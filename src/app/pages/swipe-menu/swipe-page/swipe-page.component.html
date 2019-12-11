@@ -2,9 +2,9 @@
 
 <div class="container">
   <!-- Card -->
-  <div class="dishcard-parent">
-    <div *ngIf="show" id="dishcard-box">
-      <app-dishcard class="dishcard" *ngFor="let item of menu; let i = index" [cardId]="i" [item]='item'></app-dishcard>
+  <div class="columns is-mobile is-centered dishcard-parent">
+    <div class="colum is-10" *ngIf="show" id="dishcard-box">
+      <app-dishcard id="{{i}}" class="dishcard" *ngFor="let item of menu; let i = index" [item]='item'></app-dishcard>
     </div>
   </div>
 
@@ -54,7 +54,7 @@
 
     <ng-container [ngSwitch]="phase">
 
-      <!-- Welcome -->
+      
       <div *ngSwitchCase="0">
         <span style="width: 90%;">
           <div class="modal-content has-text-centered">
@@ -67,7 +67,7 @@
         </span>
       </div>
 
-      <!-- Swipe right -->
+      
       <div *ngSwitchCase="1" style="width: 90%; margin-bottom: 75%;">
         <span>
           <div class="modal-content">
@@ -85,7 +85,7 @@
         </span>
       </div>
 
-      <!-- Swipe left -->
+      
       <div *ngSwitchCase="2" style="width: 90%; margin-bottom: 75%;">
         <span>
           <div class="modal-content">
@@ -105,7 +105,7 @@
         </span>
       </div>
 
-      <!-- Mistake? -->
+      
       <div *ngSwitchCase="3" style="width: 90%; margin-top: 50%;">
         <span>
           <div class="modal-content">

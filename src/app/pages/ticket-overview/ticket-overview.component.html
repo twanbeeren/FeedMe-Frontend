@@ -11,13 +11,6 @@
 
         <form (submit)="filter()">
             <mat-form-field>
-                <mat-label>Date</mat-label>
-                <input matInput [matDatepicker]="dp" placeholder="Pick a date" [max]="maxDate" [(ngModel)]="date" [ngModelOptions]="{standalone: true}" disabled>
-                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-                <mat-datepicker #dp disabled="false"></mat-datepicker>
-            </mat-form-field>
-
-            <mat-form-field>
                 <mat-label>Table Number</mat-label>
                 <input matInput placeholder="Table Number" type="number" [(ngModel)]="filterTableNr" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
@@ -40,5 +33,6 @@
                 <p matLine>{{ item.amount }}x {{ item.item?.name }}</p>
             </mat-list-item>
         </mat-list>
+        <button mat-raised-button color="primary" (click)="closeTicket(ticket)">Close</button>
     </mat-expansion-panel>
 </div>

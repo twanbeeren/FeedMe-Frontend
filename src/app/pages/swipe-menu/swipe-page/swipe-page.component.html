@@ -2,8 +2,8 @@
 
 <div class="container">
   <!-- Card -->
-  <div class="dishcard-parent">
-    <div *ngIf="show" id="dishcard-box">
+  <div class="columns is-mobile is-centered dishcard-parent">
+    <div class="colum is-10" *ngIf="show" id="dishcard-box">
       <app-dishcard id="{{i}}" class="dishcard" *ngFor="let item of menu; let i = index" [item]='item'></app-dishcard>
     </div>
   </div>

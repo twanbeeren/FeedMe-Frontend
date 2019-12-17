@@ -24,6 +24,7 @@
     "@angular/pwa": "^0.803.17",
     "@angular/router": "~8.1.2",
     "@angular/service-worker": "~8.1.2",
+    "@mollie/api-client": "^3.0.0-beta.1",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "animate.css": "^3.7.2",

@@ -52,7 +52,7 @@ export class SwipePageComponent implements OnInit {
     card.classList.add('animated', 'slideOutRight', 'fast');
     const div = document.getElementById('dishcard-box');
     // tslint:disable-next-line: only-arrow-functions
-    setTimeout(function() { div.innerHTML = ''; }, 500);
+    // setTimeout(function() { div.innerHTML = ''; }, 500);
   }
 
   closeModal() {
@@ -63,29 +63,36 @@ export class SwipePageComponent implements OnInit {
 
   unmatch() {
     this.orderService.removeItem(this.latestLikedItem);
-    this.getMenuForUnmatch();
+    // this.getMenuForUnmatch();
+
+    const card = document.getElementById(this.currentIndex.toString());
+
+    card.classList.remove('animated', 'slideOutRight', 'fast');
+    card.classList.add('animated', 'bounceIn', 'fast');
+    this.isModalActive = false;
   }
 
   getMenuForUnmatch() {
     this.menuService.getMenu().subscribe(menu => {
       this.menu = menu;
-      this.menu.splice((this.currentIndex + 1), (this.menu.length - 1 - this.currentIndex));
+      // this.menu.splice((this.currentIndex + 1), (this.menu.length - 1 - this.currentIndex));
+      
+      for (var _i = 0; _i < 9999; _i++) {
+        // animations toevoegen aan previous dinken
+      }
+      
       this.currentIndex = this.menu.length - 1;
       this.reload();
-      // const div = document.getElementById('dishcard-box');
-      // if(div.innerHTML != ""){
-      //   this.addAnimationForPreviousItems();
-      // }
       this.isModalActive = false;
     });
   }
 
-  addAnimationForPreviousItems() {
-    for (let i = this.menu.length - 1; i >= this.swipedIndex; i--) {
-      const card = document.getElementById(i.toString());
-      card.classList.add('animated', 'slideOutLeft', 'fast');
-    }
-  }
+  // addAnimationForPreviousItems() {
+  //   for (let i = this.menu.length - 1; i >= this.swipedIndex; i--) {
+  //     const card = document.getElementById(i.toString());
+  //     card.classList.add('animated', 'slideOutLeft', 'fast');
+  //   }
+  // }
 
   dislikeItem() {
     const card = document.getElementById(this.currentIndex.toString());

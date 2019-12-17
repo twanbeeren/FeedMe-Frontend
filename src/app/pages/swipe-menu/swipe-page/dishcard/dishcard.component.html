@@ -1,9 +1,10 @@
 <mat-card>
   <!-- Image -->
   <div class="card-image">
-    <figure class="image">
+    <figure *ngIf="item" class="image">
       <img (swipeLeft)="dislike()" (swipeRight)="like()" src="{{item.imgUrl}}">
     </figure>
+    <div *ngIf="!item" style="height: 350px; width: 450px;"></div>
   </div>
 
   <!-- Content -->
@@ -11,8 +12,9 @@
     <!-- Name -->
     <div class="media">
       <div class="media-content">
-        <p class="title is-3">{{item.name}}</p>
-        <p class="title is-4 is-pulled-right">{{item.price}} euro</p>
+        <p *ngIf="item" class="title is-3">{{item.name}}</p>
+        <p *ngIf="!item" class="title is-3">Content</p>
+        <p *ngIf="item" class="title is-4 is-pulled-right">{{item.price}} euro</p>
       </div>
     </div>
   </div>

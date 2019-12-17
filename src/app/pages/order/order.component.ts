@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/core/services/order.service';
-import { Order } from 'src/app/core/classes/order';
-import { Observable } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
-import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-order',

@@ -28,9 +28,7 @@ export class KitchenService {
         orders.forEach(order => {
           if (value === 'Sent') {
             if (orderLength >= this.currentOrdersAmount && value === 'Sent') {
-              console.log('currentorderamount ' + this.currentOrdersAmount);
               this.playNewOrderSound(order);
-              console.log('play sound ' + value);
             }
             this.currentOrdersAmount = orderLength;
           }
@@ -65,18 +63,56 @@ export class KitchenService {
       );
   }
 
+  getUnfinishedTicketsByDay(day: Date): Observable<Ticket[]> {
+    const startTime = new Date(day);
+    const endTime = new Date(day);
+    startTime.setHours(0, 0, 0, 0);
+    endTime.setHours(23, 59, 59, 999);
+
+    return this.db.collection('Tickets', ref => ref
+      .orderBy('time', 'desc')
+      .where('time', '>=', startTime.valueOf())
+      .where('time', '<=', endTime.valueOf())
+      .where('finished', '==', false))
+      .snapshotChanges()
+      .pipe(
+        map(snaps => {
+          return this.mapTickets(snaps);
+        })
+      );
+  }
+
   getTicketsByDayAndTableNr(day: Date, tableNr: number): Observable<Ticket[]> {
     const startTime = new Date(day);
     const endTime = new Date(day);
     startTime.setHours(0, 0, 0, 0);
     endTime.setHours(23, 59, 59, 999);
 
-    console.log(`${day.valueOf()}, ${startTime.valueOf()}, ${endTime.valueOf()}, ${tableNr}`);
     return this.db.collection('Tickets', ref => ref
       .orderBy('time', 'desc')
       .where('tableNr', '==', tableNr.toString())
       .where('time', '>=', startTime.valueOf())
       .where('time', '<=', endTime.valueOf()))
+      .snapshotChanges()
+      .pipe(
+        map(snaps => {
+          return this.mapTickets(snaps);
+        })
+      );
+  }
+
+  getUnfinishedTicketsByDayAndTableNr(day: Date, tableNr: number): Observable<Ticket[]> {
+    const startTime = new Date(day);
+    const endTime = new Date(day);
+    startTime.setHours(0, 0, 0, 0);
+    endTime.setHours(23, 59, 59, 999);
+
+    return this.db.collection('Tickets', ref => ref
+      .orderBy('time', 'desc')
+      .where('tableNr', '==', tableNr.toString())
+      .where('time', '>=', startTime.valueOf())
+      .where('time', '<=', endTime.valueOf())
+      .where('finished', '==', false))
       .snapshotChanges()
       .pipe(
         map(snaps => {
@@ -118,6 +154,10 @@ export class KitchenService {
       });
     });
     return order;
+  }
+
+  setTicketFinished(ticket: Ticket) {
+    this.db.collection('Tickets').doc(ticket.id).update({ finished: true });
   }
 
   getAllTickets(): Observable<Ticket[]> {

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { TicketService } from 'src/app/core/services/ticket.service';
-import { Order } from 'src/app/core/classes/order';
+import { OrderService } from 'src/app/core/services/order.service';
+import { MenuItem } from 'src/app/core/classes/menu-item';
+import { PaymentService } from 'src/app/core/services/payment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -12,10 +14,25 @@ export class PaymentComponent implements OnInit {
 
   tableNrParam;
 
-  constructor(private ticketService: TicketService) { }
+  constructor(
+    public ticketService: TicketService,
+    public orderService: OrderService,
+    private paymentService: PaymentService,
+    private router: Router) { }
 
   ngOnInit() {
-    this.ticketService.tableNumber.subscribe(tableNr => this.tableNrParam = `{number: ${tableNr}}`);
+    this.ticketService.tableNumber$.subscribe(tableNr => this.tableNrParam = `{number: ${tableNr}}`);
+
+    Promise.all(this.ticketService.ticket.orders.map(order => {
+      Promise.all(order.orderItems.map(async menuItem => {
+        const retrievedItem = await this.orderService.getItem(menuItem.item);
+        menuItem.item = retrievedItem.data();
+      }));
+    }));
   }
 
+  pay() {
+    this.paymentService.pay();
+    this.router.navigate(['/payment-finished']);
+  }
 }

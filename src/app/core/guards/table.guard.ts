@@ -15,7 +15,7 @@ export class TableGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.ticketService.tableNumber) {
+    if (this.ticketService.tableNumber$) {
       return true;
     } else return false;
   }

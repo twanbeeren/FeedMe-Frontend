@@ -33,7 +33,7 @@
       <h1>{{'kitchen-header.new' | translate}}</h1>
       <ng-container *ngFor="let order of orders">
         <mat-expansion-panel class="setHeight">
-          <mat-expansion-panel-header>
+            <mat-expansion-panel-header>
               <p class="order">Tafel {{ order.tableNr }} :
                   {{ order.time | date: "shortTime" }}</p>
             <mat-divider></mat-divider>
@@ -53,6 +53,14 @@
         </mat-expansion-panel>
       </ng-container>
     </div>
+
+  <!-- <div class="orderList" *ngIf="sentOrders$ | async as orders">
+      <h1>{{'kitchen-header.new' | translate}}</h1>
+    <div class="orderItem" *ngFor="let order of orders">
+        <p class="order">Tafel {{ order.tableNr }} :
+            {{ order.time | date: "shortTime" }}</p>
+    </div>
+  </div> -->
   
   <!-- Finished orders -->
   <div class="orderList" *ngIf="doneOrders$ | async as orders">

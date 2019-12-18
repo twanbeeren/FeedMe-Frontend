@@ -52,5 +52,9 @@
         "orders": "Orders",
         "tickets": "Tickets",
         "history": "History"
+    },
+    "kitchen-header": {
+        "new": "New",
+        "ready": "Ready"
     }
 }

@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { KitchenService } from 'src/app/core/services/kitchen.service';
 import { Order } from 'src/app/core/classes/order';
+import { MatDialog } from '@angular/material';
+import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-dialog/dish-info-dialog.component';
 
 export class Tile {
-  color: string;
+  border: string;
   order: Order;
 }
 
@@ -20,6 +22,7 @@ export class KitchenComponent implements OnInit {
   sentOrders$: Observable<Order[]>;
   doneOrders$: Observable<Order[]>;
   tile: Tile;
+  private dialog: MatDialog;
 
   sentTiles: Tile[] = [];
   doneTiles: Tile[] = [];
@@ -36,7 +39,7 @@ export class KitchenComponent implements OnInit {
       this.sentTiles = [];
       orders.forEach(order => {
         this.tile = new Tile();
-        this.tile.color = 'lightblue';
+        this.tile.border = '5px solid blue';
         this.tile.order = order;
         this.sentTiles.push(this.tile);
       });
@@ -48,7 +51,7 @@ export class KitchenComponent implements OnInit {
       this.doneTiles = [];
       orders.forEach(order => {
         this.tile = new Tile();
-        this.tile.color = 'orangered';
+        this.tile.border = '5px solid green';
         this.tile.order = order;
         this.doneTiles.push(this.tile);
       });
@@ -60,5 +63,9 @@ export class KitchenComponent implements OnInit {
     this.kitchenService.setStatus(id, newStatus);
     this.setSentTiles();
     this.setDoneTiles();
+  }
+
+  showInfo(order: Order) {
+    const dialogRef = this.dialog.open(DishInfoDialogComponent, {data: {value: order}});
   }
 }

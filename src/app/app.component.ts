@@ -14,7 +14,7 @@ export class AppComponent implements OnInit{
 
   constructor(
     private ticketService: TicketService,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router) {
 
     this.ticketService.tableNumber$.subscribe(tableNumber => {

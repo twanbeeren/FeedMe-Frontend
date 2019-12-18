@@ -10,7 +10,7 @@ describe('SwipePageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DishcardComponent, SwipePageComponent ],
+      declarations: [ DishcardComponent, SwipePageComponent],
       imports: [CustomMaterialModule]
     })
     .compileComponents();

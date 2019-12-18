@@ -139,4 +139,18 @@ export class SwipePageComponent implements OnInit {
       this.menuService.hasHadTutorial = true;
     }
   }
+
+  tutorialLike(){
+    const card = document.getElementById("cardLike");
+    card.classList.add('animated', 'slideOutRight', 'fast');
+    // setTimeout(function() { this.nextPhase(); }, 500);
+    this.nextPhase();
+  }
+
+  tutorialDislike(){
+    const card = document.getElementById("cardDislike");
+    card.classList.add('animated', 'slideOutLeft', 'fast');
+    // setTimeout(function() { this.nextPhase(); }, 500);
+    this.nextPhase();
+  }
 }

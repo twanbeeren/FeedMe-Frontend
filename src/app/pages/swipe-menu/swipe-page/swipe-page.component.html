@@ -55,7 +55,7 @@
     <ng-container [ngSwitch]="phase">
 
       
-      <div *ngSwitchCase="0">
+      <a *ngSwitchCase="0" click="nextPhase()">
         <span style="width: 90%;">
           <div class="modal-content has-text-centered">
             <p class="title is-1" style="color: white;">Welcome!</p>
@@ -65,10 +65,11 @@
             <p class="subtitle" style="color: grey;">Tap to continue...</p>
           </div>
         </span>
-      </div>
+      </a>
 
       
       <div *ngSwitchCase="1" style="width: 90%; margin-bottom: 75%;">
+        <app-dishcard id="cardLike" (swipeRight)="tutorialLike()" class="dishcard tutorial-card"></app-dishcard>
         <span>
           <div class="modal-content">
             <div class="columns is-mobile">
@@ -87,6 +88,7 @@
 
       
       <div *ngSwitchCase="2" style="width: 90%; margin-bottom: 75%;">
+        <app-dishcard id="cardDislike" (swipeLeft)="tutorialDislike()" class="dishcard tutorial-card"></app-dishcard>
         <span>
           <div class="modal-content">
             <div class="columns is-mobile">

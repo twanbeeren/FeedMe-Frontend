@@ -1,22 +1,23 @@
 mat-card {
-    padding: 0px;
+  padding: 0px;
 }
 
-.title, p {
-    color: #707070;
-    display: inline;
-    font-weight: normal;
+.title,
+p {
+  color: #707070;
+  display: inline;
+  font-weight: normal;
 }
 
 .media-content {
-    padding: 1rem;
-    padding-left: 2rem;
+  padding: 1rem;
+  padding-left: 2rem;
 }
 
 img {
-    min-width: 447px;
-    min-height: 347px;
-    max-width: 447px;
-    max-height: 347px;
-    object-fit: cover;
+  min-width: 447px;
+  min-height: 347px;
+  max-width: 447px;
+  max-height: 347px;
+  object-fit: cover;
 }

@@ -1,14 +1,14 @@
 .mat-dialog-content {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 img {
-    /* max-width: 410px;
+  /* max-width: 410px;
     display: block;
     margin: auto; */
-    min-width: 447px;
-    min-height: 347px;
-    max-width: 447px;
-    max-height: 347px;
-    object-fit: cover;
+  min-width: 447px;
+  min-height: 347px;
+  max-width: 447px;
+  max-height: 347px;
+  object-fit: cover;
 }

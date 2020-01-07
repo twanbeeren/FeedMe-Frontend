@@ -24,7 +24,7 @@
         <!-- Title -->
         <div class="level-item">
           <!-- Not every item has a volume-->
-          <p class="subtitle is-5">{{item.item.name}} {{item.volume}}</p>
+          <p class="subtitle is-5">{{item.item.name}} {{item.item.volume}}</p>
         </div>
 
         <!-- Price -->
@@ -48,7 +48,8 @@
 
   <div style="background-color:white;">
     <!-- Total price -->
-    <nav class="level navbar is-fixed-bottom is-mobile sticky-level" style="bottom: 154px; border-top: 2px solid white;">
+    <nav class="level navbar is-fixed-bottom is-mobile sticky-level"
+      style="bottom: 154px; border-top: 2px solid white;">
       <div class="level-left">
       </div>
 
@@ -69,8 +70,7 @@
       <div class="level-right">
         <!-- Order -->
         <div class="level-item">
-          <button (click)="pay()" class="order-button" mat-raised-button
-            color="accent">Pay with iDeal</button>
+          <button (click)="pay()" class="order-button" mat-raised-button color="accent">Pay with iDeal</button>
         </div>
       </div>
     </nav>

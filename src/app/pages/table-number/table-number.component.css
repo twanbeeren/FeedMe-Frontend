@@ -1,37 +1,37 @@
 .columns {
-    margin-left: 10%;
-    margin-right: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.container > * {
-    width: 100%;
+.container>* {
+  width: 100%;
 }
 
 .left-align {
-    text-align: left;
+  text-align: left;
 }
 
 input.left-align::-webkit-outer-spin-button,
 input.left-align::-webkit-inner-spin-button {
-    display: none;
+  display: none;
 }
 
 input.left-align {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 .button-kitchen {
-    height: 128px;
-    width: 128px;
-    font-size: 24px;
+  height: 128px;
+  width: 128px;
+  font-size: 24px;
 }
 
 form {
-    margin-top: 5px;
-    width: 50%;
+  margin-top: 5px;
+  width: 50%;
 }

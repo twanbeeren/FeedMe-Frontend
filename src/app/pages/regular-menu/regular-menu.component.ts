@@ -7,7 +7,7 @@ import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-di
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material';
 import { TranslatorService } from 'src/app/core/services/translator.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-regular-menu',
@@ -16,6 +16,7 @@ import { Observable } from 'rxjs';
 })
 export class RegularMenuComponent implements OnInit {
 
+  private subscription = new Subscription();
   courses$: Observable<Course[]>;
   menuItems$: Observable<MenuItem[]>;
 
@@ -45,23 +46,27 @@ export class RegularMenuComponent implements OnInit {
       panelClass: 'snackbarlayout'
     });
 
-    snackbarRef.onAction().subscribe(() => {
+    const sub = snackbarRef.onAction().subscribe(() => {
       this.orderService.removeItem(item);
       this.snackbar.open(this.translator.translate('snackbar.removed', { name: item.name }), '', {
         duration: 1000,
         panelClass: 'snackbarlayout'
       });
     });
+
+    this.subscription.add(sub);
   }
 
   showInfo(item: MenuItem): void {
     const dialogRef = this.dialog.open(DishInfoDialogComponent, { data: { dish: item } });
 
-    dialogRef.afterClosed().subscribe(result => {
+    const sub = dialogRef.afterClosed().subscribe(result => {
       if (result != null) {
         this.addToOrder(result);
       }
     });
+
+    this.subscription.add(sub);
   }
 
   isVegetarian(item: MenuItem): boolean {

@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Ticket } from 'src/app/core/classes/ticket';
 import { KitchenService } from 'src/app/core/services/kitchen.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-ticket-history',
   templateUrl: './ticket-history.component.html',
   styleUrls: ['./ticket-history.component.css']
 })
-export class TicketHistoryComponent implements OnInit {
+export class TicketHistoryComponent implements OnInit, OnDestroy {
 
+  private subscription = new Subscription();
   date: Date = new Date();
   maxDate: Date;
   filterTableNr: number;
@@ -20,7 +22,7 @@ export class TicketHistoryComponent implements OnInit {
 
   ngOnInit() {
     this.maxDate = new Date();
-    this.kitchenService.getTicketsByDay(this.date)
+    const sub = this.kitchenService.getTicketsByDay(this.date)
       .subscribe(tickets => {
         const currentDate = new Date();
         if (this.date.getFullYear() === currentDate.getFullYear()
@@ -29,21 +31,30 @@ export class TicketHistoryComponent implements OnInit {
           this.tickets = tickets;
         }
       });
+
+    this.subscription.add(sub);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   private getTicketsByDayAndTableNr(day: Date = this.date, tableNr: number = this.filterTableNr) {
-    this.kitchenService.getTicketsByDayAndTableNr(day, tableNr)
+    const sub = this.kitchenService.getTicketsByDayAndTableNr(day, tableNr)
       .subscribe(tickets => {
         this.tickets = tickets;
       });
+
+    this.subscription.add(sub);
   }
 
   private getTicketsByDay(day: Date = this.date) {
     if (day !== null) {
-      this.kitchenService.getTicketsByDay(day)
+      const sub = this.kitchenService.getTicketsByDay(day)
         .subscribe(tickets => {
           this.tickets = tickets;
         });
+      this.subscription.add(sub);
     }
   }
 

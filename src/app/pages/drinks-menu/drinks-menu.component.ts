@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Course } from 'src/app/core/classes/course';
-import { Observable } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 import { TranslatorService } from 'src/app/core/services/translator.service';
 import { OrderService } from 'src/app/core/services/order.service';
 import { MenuService } from 'src/app/core/services/menu.service';
-import { MatDialog, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-dialog/dish-info-dialog.component';
 
 @Component({
@@ -13,8 +12,9 @@ import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-di
   templateUrl: './drinks-menu.component.html',
   styleUrls: ['./drinks-menu.component.css']
 })
-export class DrinksMenuComponent implements OnInit {
+export class DrinksMenuComponent implements OnInit, OnDestroy {
 
+  private subscription = new Subscription();
   drinks: Observable<MenuItem[]>;
 
   constructor(
@@ -26,7 +26,10 @@ export class DrinksMenuComponent implements OnInit {
 
   ngOnInit() {
     this.drinks = this.menuService.getDrinks();
-    
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   addToOrder(item: MenuItem) {
@@ -47,22 +50,26 @@ export class DrinksMenuComponent implements OnInit {
       panelClass: 'snackbarlayout'
     });
 
-    snackbarRef.onAction().subscribe(() => {
+    const sub = snackbarRef.onAction().subscribe(() => {
       this.orderService.removeItem(item);
       this.snackbar.open(this.translator.translate('snackbar.removed', { name: item.name }), '', {
         duration: 1000,
         panelClass: 'snackbarlayout'
       });
     });
+
+    this.subscription.add(sub);
   }
 
   showInfo(item: MenuItem): void {
-    let dialogRef = this.dialog.open(DishInfoDialogComponent, {data: {dish: item}});
+    const dialogRef = this.dialog.open(DishInfoDialogComponent, { data: { dish: item } });
 
-    dialogRef.afterClosed().subscribe(result => {
+    const sub = dialogRef.afterClosed().subscribe(result => {
       if (result != null) {
         this.addToOrder(result);
       }
     });
+
+    this.subscription.add(sub);
   }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from 'src/app/core/services/ticket.service';
 import { OrderService } from 'src/app/core/services/order.service';
-import { MenuItem } from 'src/app/core/classes/menu-item';
 import { PaymentService } from 'src/app/core/services/payment.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-payment',
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class PaymentComponent implements OnInit {
 
+  private subscription = new Subscription();
   tableNrParam;
 
   constructor(
@@ -21,7 +22,7 @@ export class PaymentComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.ticketService.tableNumber$.subscribe(tableNr => this.tableNrParam = `{number: ${tableNr}}`);
+    const sub = this.ticketService.tableNumber$.subscribe(tableNr => this.tableNrParam = `{number: ${tableNr}}`);
 
     Promise.all(this.ticketService.ticket.orders.map(order => {
       Promise.all(order.orderItems.map(async menuItem => {
@@ -29,6 +30,8 @@ export class PaymentComponent implements OnInit {
         menuItem.item = retrievedItem.data();
       }));
     }));
+
+    this.subscription.add(sub);
   }
 
   pay() {

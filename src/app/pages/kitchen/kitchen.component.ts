@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { KitchenService } from 'src/app/core/services/kitchen.service';
 import { Order } from 'src/app/core/classes/order';
 import { MatDialog } from '@angular/material';
@@ -15,10 +15,9 @@ export class Tile {
   templateUrl: './kitchen.component.html',
   styleUrls: ['./kitchen.component.css']
 })
-export class KitchenComponent implements OnInit {
+export class KitchenComponent implements OnInit, OnDestroy {
 
-  constructor(public kitchenService: KitchenService) { }
-
+  private subscription = new Subscription();
   sentOrders$: Observable<Order[]>;
   doneOrders$: Observable<Order[]>;
   tile: Tile;
@@ -27,6 +26,8 @@ export class KitchenComponent implements OnInit {
   sentTiles: Tile[] = [];
   doneTiles: Tile[] = [];
 
+  constructor(public kitchenService: KitchenService) { }
+
   ngOnInit() {
     this.sentOrders$ = this.kitchenService.getSentOrders();
     this.doneOrders$ = this.kitchenService.getDoneOrders();
@@ -34,8 +35,12 @@ export class KitchenComponent implements OnInit {
     this.setDoneTiles();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   setSentTiles() {
-    this.sentOrders$.subscribe(orders => {
+    const sub = this.sentOrders$.subscribe(orders => {
       this.sentTiles = [];
       orders.forEach(order => {
         this.tile = new Tile();
@@ -44,10 +49,12 @@ export class KitchenComponent implements OnInit {
         this.sentTiles.push(this.tile);
       });
     });
+
+    this.subscription.add(sub);
   }
 
   setDoneTiles() {
-    this.doneOrders$.subscribe(orders => {
+    const sub = this.doneOrders$.subscribe(orders => {
       this.doneTiles = [];
       orders.forEach(order => {
         this.tile = new Tile();
@@ -56,16 +63,17 @@ export class KitchenComponent implements OnInit {
         this.doneTiles.push(this.tile);
       });
     });
+
+    this.subscription.add(sub);
   }
 
   setStatus(id: string, newStatus: string) {
-    console.log(id, newStatus);
     this.kitchenService.setStatus(id, newStatus);
     this.setSentTiles();
     this.setDoneTiles();
   }
 
   showInfo(order: Order) {
-    const dialogRef = this.dialog.open(DishInfoDialogComponent, {data: {value: order}});
+    this.dialog.open(DishInfoDialogComponent, { data: { value: order } });
   }
 }

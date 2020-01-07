@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class SwipePageComponent implements OnInit {
   menu = [];
   menuitem = null;
-  menusub: Subscription;
+  menusub = new Subscription();
   currentIndex;
   swipedIndex;
   allSwiped = false;

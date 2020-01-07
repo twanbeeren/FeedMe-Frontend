@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 import { OrderService } from 'src/app/core/services/order.service';
+import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-swipe-page',
@@ -11,6 +13,7 @@ import { OrderService } from 'src/app/core/services/order.service';
 export class SwipePageComponent implements OnInit {
   menu = [];
   menuitem = null;
+  menusub: Subscription;
   currentIndex;
   swipedIndex;
   allSwiped = false;
@@ -37,10 +40,26 @@ export class SwipePageComponent implements OnInit {
   }
 
   getMenu() {
-    this.menuService.getMenu().subscribe(menu => {
+    const sub = this.menuService.getMenu().pipe(map(items => {
+      const filtered: MenuItem[] = []; // Filtered list
+      items.forEach(item => {
+        let value = 0; // Amount of included tags
+        item.tags.forEach(tag => {
+          if (this.menuService.toggledTags.includes(tag)) {
+            value++;
+          } // Increase value for each included tag
+        });
+        if (value >= this.menuService.toggledTags.length) { // Does item have all tags?
+          filtered.push(item);
+        }
+      });
+      return filtered; // Return all items with all the specified tags
+    })).subscribe(menu => {
       this.menu = menu;
       this.currentIndex = this.menu.length - 1; // set index to last added menuItem, last menuItem is 0 so we do '-1'
     });
+
+    this.menusub = sub;
   }
 
   likeItem() {
@@ -76,11 +95,11 @@ export class SwipePageComponent implements OnInit {
     this.menuService.getMenu().subscribe(menu => {
       this.menu = menu;
       // this.menu.splice((this.currentIndex + 1), (this.menu.length - 1 - this.currentIndex));
-      
-      for (var _i = 0; _i < 9999; _i++) {
+
+      for (let _i = 0; _i < 9999; _i++) {
         // animations toevoegen aan previous dinken
       }
-      
+
       this.currentIndex = this.menu.length - 1;
       this.reload();
       this.isModalActive = false;
@@ -140,17 +159,22 @@ export class SwipePageComponent implements OnInit {
     }
   }
 
-  tutorialLike(){
-    const card = document.getElementById("cardLike");
+  tutorialLike() {
+    const card = document.getElementById('cardLike');
     card.classList.add('animated', 'slideOutRight', 'fast');
     // setTimeout(function() { this.nextPhase(); }, 500);
     this.nextPhase();
   }
 
-  tutorialDislike(){
-    const card = document.getElementById("cardDislike");
+  tutorialDislike() {
+    const card = document.getElementById('cardDislike');
     card.classList.add('animated', 'slideOutLeft', 'fast');
     // setTimeout(function() { this.nextPhase(); }, 500);
     this.nextPhase();
+  }
+
+  resetMenu() {
+    this.menusub.unsubscribe();
+    this.getMenu();
   }
 }

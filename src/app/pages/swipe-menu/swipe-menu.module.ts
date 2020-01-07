@@ -5,6 +5,7 @@ import { FilterTagsModule } from 'src/app/components/filter-tags/filter-tags.mod
 import { DishcardComponent } from './swipe-page/dishcard/dishcard.component';
 import { SwipePageComponent } from './swipe-page/swipe-page.component';
 import { RouterModule } from '@angular/router';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 
@@ -15,6 +16,7 @@ import { RouterModule } from '@angular/router';
     CustomMaterialModule,
     RouterModule,
     FilterTagsModule,
+    PipesModule,
   ],
   exports: [
     DishcardComponent,

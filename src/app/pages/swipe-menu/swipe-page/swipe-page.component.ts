@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 import { OrderService } from 'src/app/core/services/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-swipe-page',
@@ -25,6 +26,7 @@ export class SwipePageComponent implements OnInit {
   phase = 0;
 
   constructor(
+    private router: Router,
     private menuService: MenuService,
     private orderService: OrderService) {
   }
@@ -105,6 +107,7 @@ export class SwipePageComponent implements OnInit {
       this.currentIndex -= 1;
     } else {
       this.allSwiped = true;
+      this.router.navigate(['/regularmenu']);
     }
   }
 

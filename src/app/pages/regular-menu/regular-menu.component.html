@@ -1,28 +1,28 @@
 <app-filter-tags></app-filter-tags>
 
 <div class="menu">
-    <mat-expansion-panel *ngFor="let course of courses$ | async | sortCourses" [expanded]="true">    
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{('course.' + course.name) | lowercase | translate}}
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        
+  <mat-expansion-panel *ngFor="let course of courses$ | async | sortCourses" [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{('course.' + course.name) | lowercase | translate}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-list>
+      <mat-list-item *ngFor="let item of menuItems$ | async | filterByCourse: course.name | filterByTags">
+        <h4 matLine>{{item.name}} <i class="material-icons" *ngIf="isVegetarian(item)" style="color: green">eco</i></h4>
+        <p matLine>{{item.price | currency:'€'}}</p>
+
+        <button mat-icon-button color="primary" (click)="addToOrder(item)">
+          <i class="material-icons">add</i>
+        </button>
+        <button mat-icon-button color="accent" (click)="showInfo(item)">
+          <i class="material-icons">info</i>
+        </button>
         <mat-divider></mat-divider>
-        
-        <mat-list>
-            <mat-list-item *ngFor="let item of menuItems$ | async | filterByCourse: course.name | filterByTags">
-                <h4 matLine>{{item.name}} <i class="material-icons" *ngIf="isVegetarian(item)" style="color: green">eco</i></h4>        
-                <p matLine>{{item.price | currency:'€'}}</p>
-                
-                <button mat-icon-button color="primary" (click)="addToOrder(item)">
-                    <i class="material-icons">add</i>
-                </button>
-                <button mat-icon-button color="accent" (click)="showInfo(item)">
-                    <i class="material-icons">info</i>
-                </button>
-                <mat-divider></mat-divider>
-            </mat-list-item>
-        </mat-list>
-    </mat-expansion-panel>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
 </div>

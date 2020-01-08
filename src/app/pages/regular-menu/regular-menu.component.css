@@ -1,13 +1,13 @@
 .menu {
-    height: 100%;
-    overflow: auto;
-    margin: 30px;
+  height: 100%;
+  overflow: auto;
+  margin: 30px;
 }
 
 ::ng-deep .snackbarlayout {
-    position: absolute;
-    top: 82% !important;
-    left: 25% !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-  }
+  position: absolute;
+  top: 82% !important;
+  left: 25% !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}

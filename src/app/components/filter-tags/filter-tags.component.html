@@ -5,19 +5,17 @@
         filter_list
       </i>
       <mat-panel-title>
-          {{'preferences.filters' | translate}}
-          <div matBadge="{{menuService.toggledTags.length}}" class="badge"></div>
+        {{'preferences.filters' | translate}}
+        <div matBadge="{{menuService.toggledTags.length}}" class="badge"></div>
       </mat-panel-title>
     </mat-expansion-panel-header>
 
     <mat-chip-list #chipList>
-        <mat-chip *ngFor="let tag of filterTags"
-            [ngStyle]="{'background-color': isFilteredTag(tag)? 'pink' : ''}"
-            [selectable]="false"
-            (click)="toggleFilter(tag)">
-            {{('tag.' + tag) | lowercase | translate}}
-            <i class="material-icons" *ngIf="tag=='Vegan' || tag=='Vegetarian'" style="color: green">eco</i>
-        </mat-chip>
+      <mat-chip *ngFor="let tag of filterTags" [ngStyle]="{'background-color': isFilteredTag(tag)? 'pink' : ''}"
+        [selectable]="false" (click)="toggleFilter(tag)">
+        {{('tag.' + tag) | lowercase | translate}}
+        <i class="material-icons" *ngIf="tag=='Vegan' || tag=='Vegetarian'" style="color: green">eco</i>
+      </mat-chip>
     </mat-chip-list>
   </mat-expansion-panel>
 </div>

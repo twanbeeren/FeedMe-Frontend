@@ -3,7 +3,7 @@
 <div class="container">
   <!-- Card -->
   <div class="columns is-mobile is-centered dishcard-parent">
-    <div class="colum is-10" *ngIf="show" id="dishcard-box">
+    <div class="colum is-10 animated fadeIn delay-0-2s fast" *ngIf="show" id="dishcard-box">
       <app-dishcard id="{{i}}" class="dishcard" *ngFor="let item of menu; let i = index" [item]='item'>
       </app-dishcard>
     </div>
@@ -12,13 +12,13 @@
   <!-- Buttons -->
   <div class="columns is-mobile is-centered">
     <div class="column is-11 has-text-centered">
-      <button (click)="previousItem()" mat-fab aria-label="Return" class="return-button">
+      <button (click)="previousItem()" mat-fab aria-label="Return" class="return-button animated fadeIn delay-0-1s">
         <mat-icon class="undo-icon">undo</mat-icon>
       </button>
-      <button (click)="dislikeItem()" mat-fab aria-label="Dislike" class="dislike-button">
+      <button (click)="dislikeItem()" mat-fab aria-label="Dislike" class="dislike-button animated fadeIn delay-0-2s">
         <mat-icon>close</mat-icon>
       </button>
-      <button (click)="likeItem()" mat-fab aria-label="Like" class="like-button">
+      <button (click)="likeItem()" mat-fab aria-label="Like" class="like-button animated fadeIn delay-0-3s">
         <mat-icon>favorite</mat-icon>
       </button>
     </div>

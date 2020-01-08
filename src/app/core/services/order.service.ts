@@ -9,8 +9,10 @@ import { TicketService } from './ticket.service';
 })
 export class OrderService implements OnInit {
 
+  playAnimation = false;
   order: Order;
   totalPrice = 0;
+  orderStatus = 'You haven\'t added anything to your order yet.';
 
   constructor(private db: AngularFirestore, private ticketService: TicketService) {
   }
@@ -58,18 +60,24 @@ export class OrderService implements OnInit {
 
   sendOrder() {
 
-    this.calculateTotalPrice();
-    this.order.status = 'Sent';
-    this.ticketService.addOrder(this.order);
-    this.order.orderItems.forEach(orderItem => {
-      orderItem.item = orderItem.item.id;
-    });
+    this.playAnimation = true;
+    this.orderStatus = 'Your order has been sent to the kitchen and added to your ticket. \n If you want, you can now make a new order.';
+    setTimeout(() => {
+      this.calculateTotalPrice();
+      this.order.status = 'Sent';
+      this.ticketService.addOrder(this.order);
+      this.order.orderItems.forEach(orderItem => {
+        orderItem.item = orderItem.item.id;
+      });
 
-    const json = JSON.stringify(this.order);
-    const data = JSON.parse(json);
+      const json = JSON.stringify(this.order);
+      const data = JSON.parse(json);
 
-    this.db.doc('Orders/' + this.order.id).set(data);
-    this.newOrder();
+      this.db.doc('Orders/' + this.order.id).set(data).then(() => {
+        this.playAnimation = false;
+      });
+      this.newOrder();
+    }, 1000);
   }
 
   private calculateTotalPrice() {

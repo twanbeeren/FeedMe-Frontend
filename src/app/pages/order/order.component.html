@@ -2,9 +2,9 @@
   <ng-container *ngIf="order.orderItems.length > 0; else empty">
     <!-- Ng for order items -->
     <div *ngFor="let orderItem of order.orderItems">
-      <nav class="level is-mobile">
+      <nav class="level is-mobile" style="overflow-x: hidden;">
         <!-- Left side -->
-        <div class="level-left">
+        <div class="level-left" [ngClass]="{'animated bounceOut' : orderService.playAnimation}">
 
           <!-- Image -->
           <div class="level-item">
@@ -26,7 +26,7 @@
         </div>
 
         <!-- Right side -->
-        <div class="level-right">
+        <div class="level-right" [ngClass]="{'animated bounceOut' : orderService.playAnimation}">
 
           <!-- Remove button -->
           <p class="level-item">
@@ -93,6 +93,6 @@
 
 <ng-template #empty>
   <div class="has-text-centered">
-    <p class="subtitle is-5 empty-text">You haven't added anything to your order yet.</p>
+    <p class="subtitle is-5 empty-text animated fadeIn fast">{{orderService.orderStatus}}</p>
   </div>
 </ng-template>

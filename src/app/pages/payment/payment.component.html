@@ -6,9 +6,6 @@
   </mat-card-header>
   <mat-list *ngFor="let order of ticketService.ticket.orders">
     <mat-divider></mat-divider>
-    <!-- <br>
-    <p matLine>Order: {{order.id}} </p>
-    <br> -->
     <nav class="level is-mobile" *ngFor="let item of order.orderItems">
       <!-- Ng for order items -->
       <!-- Left side -->

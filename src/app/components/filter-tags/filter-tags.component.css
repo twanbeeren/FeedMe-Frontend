@@ -1,4 +1,6 @@
 .filter-container {
+  position: fixed;
+  z-index: 39;
   margin-top: 10px;
   margin-left: 65%;
 }

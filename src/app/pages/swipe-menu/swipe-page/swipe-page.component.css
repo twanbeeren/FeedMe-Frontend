@@ -2,6 +2,10 @@
   margin-right: 0rem;
 }
 
+.container {
+  margin-top: 5%;
+}
+
 .like-button,
 .dislike-button {
   width: 7rem;

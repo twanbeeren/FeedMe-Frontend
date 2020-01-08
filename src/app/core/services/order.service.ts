@@ -9,6 +9,7 @@ import { TicketService } from './ticket.service';
 })
 export class OrderService implements OnInit {
 
+  playAnimation = false;
   order: Order;
   totalPrice = 0;
 
@@ -58,18 +59,22 @@ export class OrderService implements OnInit {
 
   sendOrder() {
 
-    this.calculateTotalPrice();
-    this.order.status = 'Sent';
-    this.ticketService.addOrder(this.order);
-    this.order.orderItems.forEach(orderItem => {
-      orderItem.item = orderItem.item.id;
-    });
+    this.playAnimation = true;
+    setTimeout(() => {
+      this.calculateTotalPrice();
+      this.order.status = 'Sent';
+      this.ticketService.addOrder(this.order);
+      this.order.orderItems.forEach(orderItem => {
+        orderItem.item = orderItem.item.id;
+      });
 
-    const json = JSON.stringify(this.order);
-    const data = JSON.parse(json);
+      const json = JSON.stringify(this.order);
+      const data = JSON.parse(json);
 
-    this.db.doc('Orders/' + this.order.id).set(data);
-    this.newOrder();
+      this.db.doc('Orders/' + this.order.id).set(data);
+      this.newOrder();
+    }, 1000)
+
   }
 
   private calculateTotalPrice() {

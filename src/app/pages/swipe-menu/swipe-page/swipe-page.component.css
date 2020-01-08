@@ -109,3 +109,8 @@ button {
   width: auto;
   height: 100%;
 }
+
+.tutorial-card{
+  left: 175px;
+  top: 200px;
+}

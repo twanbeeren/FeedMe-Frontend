@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
+  private subscription = new Subscription();
   loginForm: FormGroup;
   hasError = false;
 
@@ -20,11 +22,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.authService.isLoggedIn.subscribe(isLoggedIn => {
+    const sub = this.authService.isLoggedIn.subscribe(isLoggedIn => {
       if (isLoggedIn) {
         this.router.navigate(['/tablenumber']);
       }
     });
+
+    this.subscription.add(sub);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   initForm() {

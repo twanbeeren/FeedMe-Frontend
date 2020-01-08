@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 
 @Component({
@@ -8,12 +8,13 @@ import { MenuService } from 'src/app/core/services/menu.service';
 })
 export class FilterTagsComponent implements OnInit {
 
+  @Output() buttonClicked = new EventEmitter();
   filterTags: string[];
 
   constructor(public menuService: MenuService) { }
 
   ngOnInit() {
-    this.filterTags = ['Vegetarian', 'LactoseFree', 'GlutenFree']
+    this.filterTags = ['Vegetarian', 'LactoseFree', 'GlutenFree'];
   }
 
   toggleFilter(tag: string): void {
@@ -21,6 +22,8 @@ export class FilterTagsComponent implements OnInit {
     if (index !== -1) {
       this.menuService.toggledTags.splice(index, 1);
     } else { this.menuService.toggledTags.push(tag); }
+
+    this.buttonClicked.emit(tag);
   }
 
   isFilteredTag(tag: string): boolean {

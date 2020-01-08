@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from 'src/app/core/services/ticket.service';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { TranslatorService } from 'src/app/core/services/translator.service';
-import { Ticket } from 'src/app/core/classes/ticket';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({

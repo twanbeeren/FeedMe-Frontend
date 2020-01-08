@@ -24,11 +24,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 
 import { FilterByCoursePipe } from 'src/app/core/pipes/filter-by-course.pipe';
-import { FilterByTagsPipe } from './core/pipes/filter-by-tags.pipe';
 import { SortCoursesPipe } from './core/pipes/sort-courses.pipe';
 
 import { SwipeMenuModule } from './pages/swipe-menu/swipe-menu.module';
-import { FilterTagsModule } from './components/filter-tags/filter-tags.module';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -39,6 +37,8 @@ import { PaymentFinishedComponent } from './pages/payment/payment-finished/payme
 import { TicketHistoryComponent } from './pages/ticket-history/ticket-history.component';
 import { TicketOverviewComponent } from './pages/ticket-overview/ticket-overview.component';
 import { OrdersDialogComponent } from './components/dialogs/orders-dialog/orders-dialog.component';
+import { PipesModule } from './pages/pipes/pipes.module';
+import { FilterTagsModule } from './components/filter-tags/filter-tags.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,6 @@ import { OrdersDialogComponent } from './components/dialogs/orders-dialog/orders
     I18nComponent,
     RegularMenuComponent,
     FilterByCoursePipe,
-    FilterByTagsPipe,
     SortCoursesPipe,
     DishInfoDialogComponent,
     NavTopComponent,
@@ -85,6 +84,7 @@ import { OrdersDialogComponent } from './components/dialogs/orders-dialog/orders
     ReactiveFormsModule,
     SwipeMenuModule,
     FilterTagsModule,
+    PipesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],

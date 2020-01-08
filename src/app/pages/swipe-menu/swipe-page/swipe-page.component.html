@@ -1,10 +1,11 @@
-<app-filter-tags class="filter"></app-filter-tags>
+<app-filter-tags class="filter" (buttonClicked)="resetMenu($event)"></app-filter-tags>
 
 <div class="container">
   <!-- Card -->
   <div class="columns is-mobile is-centered dishcard-parent">
     <div class="colum is-10" *ngIf="show" id="dishcard-box">
-      <app-dishcard id="{{i}}" class="dishcard" *ngFor="let item of menu; let i = index" [item]='item'></app-dishcard>
+      <app-dishcard id="{{i}}" class="dishcard" *ngFor="let item of menu; let i = index" [item]='item'>
+      </app-dishcard>
     </div>
   </div>
 
@@ -44,7 +45,7 @@
     <div class="modal-button-container">
       <button routerLink="/order" class="modal-button" mat-raised-button color="primary">To my order</button>
     </div>
-  </div>
+</div>
 </div>
 
 <!-- Tutorial Modal -->
@@ -54,8 +55,8 @@
 
     <ng-container [ngSwitch]="phase">
 
-      
-      <div *ngSwitchCase="0">
+
+      <a *ngSwitchCase="0" click="nextPhase()">
         <span style="width: 90%;">
           <div class="modal-content has-text-centered">
             <p class="title is-1" style="color: white;">Welcome!</p>
@@ -65,10 +66,11 @@
             <p class="subtitle" style="color: grey;">Tap to continue...</p>
           </div>
         </span>
-      </div>
+      </a>
 
-      
+
       <div *ngSwitchCase="1" style="width: 90%; margin-bottom: 75%;">
+        <app-dishcard id="cardLike" (swipeRight)="tutorialLike()" class="dishcard tutorial-card"></app-dishcard>
         <span>
           <div class="modal-content">
             <div class="columns is-mobile">
@@ -85,8 +87,9 @@
         </span>
       </div>
 
-      
+
       <div *ngSwitchCase="2" style="width: 90%; margin-bottom: 75%;">
+        <app-dishcard id="cardDislike" (swipeLeft)="tutorialDislike()" class="dishcard tutorial-card"></app-dishcard>
         <span>
           <div class="modal-content">
             <div class="columns is-mobile">
@@ -105,7 +108,7 @@
         </span>
       </div>
 
-      
+
       <div *ngSwitchCase="3" style="width: 90%; margin-top: 50%;">
         <span>
           <div class="modal-content">

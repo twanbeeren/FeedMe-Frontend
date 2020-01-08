@@ -61,7 +61,7 @@ export class OrderService implements OnInit {
   sendOrder() {
 
     this.playAnimation = true;
-    this.orderStatus = 'Your order has been sent to the kitchen and added to your ticket.';
+    this.orderStatus = 'Your order has been sent to the kitchen and added to your ticket. \n If you want, you can now make a new order.';
     setTimeout(() => {
       this.calculateTotalPrice();
       this.order.status = 'Sent';

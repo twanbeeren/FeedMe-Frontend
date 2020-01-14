@@ -8,6 +8,8 @@ import { OrderService } from 'src/app/core/services/order.service';
 })
 export class OrderComponent implements OnInit {
 
+  playAnimation = false;
+
   constructor(public orderService: OrderService) { }
 
   ngOnInit() {

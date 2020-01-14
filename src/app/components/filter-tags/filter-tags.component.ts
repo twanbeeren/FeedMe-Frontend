@@ -4,7 +4,7 @@ import { MenuService } from 'src/app/core/services/menu.service';
 @Component({
   selector: 'app-filter-tags',
   templateUrl: './filter-tags.component.html',
-  styleUrls: ['./filter-tags.component.css']
+  styleUrls: ['./filter-tags.component.css'],
 })
 export class FilterTagsComponent implements OnInit {
 

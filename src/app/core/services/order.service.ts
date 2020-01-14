@@ -7,15 +7,12 @@ import { TicketService } from './ticket.service';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService implements OnInit {
+export class OrderService {
 
   order: Order;
   totalPrice = 0;
 
   constructor(private db: AngularFirestore, private ticketService: TicketService) {
-  }
-
-  ngOnInit() {
     this.ticketService.hasToReset$.subscribe(hasToReset => { if (hasToReset) { this.reset(); } });
   }
 

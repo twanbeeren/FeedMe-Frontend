@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterTagsComponent } from './filter-tags.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('FilterTagsComponent', () => {
   let component: FilterTagsComponent;
@@ -8,6 +9,7 @@ describe('FilterTagsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ TranslateModule ],
       declarations: [ FilterTagsComponent ]
     })
     .compileComponents();

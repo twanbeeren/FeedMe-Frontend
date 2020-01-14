@@ -22,7 +22,7 @@
         "filter_by": "Filteren op",
         "filters": "Filters"
     },
-    "tablenumber": "Tafelnummer: {{number}}",
+    "tablenumber": "Tafelnummer:",
     "tag": {
         "drink": "Drinken",
         "glutenfree": "Glutenvrij",

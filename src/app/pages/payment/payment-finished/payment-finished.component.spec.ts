@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaymentFinishedComponent } from './payment-finished.component';
+import { ActivatedRoute } from '@angular/router';
 
 describe('PaymentFinishedComponent', () => {
   let component: PaymentFinishedComponent;
@@ -8,7 +9,8 @@ describe('PaymentFinishedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PaymentFinishedComponent ]
+      declarations: [ PaymentFinishedComponent ],
+      providers: [ ActivatedRoute ]
     })
     .compileComponents();
   }));

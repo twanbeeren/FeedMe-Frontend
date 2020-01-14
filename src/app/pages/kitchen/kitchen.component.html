@@ -1,10 +1,22 @@
 <br />
 <div class="container-kitchen">
   <!--Incoming Orders-->
-  <div class="orderList" *ngIf="sentOrders$ | async as orders">
-      <h1>{{'kitchen-header.new' | translate}}</h1>
-      <ng-container *ngFor="let order of orders">
-        <mat-expansion-panel class="setHeight">
+  <div *ngIf="sentOrders$ | async as orders">
+    <h1>{{'kitchen-header.new' | translate}}</h1>
+    <div class="columns is-mobile">
+      <div class="column is-4">
+        <ng-container *ngFor="let order of orders">
+          <button (click)="selectedOrder(order)" style="display: block;">Tafel {{ order.tableNr }}</button>
+        </ng-container>
+      </div>
+      <div class="column">
+        <div *ngIf="currentSelectedOrder" class="tableInfo">
+          {{currentSelectedOrder.id}}
+        </div>
+      </div>
+    </div>
+
+    <!-- <mat-expansion-panel class="setHeight">
             <mat-expansion-panel-header>
               <p class="order">Tafel {{ order.tableNr }} :
                   {{ order.time | date: "shortTime" }}</p>
@@ -22,12 +34,11 @@
               Klaar
             </button>
           </mat-action-row>
-        </mat-expansion-panel>
-      </ng-container>
-    </div>
-  
+        </mat-expansion-panel> -->
+  </div>
+
   <!-- Finished orders -->
-  <div class="orderList" *ngIf="doneOrders$ | async as orders">
+  <!-- <div class="orderList" *ngIf="doneOrders$ | async as orders">
     <h1>{{'kitchen-header.ready' | translate}}</h1>
 
     <mat-divider></mat-divider>
@@ -56,4 +67,4 @@
       </mat-expansion-panel>
     </ng-container>
  
-  </div>
+  </div> -->

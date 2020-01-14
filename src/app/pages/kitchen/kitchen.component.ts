@@ -21,7 +21,7 @@ export class KitchenComponent implements OnInit, OnDestroy {
   sentOrders$: Observable<Order[]>;
   doneOrders$: Observable<Order[]>;
   tile: Tile;
-  private dialog: MatDialog;
+  currentSelectedOrder: Order = null;
 
   sentTiles: Tile[] = [];
   doneTiles: Tile[] = [];
@@ -73,7 +73,7 @@ export class KitchenComponent implements OnInit, OnDestroy {
     this.setDoneTiles();
   }
 
-  showInfo(order: Order) {
-    this.dialog.open(DishInfoDialogComponent, { data: { value: order } });
+  selectedOrder(order: Order) {
+    this.currentSelectedOrder = order;
   }
 }

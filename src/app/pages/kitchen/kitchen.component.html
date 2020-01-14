@@ -1,34 +1,6 @@
 <br />
 <div class="container-kitchen">
-  <!-- <div class="orderList">
-    <h1>{{'kitchen-header.new' | translate}}</h1>
-    <mat-grid-list cols="2" rowHeight="100px">
-      <mat-grid-tile
-        *ngFor="let tile of sentTiles"
-        [style.border]="tile.border">
-        
-        <p>{{tile.order.tableNr}}</p>
-
-  
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div> -->
-
-  <!-- Finished orders-->
-  <!-- <div class="orderList">
-      <h1>{{'kitchen-header.ready' | translate}}</h1>
-      <mat-grid-list cols="2" rowHeight="100px">
-        <mat-grid-tile 
-          *ngFor="let tile of doneTiles"
-          [style.border]="tile.border"
-          (click)="setStatus(tile.order.id, 'Delivered')">
-    
-          {{tile.order.tableNr}}
-    
-        </mat-grid-tile>
-      </mat-grid-list>
-    </div> -->
-
+  <!--Incoming Orders-->
   <div class="orderList" *ngIf="sentOrders$ | async as orders">
       <h1>{{'kitchen-header.new' | translate}}</h1>
       <ng-container *ngFor="let order of orders">
@@ -53,14 +25,6 @@
         </mat-expansion-panel>
       </ng-container>
     </div>
-
-  <!-- <div class="orderList" *ngIf="sentOrders$ | async as orders">
-      <h1>{{'kitchen-header.new' | translate}}</h1>
-    <div class="orderItem" *ngFor="let order of orders">
-        <p class="order">Tafel {{ order.tableNr }} :
-            {{ order.time | date: "shortTime" }}</p>
-    </div>
-  </div> -->
   
   <!-- Finished orders -->
   <div class="orderList" *ngIf="doneOrders$ | async as orders">

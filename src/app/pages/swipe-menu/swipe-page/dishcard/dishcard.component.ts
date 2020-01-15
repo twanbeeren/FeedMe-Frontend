@@ -20,11 +20,15 @@ export class DishcardComponent implements OnInit {
   }
 
   dislike() {
-    this.swipepageComponent.dislikeItem();
+    if (this.item.id !== 'tut') {
+      this.swipepageComponent.dislikeItem();
+    }
   }
 
   like() {
-    this.swipepageComponent.likeItem();
+    if (this.item.id !== 'tut') {
+      this.swipepageComponent.likeItem();
+    }
   }
 
 }

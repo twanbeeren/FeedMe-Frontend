@@ -70,7 +70,7 @@
 
 
       <div *ngSwitchCase="1" style="width: 90%; margin-bottom: 75%;">
-        <app-dishcard id="cardLike" (swipeRight)="tutorialLike()" class="dishcard tutorial-card"></app-dishcard>
+        <app-dishcard id="cardLike" [item]="tutItem" (swipeRight)="tutorialLike()" class="dishcard tutorial-card"></app-dishcard>
         <span>
           <div class="modal-content">
             <div class="columns is-mobile">
@@ -89,7 +89,7 @@
 
 
       <div *ngSwitchCase="2" style="width: 90%; margin-bottom: 75%;">
-        <app-dishcard id="cardDislike" (swipeLeft)="tutorialDislike()" class="dishcard tutorial-card"></app-dishcard>
+        <app-dishcard id="cardDislike" [item]="tutItem" (swipeLeft)="tutorialDislike()" class="dishcard tutorial-card"></app-dishcard>
         <span>
           <div class="modal-content">
             <div class="columns is-mobile">

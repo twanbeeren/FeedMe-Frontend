@@ -17,6 +17,15 @@ export class SwipePageComponent implements OnInit {
   menusub = new Subscription();
   currentIndex;
   swipedIndex;
+  tutItem: MenuItem = {
+    id: 'tut',
+    name: 'Pizza',
+    price: 9.99,
+    course: { id: 'tut', name: 'tut', priority: 1},
+    courseRef: null,
+    tags: [],
+    imgUrl: 'http://www.knallenopdewallen.nl/wp-content/uploads/2016/11/pizza.jpeg'
+  };
 
   latestLikedItem: MenuItem;
   isModalActive = false;
@@ -97,7 +106,7 @@ export class SwipePageComponent implements OnInit {
       this.menu = menu;
       // this.menu.splice((this.currentIndex + 1), (this.menu.length - 1 - this.currentIndex));
 
-      for (let _i = 0; _i < 9999; _i++) {
+      for (let i = 0; i < 9999; i++) {
         // animations toevoegen aan previous dinken
       }
 

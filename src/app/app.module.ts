@@ -39,6 +39,7 @@ import { TicketOverviewComponent } from './pages/ticket-overview/ticket-overview
 import { OrdersDialogComponent } from './components/dialogs/orders-dialog/orders-dialog.component';
 import { PipesModule } from './pages/pipes/pipes.module';
 import { FilterTagsModule } from './components/filter-tags/filter-tags.module';
+import {SwipeCardLibModule} from 'ng-swipe-card';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { FilterTagsModule } from './components/filter-tags/filter-tags.module';
     SwipeMenuModule,
     FilterTagsModule,
     PipesModule,
+    SwipeCardLibModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],

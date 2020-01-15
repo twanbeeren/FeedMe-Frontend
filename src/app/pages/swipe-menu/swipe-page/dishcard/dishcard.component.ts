@@ -19,6 +19,8 @@ export class DishcardComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
   dislike() {
     if (this.item.id !== 'tut') {
       this.swipepageComponent.dislikeItem();

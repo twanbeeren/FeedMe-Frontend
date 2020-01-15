@@ -4,8 +4,12 @@
   <!-- Card -->
   <div class="columns is-mobile is-centered dishcard-parent">
     <div class="colum is-10 animated fadeIn delay-0-2s fast" *ngIf="show" id="dishcard-box">
-      <app-dishcard id="{{i}}" class="dishcard" *ngFor="let item of menu; let i = index" [item]='item'>
-      </app-dishcard>
+
+      <sw-card-wrapper #cardWrapper>
+        <app-dishcard id="{{i}}" class="dishcard" *ngFor="let item of menu; let i = index" [item]='item' swSwipeable
+          [orientation]="'x'" (swiperight)="likeItem()" (swipeleft)="dislikeItem()" [fixed]="!canSwipe">
+        </app-dishcard>
+      </sw-card-wrapper>
     </div>
   </div>
 
@@ -45,7 +49,7 @@
     <div class="modal-button-container">
       <button routerLink="/order" class="modal-button" mat-raised-button color="primary">To my order</button>
     </div>
-</div>
+  </div>
 </div>
 
 <!-- Tutorial Modal -->
@@ -70,7 +74,8 @@
 
 
       <div *ngSwitchCase="1" style="width: 90%; margin-bottom: 75%;">
-        <app-dishcard id="cardLike" [item]="tutItem" (swipeRight)="tutorialLike()" class="dishcard tutorial-card"></app-dishcard>
+        <app-dishcard id="cardLike" [item]="tutItem" (swipeRight)="tutorialLike()" class="dishcard tutorial-card">
+        </app-dishcard>
         <span>
           <div class="modal-content">
             <div class="columns is-mobile">
@@ -89,7 +94,8 @@
 
 
       <div *ngSwitchCase="2" style="width: 90%; margin-bottom: 75%;">
-        <app-dishcard id="cardDislike" [item]="tutItem" (swipeLeft)="tutorialDislike()" class="dishcard tutorial-card"></app-dishcard>
+        <app-dishcard id="cardDislike" [item]="tutItem" (swipeLeft)="tutorialDislike()" class="dishcard tutorial-card">
+        </app-dishcard>
         <span>
           <div class="modal-content">
             <div class="columns is-mobile">

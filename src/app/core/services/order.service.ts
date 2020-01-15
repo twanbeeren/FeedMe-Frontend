@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MenuItem } from '../classes/menu-item';
 import { Order } from '../classes/order';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -86,7 +86,6 @@ export class OrderService {
 
   public async getItem(itemId: string) {
     return this.db.collection('MenuItems').doc<MenuItem>(itemId).get().toPromise();
-    // .then(item => console.log(item));
   }
 
 }

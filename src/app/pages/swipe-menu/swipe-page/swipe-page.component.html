@@ -7,7 +7,7 @@
 
       <sw-card-wrapper #cardWrapper>
         <app-dishcard id="{{i}}" class="dishcard" *ngFor="let item of menu; let i = index" [item]='item' swSwipeable
-          [orientation]="'x'" (swiperight)="likeItem()" (swipeleft)="dislikeItem()" [fixed]="!canSwipe">
+          [orientation]="'x'" (swiperight)="likeItem()" (swipeleft)="dislikeItem()">
         </app-dishcard>
       </sw-card-wrapper>
     </div>

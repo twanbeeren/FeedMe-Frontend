@@ -27,8 +27,6 @@ export class SwipePageComponent implements OnInit {
     imgUrl: 'http://www.knallenopdewallen.nl/wp-content/uploads/2016/11/pizza.jpeg'
   };
 
-  canSwipe = true;
-
   latestLikedItem: MenuItem;
   isModalActive = false;
 
@@ -98,7 +96,6 @@ export class SwipePageComponent implements OnInit {
     this.orderService.removeItem(this.latestLikedItem);
     const card = document.getElementById(this.currentIndex.toString());
 
-    this.canSwipe = true;
     card.classList.remove('animated', 'fadeOut', 'faster', 'hidden');
     card.classList.add('animated', 'bounceIn', 'fast');
     this.delay(800).then(() => {
@@ -112,7 +109,7 @@ export class SwipePageComponent implements OnInit {
 
     // this.canSwipe = false;
     card.classList.add('animated', 'fadeOut', 'faster', 'hidden');
-    this.delay(450).then(() => { card.classList.add('hidden'); this.canSwipe = true; });
+    this.delay(450).then(() => { card.classList.add('hidden'); });
     this.nextItem();
   }
 
@@ -129,7 +126,6 @@ export class SwipePageComponent implements OnInit {
       this.currentIndex += 1;
       const card = document.getElementById(this.currentIndex.toString());
 
-      this.canSwipe = true;
       card.classList.remove('animated', 'fadeOut', 'faster', 'hidden');
       card.classList.add('animated', 'bounceIn', 'fast');
       this.delay(800).then(() => {

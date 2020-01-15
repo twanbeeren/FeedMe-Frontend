@@ -30,7 +30,7 @@
               "node_modules/animate.css/animate.min.css",
               "node_modules/flag-icon-css/css/flag-icon.min.css"
             ],
-            "scripts": []
+            "scripts": ["./node_modules/hammerjs/hammer.min.js"]
           },
           "configurations": {
             "production": {

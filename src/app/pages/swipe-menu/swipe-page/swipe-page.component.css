@@ -1,3 +1,11 @@
+.hidden {
+  display: none;
+}
+
+.transform-unset {
+  transform: rotate(0deg) !important;
+}
+
 .columns {
   margin-right: 0rem;
 }
@@ -114,7 +122,7 @@ button {
   height: 100%;
 }
 
-.tutorial-card{
+.tutorial-card {
   left: 175px;
   top: 200px;
 }

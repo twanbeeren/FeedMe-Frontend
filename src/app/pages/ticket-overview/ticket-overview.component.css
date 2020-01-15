@@ -17,6 +17,11 @@ mat-slide-toggle {
   margin: 10px;
 }
 
-form>button {
-  margin-right: 10px;
+form > button {
+    margin-right: 10px;
+}
+
+table {
+    width: 100%;
+    margin-right: 10px;
 }

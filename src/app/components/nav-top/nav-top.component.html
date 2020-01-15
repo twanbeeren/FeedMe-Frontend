@@ -1,8 +1,9 @@
 <div class="columns is-mobile card navbar is-fixed-top animated fadeIn">
   <div class="column has-text-left">
     <div style="padding-left: 5%; padding-top: 3%;">
-      <p *ngIf="tableNumber" class="tablenumber" [translate]="'tablenumber'"
-        [translateParams]="{number:tableNumber}"></p>
+      <p *ngIf="tableNumber" class="tablenumber">
+        {{'tablenumber' | translate}} {{tableNumber}}
+      </p>
     </div>
   </div>
   <div class="column has-text-centered">

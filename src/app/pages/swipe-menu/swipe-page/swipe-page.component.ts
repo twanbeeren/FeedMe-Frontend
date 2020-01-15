@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 import { OrderService } from 'src/app/core/services/order.service';
+import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
@@ -16,7 +17,6 @@ export class SwipePageComponent implements OnInit {
   menusub = new Subscription();
   currentIndex;
   swipedIndex;
-  allSwiped = false;
 
   latestLikedItem: MenuItem;
   isModalActive = false;
@@ -28,6 +28,7 @@ export class SwipePageComponent implements OnInit {
   phase = 0;
 
   constructor(
+    private router: Router,
     private menuService: MenuService,
     private orderService: OrderService) {
   }
@@ -123,7 +124,7 @@ export class SwipePageComponent implements OnInit {
     if (!this.isLastItem()) {
       this.currentIndex -= 1;
     } else {
-      this.allSwiped = true;
+      this.router.navigate(['/regularmenu']);
     }
   }
 

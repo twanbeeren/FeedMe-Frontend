@@ -7,7 +7,7 @@ import { TicketService } from './ticket.service';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService implements OnInit {
+export class OrderService {
 
   playAnimation = false;
   order: Order;
@@ -15,9 +15,6 @@ export class OrderService implements OnInit {
   orderStatus = 'You haven\'t added anything to your order yet.';
 
   constructor(private db: AngularFirestore, private ticketService: TicketService) {
-  }
-
-  ngOnInit() {
     this.ticketService.hasToReset$.subscribe(hasToReset => { if (hasToReset) { this.reset(); } });
   }
 
@@ -87,7 +84,7 @@ export class OrderService implements OnInit {
     });
   }
 
-  async getItem(itemId: string) {
+  public async getItem(itemId: string) {
     return this.db.collection('MenuItems').doc<MenuItem>(itemId).get().toPromise();
     // .then(item => console.log(item));
   }

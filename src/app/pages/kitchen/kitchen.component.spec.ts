@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { KitchenComponent } from './kitchen.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { KitchenService } from 'src/app/core/services/kitchen.service';
 
 describe('KitchenComponent', () => {
   let component: KitchenComponent;
@@ -8,7 +10,9 @@ describe('KitchenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KitchenComponent ]
+      imports: [ TranslateModule ],
+      declarations: [ KitchenComponent ],
+      providers: [ KitchenService ]
     })
     .compileComponents();
   }));

@@ -2,8 +2,10 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { NavTopComponent } from './components/nav-top/nav-top.component';
-import { NavBottomComponent } from './components/nav-bottom/nav-bottom.component';
-import { TranslateService, TranslateStore, TranslateLoader, TranslateCompiler, TranslateParser, MissingTranslationHandler, USE_DEFAULT_LANG } from '@ngx-translate/core';
+import { NavTableComponent } from './components/nav-bottom/nav-table/nav-table.component';
+import { NavKitchenComponent } from './components/nav-bottom/nav-kitchen/nav-kitchen.component';
+// tslint:disable-next-line: max-line-length
+import { TranslateService, TranslateStore, TranslateLoader, TranslateCompiler, TranslateParser, MissingTranslationHandler } from '@ngx-translate/core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -14,7 +16,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         NavTopComponent,
-        NavBottomComponent
+        NavTableComponent,
+        NavKitchenComponent
       ],
       providers: [
         TranslateService,

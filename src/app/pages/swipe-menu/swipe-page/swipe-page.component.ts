@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { MenuItem } from 'src/app/core/classes/menu-item';
 import { OrderService } from 'src/app/core/services/order.service';
+import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
@@ -16,7 +17,17 @@ export class SwipePageComponent implements OnInit {
   menusub = new Subscription();
   currentIndex;
   swipedIndex;
-  allSwiped = false;
+  tutItem: MenuItem = {
+    id: 'tut',
+    name: 'Pizza',
+    price: 9.99,
+    course: { id: 'tut', name: 'tut', priority: 1 },
+    courseRef: null,
+    tags: [],
+    imgUrl: 'http://www.knallenopdewallen.nl/wp-content/uploads/2016/11/pizza.jpeg'
+  };
+
+  canSwipe = true;
 
   latestLikedItem: MenuItem;
   isModalActive = false;
@@ -28,6 +39,7 @@ export class SwipePageComponent implements OnInit {
   phase = 0;
 
   constructor(
+    private router: Router,
     private menuService: MenuService,
     private orderService: OrderService) {
   }
@@ -63,15 +75,17 @@ export class SwipePageComponent implements OnInit {
   }
 
   likeItem() {
+
+    const card = document.getElementById(this.currentIndex.toString());
+
+    card.classList.add('animated', 'fadeOut', 'faster', 'hidden');
+    this.delay(450).then(() => { card.classList.add('hidden'); });
+
+
     this.latestLikedItem = this.menu[this.currentIndex];
     this.orderService.addItem(this.latestLikedItem);
     this.isModalActive = true;
     this.swipedIndex = this.currentIndex;
-    const card = document.getElementById(this.currentIndex.toString());
-    card.classList.add('animated', 'slideOutRight', 'fast');
-    const div = document.getElementById('dishcard-box');
-    // tslint:disable-next-line: only-arrow-functions
-    // setTimeout(function() { div.innerHTML = ''; }, 500);
   }
 
   closeModal() {
@@ -82,48 +96,31 @@ export class SwipePageComponent implements OnInit {
 
   unmatch() {
     this.orderService.removeItem(this.latestLikedItem);
-    // this.getMenuForUnmatch();
-
     const card = document.getElementById(this.currentIndex.toString());
 
-    card.classList.remove('animated', 'slideOutRight', 'fast');
+    this.canSwipe = true;
+    card.classList.remove('animated', 'fadeOut', 'faster', 'hidden');
     card.classList.add('animated', 'bounceIn', 'fast');
+    this.delay(800).then(() => {
+      card.classList.remove('animated', 'bounceIn', 'fast');
+    });
     this.isModalActive = false;
   }
 
-  getMenuForUnmatch() {
-    this.menuService.getMenu().subscribe(menu => {
-      this.menu = menu;
-      // this.menu.splice((this.currentIndex + 1), (this.menu.length - 1 - this.currentIndex));
-
-      for (let _i = 0; _i < 9999; _i++) {
-        // animations toevoegen aan previous dinken
-      }
-
-      this.currentIndex = this.menu.length - 1;
-      this.reload();
-      this.isModalActive = false;
-    });
-  }
-
-  // addAnimationForPreviousItems() {
-  //   for (let i = this.menu.length - 1; i >= this.swipedIndex; i--) {
-  //     const card = document.getElementById(i.toString());
-  //     card.classList.add('animated', 'slideOutLeft', 'fast');
-  //   }
-  // }
-
   dislikeItem() {
     const card = document.getElementById(this.currentIndex.toString());
-    card.classList.add('animated', 'slideOutLeft', 'fast');
+
+    // this.canSwipe = false;
+    card.classList.add('animated', 'fadeOut', 'faster', 'hidden');
+    this.delay(450).then(() => { card.classList.add('hidden'); this.canSwipe = true; });
     this.nextItem();
   }
 
-  nextItem() {
+  private nextItem() {
     if (!this.isLastItem()) {
       this.currentIndex -= 1;
     } else {
-      this.allSwiped = true;
+      this.router.navigate(['/regularmenu']);
     }
   }
 
@@ -132,11 +129,17 @@ export class SwipePageComponent implements OnInit {
       this.currentIndex += 1;
       const card = document.getElementById(this.currentIndex.toString());
 
-      card.classList.remove('animated', 'slideOutLeft', 'fast');
+      this.canSwipe = true;
+      card.classList.remove('animated', 'fadeOut', 'faster', 'hidden');
       card.classList.add('animated', 'bounceIn', 'fast');
-    } else {
-      // TODO Eventuele melding
+      this.delay(800).then(() => {
+        card.classList.remove('animated', 'bounceIn', 'fast');
+      });
     }
+  }
+
+  private delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   isLastItem() {
@@ -162,14 +165,12 @@ export class SwipePageComponent implements OnInit {
   tutorialLike() {
     const card = document.getElementById('cardLike');
     card.classList.add('animated', 'slideOutRight', 'fast');
-    // setTimeout(function() { this.nextPhase(); }, 500);
     this.nextPhase();
   }
 
   tutorialDislike() {
     const card = document.getElementById('cardDislike');
     card.classList.add('animated', 'slideOutLeft', 'fast');
-    // setTimeout(function() { this.nextPhase(); }, 500);
     this.nextPhase();
   }
 

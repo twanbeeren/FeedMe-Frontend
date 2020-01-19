@@ -36,8 +36,10 @@ import { environment } from '../environments/environment';
 import { PaymentFinishedComponent } from './pages/payment/payment-finished/payment-finished.component';
 import { TicketHistoryComponent } from './pages/ticket-history/ticket-history.component';
 import { TicketOverviewComponent } from './pages/ticket-overview/ticket-overview.component';
+import { OrdersDialogComponent } from './components/dialogs/orders-dialog/orders-dialog.component';
 import { PipesModule } from './pages/pipes/pipes.module';
 import { FilterTagsModule } from './components/filter-tags/filter-tags.module';
+import {SwipeCardLibModule} from 'ng-swipe-card';
 
 @NgModule({
   declarations: [
@@ -58,9 +60,10 @@ import { FilterTagsModule } from './components/filter-tags/filter-tags.module';
     PaymentComponent,
     TicketHistoryComponent,
     TicketOverviewComponent,
+    OrdersDialogComponent,
     PaymentFinishedComponent,
   ],
-  entryComponents: [DishInfoDialogComponent],
+  entryComponents: [DishInfoDialogComponent, OrdersDialogComponent],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -83,6 +86,7 @@ import { FilterTagsModule } from './components/filter-tags/filter-tags.module';
     SwipeMenuModule,
     FilterTagsModule,
     PipesModule,
+    SwipeCardLibModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],

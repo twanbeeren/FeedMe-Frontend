@@ -26,8 +26,10 @@ export class PaymentComponent implements OnInit {
 
     Promise.all(this.ticketService.ticket.orders.map(order => {
       Promise.all(order.orderItems.map(async menuItem => {
-        const retrievedItem = await this.orderService.getItem(menuItem.item);
-        menuItem.item = retrievedItem.data();
+        if (typeof menuItem.item === 'string') {
+          const retrievedItem = await this.orderService.getItem(menuItem.item);
+          menuItem.item = retrievedItem.data();
+        }
       }));
     }));
 
@@ -35,7 +37,8 @@ export class PaymentComponent implements OnInit {
   }
 
   pay() {
+    const id = this.ticketService.ticket.id;
     this.paymentService.pay();
-    this.router.navigate(['/payment-finished']);
+    this.router.navigate(['/payment-finished', id]);
   }
 }

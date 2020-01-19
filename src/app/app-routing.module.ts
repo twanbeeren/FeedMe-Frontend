@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'swipemenu', component: SwipePageComponent, canActivate: [AuthGuard, TableGuard] },
   { path: 'order', component: OrderComponent, canActivate: [AuthGuard, TableGuard] },
   { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard, TableGuard] },
-  { path: 'payment-finished', component: PaymentFinishedComponent, canActivate: [AuthGuard, TableGuard] },
+  { path: 'payment-finished/:id', component: PaymentFinishedComponent, canActivate: [AuthGuard, TableGuard] },
   { path: 'kitchen-orders', component: KitchenComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
   { path: 'kitchen-tickets', component: TicketOverviewComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },
   { path: 'kitchen-history', component: TicketHistoryComponent, canActivate: [AuthGuard, KitchenGuard], canDeactivate: [KitchenGuard] },

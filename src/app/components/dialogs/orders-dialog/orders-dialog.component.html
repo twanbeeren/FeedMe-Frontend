@@ -1,0 +1,17 @@
+<h3 mat-dialog-title>
+    {{'tablenumber' | translate: {number: data.tableNr} }} van
+    {{ data.time | date: "short" }}
+</h3>
+<div mat-dialog-content>
+    <mat-list *ngFor="let order of data.orders">
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let item of order.orderItems">
+            <p matLine>{{ item.amount }}x {{ item.item?.name }}</p>
+        </mat-list-item>
+    </mat-list>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-raised-button (click)="onCloseClick()">
+        Close
+    </button>
+</div>

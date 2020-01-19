@@ -4,6 +4,7 @@ import { KitchenService } from 'src/app/core/services/kitchen.service';
 import { Order } from 'src/app/core/classes/order';
 import { MatDialog } from '@angular/material';
 import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-dialog/dish-info-dialog.component';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -22,8 +23,12 @@ export class KitchenComponent implements OnInit, OnDestroy {
   constructor(public kitchenService: KitchenService) { }
 
   ngOnInit() {
-    this.sentOrders$ = this.kitchenService.getSentOrders();
-    this.doneOrders$ = this.kitchenService.getDoneOrders();
+    this.sentOrders$ = this.kitchenService.getSentOrders().pipe(
+      map(lessons => lessons.sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime()))
+    );
+    this.doneOrders$ = this.kitchenService.getDoneOrders().pipe(
+      map(lessons => lessons.sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime()))
+    );
   }
 
   ngOnDestroy() {

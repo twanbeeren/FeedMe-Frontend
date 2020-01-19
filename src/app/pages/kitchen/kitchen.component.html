@@ -2,20 +2,40 @@
 <div class="container-kitchen">
   <!--Incoming Orders-->
   <div *ngIf="sentOrders$ | async as orders">
-    <h1>{{'kitchen-header.new' | translate}}</h1>
     <div class="columns is-mobile">
       <div class="column is-4">
+        <!-- <h1>{{'kitchen-header.new' | translate}}</h1> -->
+        <h1>New</h1>
         <ng-container *ngFor="let order of orders">
-          <button (click)="selectedOrder(order)" style="display: block;">Tafel {{ order.tableNr }}</button>
+          <button mat-raised-button (click)="selectedOrder(order)" style="display: block;">Tafel {{ order.tableNr }}</button>
         </ng-container>
       </div>
-      <div class="column">
+      <div class="column orderItem">
         <div *ngIf="currentSelectedOrder" class="tableInfo">
-          {{currentSelectedOrder.id}}
+          <div id="title">
+            Tafel {{ currentSelectedOrder.tableNr }}
+          </div>
+          <ng-container *ngFor="let course of currentSelectedOrder.orderItems">
+            <div id="courseItem">
+              {{course.item.name}} : {{course.amount}}
+            </div>
+          </ng-container>
+          <button *ngIf="currentSelectedOrder.status == 'Sent'" mat-raised-button (click)="setStatus(currentSelectedOrder.id, 'Done')" style="display: block;">Done</button>
+          <button *ngIf="currentSelectedOrder.status == 'Done'" mat-raised-button (click)="setStatus(currentSelectedOrder.id, 'Delivered')" style="display: block;">Delivered</button>
         </div>
       </div>
     </div>
 
+    <div *ngIf="doneOrders$ | async as orders">
+      <div class="columns is-mobile">
+        <div class="column is-4">
+          <h1>Orders</h1>
+          <ng-container *ngFor="let order of orders">
+            <button mat-raised-button (click)="selectedOrder(order)" style="display: block;">Tafel {{ order.tableNr }}</button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
     <!-- <mat-expansion-panel class="setHeight">
             <mat-expansion-panel-header>
               <p class="order">Tafel {{ order.tableNr }} :

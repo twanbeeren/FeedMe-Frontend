@@ -5,10 +5,6 @@ import { Order } from 'src/app/core/classes/order';
 import { MatDialog } from '@angular/material';
 import { DishInfoDialogComponent } from 'src/app/components/dialogs/dish-info-dialog/dish-info-dialog.component';
 
-export class Tile {
-  border: string;
-  order: Order;
-}
 
 @Component({
   selector: 'app-kitchen',
@@ -18,59 +14,25 @@ export class Tile {
 export class KitchenComponent implements OnInit, OnDestroy {
 
   private subscription = new Subscription();
+  orders$: Order[];
   sentOrders$: Observable<Order[]>;
   doneOrders$: Observable<Order[]>;
-  tile: Tile;
   currentSelectedOrder: Order = null;
-
-  sentTiles: Tile[] = [];
-  doneTiles: Tile[] = [];
 
   constructor(public kitchenService: KitchenService) { }
 
   ngOnInit() {
     this.sentOrders$ = this.kitchenService.getSentOrders();
     this.doneOrders$ = this.kitchenService.getDoneOrders();
-    this.setSentTiles();
-    this.setDoneTiles();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  setSentTiles() {
-    const sub = this.sentOrders$.subscribe(orders => {
-      this.sentTiles = [];
-      orders.forEach(order => {
-        this.tile = new Tile();
-        this.tile.border = '5px solid blue';
-        this.tile.order = order;
-        this.sentTiles.push(this.tile);
-      });
-    });
-
-    this.subscription.add(sub);
-  }
-
-  setDoneTiles() {
-    const sub = this.doneOrders$.subscribe(orders => {
-      this.doneTiles = [];
-      orders.forEach(order => {
-        this.tile = new Tile();
-        this.tile.border = '5px solid green';
-        this.tile.order = order;
-        this.doneTiles.push(this.tile);
-      });
-    });
-
-    this.subscription.add(sub);
-  }
-
   setStatus(id: string, newStatus: string) {
     this.kitchenService.setStatus(id, newStatus);
-    this.setSentTiles();
-    this.setDoneTiles();
+    this.currentSelectedOrder = null;
   }
 
   selectedOrder(order: Order) {

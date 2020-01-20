@@ -1,95 +1,40 @@
 <br />
 <div class="container-kitchen">
-  <!-- <div class="orderList">
-    <h1>{{'kitchen-header.new' | translate}}</h1>
-    <mat-grid-list cols="2" rowHeight="100px">
-      <mat-grid-tile
-        *ngFor="let tile of sentTiles"
-        [style.border]="tile.border">
-        
-        <p>{{tile.order.tableNr}}</p>
-
-  
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div> -->
-
-  <!-- Finished orders-->
-  <!-- <div class="orderList">
-      <h1>{{'kitchen-header.ready' | translate}}</h1>
-      <mat-grid-list cols="2" rowHeight="100px">
-        <mat-grid-tile 
-          *ngFor="let tile of doneTiles"
-          [style.border]="tile.border"
-          (click)="setStatus(tile.order.id, 'Delivered')">
-    
-          {{tile.order.tableNr}}
-    
-        </mat-grid-tile>
-      </mat-grid-list>
-    </div> -->
-
-  <div class="orderList" *ngIf="sentOrders$ | async as orders">
-      <h1>{{'kitchen-header.new' | translate}}</h1>
-      <ng-container *ngFor="let order of orders">
-        <mat-expansion-panel class="setHeight">
-            <mat-expansion-panel-header>
-              <p class="order">Tafel {{ order.tableNr }} :
-                  {{ order.time | date: "shortTime" }}</p>
-            <mat-divider></mat-divider>
-          </mat-expansion-panel-header>
-          <mat-list-item *ngFor="let item of order.orderItems">
-            <p class="orderItems" matLine>{{ item.amount }} X {{ item.item?.name }}</p>
-          </mat-list-item>
-          <mat-action-row>
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="setStatus(order.id, 'Done')"
-            >
-              Klaar
-            </button>
-          </mat-action-row>
-        </mat-expansion-panel>
-      </ng-container>
+  <!--Incoming Orders-->
+    <div class="columns is-mobile">
+      <div class="column is-half">
+        <h1>{{'kitchen-header.new' | translate}}</h1>
+        <div class="scrollable" *ngIf="sentOrders$ | async as orders">
+          <ng-container class="scrollable" *ngFor="let order of orders">
+            <button mat-raised-button (click)="selectedOrder(order)" style="display: block;">Tafel {{ order.tableNr }}</button>
+          </ng-container>
+        </div>
+      </div>
+      <div class="column is-half">
+        <h1>{{'kitchen-header.ready' | translate}}</h1>
+          <div class="scrollable" *ngIf="doneOrders$ | async as orders">
+            <ng-container *ngFor="let order of orders">
+              <button mat-raised-button (click)="selectedOrder(order)" style="display: block;">Tafel {{ order.tableNr }}</button>
+            </ng-container>
+          </div>
+      </div>
     </div>
-
-  <!-- <div class="orderList" *ngIf="sentOrders$ | async as orders">
-      <h1>{{'kitchen-header.new' | translate}}</h1>
-    <div class="orderItem" *ngFor="let order of orders">
-        <p class="order">Tafel {{ order.tableNr }} :
-            {{ order.time | date: "shortTime" }}</p>
+    <div class="columns is-mobile">
+      <div class="column is-full orderItem">
+        <div *ngIf="currentSelectedOrder">
+          <div id="title">
+            {{'tablenumber' | translate}} {{ currentSelectedOrder.tableNr }}
+          </div>
+          <div class="scrollableCourses">
+            <ng-container *ngFor="let course of currentSelectedOrder.orderItems">
+              <div class="courseItem">
+                {{course.item.name}} : {{course.amount}}
+              </div>
+            </ng-container>
+          </div>
+          <button class="courseButton" *ngIf="currentSelectedOrder.status == 'Sent'" mat-raised-button (click)="setStatus(currentSelectedOrder.id, 'Done')" style="display: block;">Done</button>
+          <button class="courseButton" *ngIf="currentSelectedOrder.status == 'Done'" mat-raised-button (click)="setStatus(currentSelectedOrder.id, 'Delivered')" style="display: block;">Delivered</button>
+        </div>
+      </div>
     </div>
-  </div> -->
-  
-  <!-- Finished orders -->
-  <div class="orderList" *ngIf="doneOrders$ | async as orders">
-    <h1>{{'kitchen-header.ready' | translate}}</h1>
-
-    <mat-divider></mat-divider>
-
-    <ng-container *ngFor="let order of orders">
-      <mat-expansion-panel class="setHeight">
-         <mat-expansion-panel-header>
-            <p class="order">Tafel {{ order.tableNr }} :
-                {{ order.time | date: "shortTime" }}</p>
-            <mat-divider></mat-divider>
-          </mat-expansion-panel-header>
-
-          <mat-list-item *ngFor="let item of order.orderItems">
-            <p class="orderItems">{{ item.amount }} X {{ item.item?.name }}</p>
-            </mat-list-item>
-
-        <mat-action-row>
-          <button
-            mat-raised-button
-            color="primary"
-            (click)="setStatus(order.id, 'Delivered')"
-          >
-            Geserveerd
-          </button>
-        </mat-action-row>
-      </mat-expansion-panel>
-    </ng-container>
- 
   </div>
